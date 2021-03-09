@@ -1,6 +1,5 @@
 // 
 // The default instrument objects for Mercury
-// All instruments get a unique ID for the name upon initializing
 // 
 
 const objects = {
@@ -8,7 +7,6 @@ const objects = {
 		'object' : '',
 		'type' : '',
 		'functions' : {
-			'name' : `obj${uniqueID(8)}`,
 			'group' : []
 		}
 	},
@@ -16,7 +14,6 @@ const objects = {
 		'object' : '',
 		'type' : 'saw',
 		'functions' : {
-			'name' : `obj${uniqueID(8)}`,
 			'group' : [],
 			'time' : [ '1', 0 ],
 			'note' : [ 0, 0 ],
@@ -31,7 +28,6 @@ const objects = {
 		'object' : '',
 		'type' : 'kick_909',
 		'functions' : {
-			'name' : `obj${uniqueID(8)}`,
 			'group' : [],
 			'time' : [ '1', 0 ],
 			'speed' : [ 1 ],
@@ -45,13 +41,3 @@ const objects = {
 	}
 }
 module.exports = { objects };
-
-function uniqueID(length){
-	let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
-	let s = '';
-
-	for (let l=0; l<length; l++){
-		s += chars[Math.floor(Math.random() * chars.length)];
-	}
-	return s;
-}

@@ -92,6 +92,7 @@ let code = {
 	'objects' : {},
 	'groups' : {},
 	'print' : [],
+	'comments' : []
 }
 
 function deepCopy(o){
@@ -122,6 +123,7 @@ function traverseTree(tree, code, level){
 		},
 		'@comment' : (ccode, el) => {
 			// if a comment, just return
+			ccode.comments.push(el);
 			return ccode;
 		},
 		'@print' : (ccode, el) => {
@@ -167,6 +169,10 @@ function traverseTree(tree, code, level){
 			Object.keys(el).forEach((k) => {
 				inst = map[k](ccode, el[k], inst, '@object');
 			});
+			// generate unique ID name for instrument if no name()
+			if (!inst.functions.name){
+				inst.functions.name = [ uniqueID(8) ];
+			}
 			ccode.objects[inst.functions.name] = inst;
 
 			return ccode;
@@ -317,11 +323,14 @@ function traverseTree(tree, code, level){
 		},
 		'@array' : (ccode, el) => {
 			let arr = [];
-			el.map((e) => {
-				Object.keys(e).map((k) => {
-					arr.push(map[k](ccode, e[k]));
+			// if not an empty array parse all items
+			if (el){
+				el.map((e) => {
+					Object.keys(e).map((k) => {
+						arr.push(map[k](ccode, e[k]));
+					});
 				});
-			});
+			}
 			return arr;
 		},
 		'@identifier' : (ccode, el) => {
@@ -364,6 +373,16 @@ function traverseTree(tree, code, level){
 		});
 	}
 	return code;
+}
+
+function uniqueID(length){
+	let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
+	let s = '';
+
+	for (let l=0; l<length; l++){
+		s += chars[Math.floor(Math.random() * chars.length)];
+	}
+	return s;
 }
 
 module.exports = { identifier, division, num, keyBind, traverseTreeIR };

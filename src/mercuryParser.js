@@ -4,11 +4,13 @@
 // Parse a textfile of Mercury code and return the .json syntax tree
 //====================================================================
 
-const util = require('util');
 const nearley = require('nearley');
+// const util = require('util');
 
 const grammar = require('./mercuryGrammar.js');
 const worker = require('./mercuryIR.js');
+
+const DEBUG = false;
 
 function mercuryParser(code){
 	// split multiple lines into array of strings
@@ -27,16 +29,14 @@ function mercuryParser(code){
 				// parser.results is an array of possible parsings.
 				let results = parser.results.length;
 
-				if (results > 1){
-					console.log("!!! Warning, ambiguous grammar!");
-					for (var i=0; i<results; i++){
-						console.log("Result", i+1, "of", results, "\n", 
-						util.inspect(parser.results[i], { depth: 10 }), 
-						// console.log(parser.results[i]), 
-						"\n");
+				if (DEBUG){
+					if (results > 1){
+						console.log("Warning, ambiguous grammar!");
+						for (var i=0; i<results; i++){
+							// console.log("Result", i+1, "of", results, "\n", util.inspect(parser.results[i], { depth: 10 }), "\n");
+							// console.log(parser.results[i]);
+						}
 					}
-				} else {
-					// console.log("Parse succesful: \n", util.inspect(parser.results[0], { depth: 10}), "\n");
 				}
 				// build the tokenized syntax tree
 				ast['@main'].push(parser.results[0]);
@@ -57,6 +57,6 @@ function mercuryParser(code){
 
 	// write IR as json to disk
 	// fs.writeJSONSync('./test/mercuryIR.json', result, { spaces: 4 });
-	return result;
+	return { '@ast': ast, '@parse': result };
 }
 exports.mercuryParser = mercuryParser;
