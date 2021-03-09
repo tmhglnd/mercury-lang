@@ -1,3 +1,9 @@
+//====================================================================
+// mercury.test.js
+//
+// Parse a textfile of Mercury code and return the .json syntax tree
+// written by Timo Hoogland 2021, www.timohoogland.com
+//====================================================================
 
 const path = require('path');
 const fs = require('fs-extra');
@@ -21,12 +27,15 @@ function parseFile(f){
 	time = Date.now() - time;
 	console.log(`\nParsed code succesful within: ${time} ms\n`);
 	
+	// console.log(util.inspect(result.parseTree, { showHidden: false, depth: null, colors: true }));
+	// console.log(util.inspect(result.syntaxTree, { showHidden: false, depth: null, colors: true }));
 	console.log(util.inspect(result, { showHidden: false, depth: null, colors: true }));
 
 	// write to disk for check
 	fs.outputJSONSync(`./test/tree/${name}.json`, result, { spaces: 2 });
 }
 
-parseFile('./test/test-grammar.txt');
+parseFile('./test/test-small.txt');
+// parseFile('./test/test-grammar.txt');
 // parseFile('./test/test-rings.txt');
 // parseFile('./test/test-synth.txt');

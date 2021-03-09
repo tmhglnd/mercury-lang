@@ -1,5 +1,622 @@
 {
-  "@ast": {
+  "parseTree": {
+    "global": {
+      "volume": [
+        0.8
+      ],
+      "tempo": [
+        143,
+        1000
+      ],
+      "scale": [
+        "major",
+        "g#"
+      ],
+      "root": [
+        "c"
+      ],
+      "randomSeed": [
+        0
+      ],
+      "highPass": [
+        20000,
+        0
+      ],
+      "lowPass": [
+        1,
+        0
+      ],
+      "silence": false
+    },
+    "variables": {
+      "myVal": 3.141592654,
+      "arr": [
+        1,
+        2,
+        3.141592654
+      ],
+      "myArr": [
+        1,
+        2,
+        [
+          1,
+          2,
+          3.141592654
+        ],
+        56,
+        7.89e-13
+      ],
+      "hats": [
+        "hat_dub",
+        "hat_dub_open"
+      ],
+      "strArr": [
+        "hey",
+        "a string here",
+        "and one more"
+      ],
+      "ring3D": [
+        1,
+        2,
+        [
+          3,
+          4
+        ],
+        5,
+        [
+          6,
+          [
+            7,
+            8
+          ],
+          9
+        ],
+        10,
+        11
+      ],
+      "beat": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "grv": [
+        "kick",
+        "snare",
+        "hat",
+        "snare",
+        "snare",
+        "snare",
+        "hat",
+        "snare"
+      ],
+      "arpMel": [
+        0,
+        2,
+        4,
+        7,
+        9,
+        9,
+        7,
+        4,
+        2,
+        0,
+        0,
+        2,
+        4,
+        7,
+        9,
+        9,
+        7,
+        4,
+        2,
+        0,
+        7,
+        9,
+        11,
+        14,
+        16,
+        16,
+        14,
+        11,
+        9,
+        7,
+        3,
+        5,
+        7,
+        10,
+        12,
+        12,
+        10,
+        7,
+        5,
+        3
+      ],
+      "bsLine": [
+        0,
+        3,
+        6,
+        10,
+        13,
+        5,
+        8,
+        11,
+        15,
+        18,
+        7,
+        10,
+        13,
+        17,
+        20
+      ],
+      "bsLine2": [
+        13,
+        6,
+        0,
+        3,
+        10
+      ],
+      "bsLine3": [
+        0,
+        "b0",
+        "a0",
+        "s0",
+        "s0",
+        0,
+        "b0",
+        "a0",
+        "s0",
+        "s0"
+      ],
+      "notes": [
+        "c4",
+        "e4",
+        "f4",
+        "d#4",
+        "gb5",
+        "gb5",
+        "d#4",
+        "f4",
+        "e4",
+        "c4"
+      ]
+    },
+    "objects": {
+      "273QV875": {
+        "object": "synth",
+        "type": "saw",
+        "functions": {
+          "group": [],
+          "time": [
+            "1",
+            0
+          ],
+          "note": [
+            0,
+            0
+          ],
+          "env": [
+            5,
+            500
+          ],
+          "beat": [
+            1
+          ],
+          "amp": [
+            0.7
+          ],
+          "wave2": [
+            "saw",
+            0
+          ],
+          "add_fx": [],
+          "name": [
+            "273QV875"
+          ]
+        }
+      },
+      "6DPNKWDU": {
+        "object": "sample",
+        "type": "hat_min",
+        "functions": {
+          "group": [],
+          "time": [
+            "1",
+            0
+          ],
+          "speed": [
+            1
+          ],
+          "env": [
+            -1
+          ],
+          "beat": [
+            1
+          ],
+          "amp": [
+            0.9
+          ],
+          "stretch": [
+            0,
+            1,
+            1
+          ],
+          "add_fx": [],
+          "name": [
+            "6DPNKWDU"
+          ]
+        }
+      },
+      "63CKKZF2": {
+        "object": "sample",
+        "type": [
+          "hat_min",
+          "kick",
+          "snare",
+          "tabla"
+        ],
+        "functions": {
+          "group": [],
+          "time": [
+            "1",
+            0
+          ],
+          "speed": [
+            1
+          ],
+          "env": [
+            -1
+          ],
+          "beat": [
+            1
+          ],
+          "amp": [
+            0.9
+          ],
+          "stretch": [
+            0,
+            1,
+            1
+          ],
+          "add_fx": [],
+          "name": [
+            "63CKKZF2"
+          ]
+        }
+      },
+      "CWPVSPE5": {
+        "object": "synth",
+        "type": [
+          "saw",
+          "triangle"
+        ],
+        "functions": {
+          "group": [],
+          "time": [
+            "1",
+            0
+          ],
+          "note": [
+            0,
+            0
+          ],
+          "env": [
+            5,
+            500
+          ],
+          "beat": [
+            1
+          ],
+          "amp": [
+            0.7
+          ],
+          "wave2": [
+            "saw",
+            0
+          ],
+          "add_fx": [],
+          "name": [
+            "CWPVSPE5"
+          ]
+        }
+      },
+      "bob": {
+        "object": "synth",
+        "type": "saw",
+        "functions": {
+          "group": [],
+          "time": [
+            "1",
+            0
+          ],
+          "note": [
+            [
+              0,
+              5,
+              7,
+              9
+            ],
+            0
+          ],
+          "env": [
+            5,
+            500
+          ],
+          "beat": [
+            1
+          ],
+          "amp": [
+            0.7
+          ],
+          "wave2": [
+            "saw",
+            0
+          ],
+          "add_fx": [
+            [
+              "double"
+            ]
+          ],
+          "name": [
+            "bob"
+          ],
+          "with_fx": [
+            "delay",
+            3,
+            5,
+            0.3
+          ]
+        }
+      },
+      "alice": {
+        "object": "sample",
+        "type": [
+          "kick",
+          "snare"
+        ],
+        "functions": {
+          "group": [],
+          "time": [
+            0.25,
+            0.5
+          ],
+          "speed": [
+            0.9
+          ],
+          "env": [
+            1,
+            200
+          ],
+          "beat": [
+            1
+          ],
+          "amp": [
+            0.9
+          ],
+          "stretch": [
+            0,
+            1,
+            1
+          ],
+          "add_fx": [],
+          "name": [
+            "newname"
+          ],
+          "note": [
+            [
+              0,
+              7,
+              12,
+              3
+            ],
+            2
+          ]
+        }
+      },
+      "newname": {
+        "object": "sample",
+        "type": [
+          "kick",
+          "snare"
+        ],
+        "functions": {
+          "group": [],
+          "time": [
+            0.25,
+            0.5
+          ],
+          "speed": [
+            0.9
+          ],
+          "env": [
+            1,
+            200
+          ],
+          "beat": [
+            1
+          ],
+          "amp": [
+            0.9
+          ],
+          "stretch": [
+            0,
+            1,
+            1
+          ],
+          "add_fx": [],
+          "name": [
+            "newname"
+          ],
+          "note": [
+            [
+              0,
+              7,
+              12,
+              3
+            ],
+            2
+          ]
+        }
+      }
+    },
+    "groups": {
+      "all": [
+        "bob",
+        "alice",
+        "newname"
+      ]
+    },
+    "print": [
+      12,
+      34,
+      -56,
+      7.89,
+      101112.13141,
+      0.4321,
+      12,
+      34,
+      -56,
+      7.89,
+      [
+        1,
+        2,
+        3.14,
+        5,
+        "foo",
+        "bar",
+        "to_to t1T1"
+      ],
+      [],
+      "a",
+      "A",
+      "b",
+      "B",
+      "c",
+      "C",
+      "d",
+      "D",
+      "e",
+      "E",
+      "f",
+      "F",
+      "g",
+      "G",
+      "a#",
+      "B#",
+      "C#",
+      "Dx",
+      "Gb",
+      "a##",
+      "Bbb",
+      "C##",
+      "Dx",
+      "Gb",
+      "fbb",
+      "a1",
+      "A0",
+      "b2b",
+      "B4#",
+      "c1",
+      "C2bb",
+      "d4##",
+      "D3",
+      "e2",
+      "E1",
+      "f4#",
+      "F5",
+      "g6",
+      "G2",
+      "1/4",
+      "3/16",
+      "7/16",
+      "4/5",
+      "3/1",
+      "7/8",
+      "3/2",
+      "1/5",
+      "#",
+      "not",
+      "another",
+      "comment",
+      "not",
+      "a",
+      "type",
+      "of",
+      "comment",
+      "hello world",
+      "also a string",
+      "and another! ",
+      "this works?",
+      " this does as well?",
+      "1 +2 /3.14* 45.67",
+      "Kick_dub",
+      "dub_15",
+      "foLey-02.wav",
+      "-negative"
+    ],
+    "comments": [
+      "// Parse numbers",
+      "// 1 + 2 / 4",
+      "// Parse note names",
+      "// Parse rhythmic division values",
+      "// Parse comments",
+      "$ also a type of comment",
+      "// 1.0111213141E5 < commented",
+      "// valid strings start and end with: \"\" '' ``",
+      "// or a combination of those works as well",
+      "// Parse identifier/name",
+      "// valid identifiers start with characters [a-zA-Z]",
+      "// can have _ - . and numbers [0-9]",
+      "// Parse Signal modulation strings TODO",
+      "// ~mySig",
+      "// ~my-sig",
+      "// ~my_Sig",
+      "// ~23sig",
+      "// ~sig423",
+      "// Parsing osc type strings TODO",
+      "// /oscString/param",
+      "// /oscString/temp ",
+      "// /anotherOsc/param",
+      "// Parse action keywords",
+      "// ring ",
+      "// list ",
+      "// array ",
+      "// new ",
+      "// make ",
+      "// set ",
+      "// apply ",
+      "// give ",
+      "// TODO",
+      "// make loop amen-break02 speed(randomFloat(8 0.5 0.9))",
+      "// new polySynth triangle",
+      "// new emitter osc name(fred)",
+      "// tempo(143 1000)",
+      "// scale(minor_harmonic 23) hi_pass(800)",
+      "// silence",
+      "// set scale minor_harmonic c",
+      "// tempo(125)",
+      "// print(aRing)",
+      "// print(random(10 5 50) )",
+      "// audio()",
+      "// audio 1",
+      "// tempo(143 15000) scale(minor-harmonic dis) random-seed(5372)",
+      "// set tempo 143 15000 ",
+      "// set tempo(143)"
+    ]
+  },
+  "syntaxTree": {
     "@main": [
       {
         "@global": {
@@ -1258,614 +1875,57 @@
         "@global": {
           "@comment": "// scale(minor_harmonic 23) hi_pass(800)"
         }
-      }
-    ]
-  },
-  "@parse": {
-    "global": {
-      "volume": [
-        0.8
-      ],
-      "tempo": [
-        143,
-        1000
-      ],
-      "scale": [
-        "major",
-        "g#"
-      ],
-      "root": [
-        "c"
-      ],
-      "randomSeed": [
-        0
-      ],
-      "highPass": [
-        20000,
-        0
-      ],
-      "lowPass": [
-        1,
-        0
-      ],
-      "silence": false
-    },
-    "variables": {
-      "myVal": 3.141592654,
-      "arr": [
-        1,
-        2,
-        3.141592654
-      ],
-      "myArr": [
-        1,
-        2,
-        [
-          1,
-          2,
-          3.141592654
-        ],
-        56,
-        7.89e-13
-      ],
-      "hats": [
-        "hat_dub",
-        "hat_dub_open"
-      ],
-      "strArr": [
-        "hey",
-        "a string here",
-        "and one more"
-      ],
-      "ring3D": [
-        1,
-        2,
-        [
-          3,
-          4
-        ],
-        5,
-        [
-          6,
-          [
-            7,
-            8
-          ],
-          9
-        ],
-        10,
-        11
-      ],
-      "beat": [
-        1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        1,
-        0
-      ],
-      "grv": [
-        "kick",
-        "hat",
-        "kick",
-        "hat",
-        "kick",
-        "kick",
-        "kick",
-        "snare"
-      ],
-      "arpMel": [
-        0,
-        2,
-        4,
-        7,
-        9,
-        9,
-        7,
-        4,
-        2,
-        0,
-        0,
-        2,
-        4,
-        7,
-        9,
-        9,
-        7,
-        4,
-        2,
-        0,
-        7,
-        9,
-        11,
-        14,
-        16,
-        16,
-        14,
-        11,
-        9,
-        7,
-        3,
-        5,
-        7,
-        10,
-        12,
-        12,
-        10,
-        7,
-        5,
-        3
-      ],
-      "bsLine": [
-        0,
-        3,
-        6,
-        10,
-        13,
-        5,
-        8,
-        11,
-        15,
-        18,
-        7,
-        10,
-        13,
-        17,
-        20
-      ],
-      "bsLine2": [
-        6,
-        3,
-        10,
-        0,
-        13
-      ],
-      "bsLine3": [
-        0,
-        "b0",
-        "a0",
-        "s0",
-        "s0",
-        0,
-        "b0",
-        "a0",
-        "s0",
-        "s0"
-      ],
-      "notes": [
-        "c4",
-        "e4",
-        "f4",
-        "d#4",
-        "gb5",
-        "gb5",
-        "d#4",
-        "f4",
-        "e4",
-        "c4"
-      ]
-    },
-    "objects": {
-      "6IGNUJTT": {
-        "object": "synth",
-        "type": "saw",
-        "functions": {
-          "group": [],
-          "time": [
-            "1",
-            0
-          ],
-          "note": [
-            0,
-            0
-          ],
-          "env": [
-            5,
-            500
-          ],
-          "beat": [
-            1
-          ],
-          "amp": [
-            0.7
-          ],
-          "wave2": [
-            "saw",
-            0
-          ],
-          "add_fx": [],
-          "name": [
-            "6IGNUJTT"
-          ]
+      },
+      {
+        "@global": {
+          "@comment": "// silence"
         }
       },
-      "BXK5IDD0": {
-        "object": "sample",
-        "type": "hat_min",
-        "functions": {
-          "group": [],
-          "time": [
-            "1",
-            0
-          ],
-          "speed": [
-            1
-          ],
-          "env": [
-            -1
-          ],
-          "beat": [
-            1
-          ],
-          "amp": [
-            0.9
-          ],
-          "stretch": [
-            0,
-            1,
-            1
-          ],
-          "add_fx": [],
-          "name": [
-            "BXK5IDD0"
-          ]
+      {
+        "@global": {
+          "@comment": "// set scale minor_harmonic c"
         }
       },
-      "68LMKJE9": {
-        "object": "sample",
-        "type": [
-          "hat_min",
-          "kick",
-          "snare",
-          "tabla"
-        ],
-        "functions": {
-          "group": [],
-          "time": [
-            "1",
-            0
-          ],
-          "speed": [
-            1
-          ],
-          "env": [
-            -1
-          ],
-          "beat": [
-            1
-          ],
-          "amp": [
-            0.9
-          ],
-          "stretch": [
-            0,
-            1,
-            1
-          ],
-          "add_fx": [],
-          "name": [
-            "68LMKJE9"
-          ]
+      {
+        "@global": {
+          "@comment": "// tempo(125)"
         }
       },
-      "Y8MK9KMM": {
-        "object": "synth",
-        "type": [
-          "saw",
-          "triangle"
-        ],
-        "functions": {
-          "group": [],
-          "time": [
-            "1",
-            0
-          ],
-          "note": [
-            0,
-            0
-          ],
-          "env": [
-            5,
-            500
-          ],
-          "beat": [
-            1
-          ],
-          "amp": [
-            0.7
-          ],
-          "wave2": [
-            "saw",
-            0
-          ],
-          "add_fx": [],
-          "name": [
-            "Y8MK9KMM"
-          ]
+      {
+        "@global": {
+          "@comment": "// print(aRing)"
         }
       },
-      "bob": {
-        "object": "synth",
-        "type": "saw",
-        "functions": {
-          "group": [],
-          "time": [
-            "1",
-            0
-          ],
-          "note": [
-            [
-              0,
-              5,
-              7,
-              9
-            ],
-            0
-          ],
-          "env": [
-            5,
-            500
-          ],
-          "beat": [
-            1
-          ],
-          "amp": [
-            0.7
-          ],
-          "wave2": [
-            "saw",
-            0
-          ],
-          "add_fx": [
-            [
-              "double"
-            ]
-          ],
-          "name": [
-            "bob"
-          ],
-          "with_fx": [
-            "delay",
-            3,
-            5,
-            0.3
-          ]
+      {
+        "@global": {
+          "@comment": "// print(random(10 5 50) )"
         }
       },
-      "alice": {
-        "object": "sample",
-        "type": [
-          "kick",
-          "snare"
-        ],
-        "functions": {
-          "group": [],
-          "time": [
-            0.25,
-            0.5
-          ],
-          "speed": [
-            0.9
-          ],
-          "env": [
-            1,
-            200
-          ],
-          "beat": [
-            1
-          ],
-          "amp": [
-            0.9
-          ],
-          "stretch": [
-            0,
-            1,
-            1
-          ],
-          "add_fx": [],
-          "name": [
-            "newname"
-          ],
-          "note": [
-            [
-              0,
-              7,
-              12,
-              3
-            ],
-            2
-          ]
+      {
+        "@global": {
+          "@comment": "// audio()"
         }
       },
-      "newname": {
-        "object": "sample",
-        "type": [
-          "kick",
-          "snare"
-        ],
-        "functions": {
-          "group": [],
-          "time": [
-            0.25,
-            0.5
-          ],
-          "speed": [
-            0.9
-          ],
-          "env": [
-            1,
-            200
-          ],
-          "beat": [
-            1
-          ],
-          "amp": [
-            0.9
-          ],
-          "stretch": [
-            0,
-            1,
-            1
-          ],
-          "add_fx": [],
-          "name": [
-            "newname"
-          ],
-          "note": [
-            [
-              0,
-              7,
-              12,
-              3
-            ],
-            2
-          ]
+      {
+        "@global": {
+          "@comment": "// audio 1"
+        }
+      },
+      {
+        "@global": {
+          "@comment": "// tempo(143 15000) scale(minor-harmonic dis) random-seed(5372)"
+        }
+      },
+      {
+        "@global": {
+          "@comment": "// set tempo 143 15000 "
+        }
+      },
+      {
+        "@global": {
+          "@comment": "// set tempo(143)"
         }
       }
-    },
-    "groups": {
-      "all": [
-        "bob",
-        "alice",
-        "newname"
-      ]
-    },
-    "print": [
-      12,
-      34,
-      -56,
-      7.89,
-      101112.13141,
-      0.4321,
-      12,
-      34,
-      -56,
-      7.89,
-      [
-        1,
-        2,
-        3.14,
-        5,
-        "foo",
-        "bar",
-        "to_to t1T1"
-      ],
-      [],
-      "a",
-      "A",
-      "b",
-      "B",
-      "c",
-      "C",
-      "d",
-      "D",
-      "e",
-      "E",
-      "f",
-      "F",
-      "g",
-      "G",
-      "a#",
-      "B#",
-      "C#",
-      "Dx",
-      "Gb",
-      "a##",
-      "Bbb",
-      "C##",
-      "Dx",
-      "Gb",
-      "fbb",
-      "a1",
-      "A0",
-      "b2b",
-      "B4#",
-      "c1",
-      "C2bb",
-      "d4##",
-      "D3",
-      "e2",
-      "E1",
-      "f4#",
-      "F5",
-      "g6",
-      "G2",
-      "1/4",
-      "3/16",
-      "7/16",
-      "4/5",
-      "3/1",
-      "7/8",
-      "3/2",
-      "1/5",
-      "#",
-      "not",
-      "another",
-      "comment",
-      "not",
-      "a",
-      "type",
-      "of",
-      "comment",
-      "hello world",
-      "also a string",
-      "and another! ",
-      "this works?",
-      " this does as well?",
-      "1 +2 /3.14* 45.67",
-      "Kick_dub",
-      "dub_15",
-      "foLey-02.wav",
-      "-negative"
-    ],
-    "comments": [
-      "// Parse numbers",
-      "// 1 + 2 / 4",
-      "// Parse note names",
-      "// Parse rhythmic division values",
-      "// Parse comments",
-      "$ also a type of comment",
-      "// 1.0111213141E5 < commented",
-      "// valid strings start and end with: \"\" '' ``",
-      "// or a combination of those works as well",
-      "// Parse identifier/name",
-      "// valid identifiers start with characters [a-zA-Z]",
-      "// can have _ - . and numbers [0-9]",
-      "// Parse Signal modulation strings TODO",
-      "// ~mySig",
-      "// ~my-sig",
-      "// ~my_Sig",
-      "// ~23sig",
-      "// ~sig423",
-      "// Parsing osc type strings TODO",
-      "// /oscString/param",
-      "// /oscString/temp ",
-      "// /anotherOsc/param",
-      "// Parse action keywords",
-      "// ring ",
-      "// list ",
-      "// array ",
-      "// new ",
-      "// make ",
-      "// set ",
-      "// apply ",
-      "// give ",
-      "// TODO",
-      "// make loop amen-break02 speed(randomFloat(8 0.5 0.9))",
-      "// new polySynth triangle",
-      "// new emitter osc name(fred)",
-      "// tempo(143 1000)",
-      "// scale(minor_harmonic 23) hi_pass(800)"
     ]
   }
 }

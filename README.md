@@ -24,6 +24,145 @@ This Package does not generate any sound or visuals. This package only parses Me
 
 4. Run a test with `npm test` and view result in `/test/tree`
 
+## Example
+
+A small code file of Mercury below
+
+```java
+// A small example for the Mercury parser
+set tempo 140
+
+list myBeat euclidean(8 5 1)
+
+new synth saw time(1/8) play(myBeat) name(s1)
+	give s1 fx(reverb 0.9 7)
+```
+
+Input the code in the Mercury parser
+
+```js
+const Mercury = require('mercury-parser');
+const code = fs.readFileSync('example.txt', 'utf-8');
+
+const result = Mercury.mercuryParser(code);
+```
+
+The result is a JS object consisting of a `parserTree` and a `syntaxTree`
+
+```js
+{
+  parseTree: {
+    global: {
+      volume: [ 0.8 ],
+      tempo: [ 140 ],
+      scale: [ 'chromatic', 'c' ],
+      root: [ 'c' ],
+      randomSeed: [ 0 ],
+      highPass: [ 20000, 0 ],
+      lowPass: [ 1, 0 ],
+      silence: false
+    },
+    variables: { myBeat: [
+        0, 1, 0, 1,
+        1, 0, 1, 1
+      ] },
+    objects: {
+      s1: {
+        object: 'synth',
+        type: 'saw',
+        functions: {
+          group: [],
+          time: [ '1/8' ],
+          note: [ 0, 0 ],
+          env: [ 5, 500 ],
+          beat: [
+            [
+              0, 1, 0, 1,
+              1, 0, 1, 1
+            ]
+          ],
+          amp: [ 0.7 ],
+          wave2: [ 'saw', 0 ],
+          add_fx: [ [ 'reverb', 0.9, 7 ] ],
+          name: [ 's1' ]
+        }
+      }
+    },
+    groups: { all: [ 's1' ] },
+    print: [],
+    comments: [ '// A small example for the Mercury parser' ]
+  },
+  syntaxTree: {
+    '@main': [
+      {
+        '@global': { '@comment': '// A small example for the Mercury parser' }
+      },
+      {
+        '@object': {
+          '@set': { '@functions': [ { '@number': 140 } ] }
+        }
+      },
+      {
+        '@list': {
+          '@name': 'myBeat',
+          '@params': {
+            '@function': {
+              '@name': 'euclidean',
+              '@args': [ { '@number': 8 }, { '@number': 5 }, { '@number': 1 } ]
+            }
+          }
+        }
+      },
+      {
+        '@object': {
+          '@new': {
+            '@type': { '@identifier': 'saw' },
+            '@functions': [
+              {
+                '@function': {
+                  '@name': 'time',
+                  '@args': [ { '@division': '1/8' } ]
+                }
+              },
+              {
+                '@function': {
+                  '@name': 'beat',
+                  '@args': [ { '@identifier': 'myBeat' } ]
+                }
+              },
+              {
+                '@function': {
+                  '@name': 'name',
+                  '@args': [ { '@identifier': 's1' } ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        '@object': {
+          '@set': {
+            '@functions': [
+              {
+                '@function': {
+                  '@name': 'add_fx',
+                  '@args': [
+                    { '@identifier': 'reverb' },
+                    { '@number': 0.9 },
+                    { '@number': 7 }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
 ## NPM dependencies
 
 - [Nearley Parser Toolkit](https://nearley.js.org/)
