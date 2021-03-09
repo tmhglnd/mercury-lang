@@ -1,4 +1,2 @@
 
-Hello, World!
-
-a# B# C# Dx Gb
+print Hello, World!

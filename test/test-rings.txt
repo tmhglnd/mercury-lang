@@ -179,7 +179,7 @@ print dice1
 set randomSeed 271828
 ring twv1 twelveTone()
 print twv1
-=> [10 7 6 3 2 9 8 4 1 5 0 11]
+// => [10 7 6 3 2 9 8 4 1 5 0 11]
 
 set randomSeed 62832
 ring samples [hat snare kick]

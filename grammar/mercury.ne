@@ -20,7 +20,7 @@ const lexer = moo.compile({
 	//action:		[/ring\ /, /new\ /, /set\ /],
 	//kill:		/kill[\-|_]?[a|A]ll/,
 
-	//seperator:	/[\,\;]/,
+	//seperator:	/&/,
 	
 	//note:		/[a-gA-G](?:[0-9])?(?:#+|b+|x)?/,
 	number:		/[+-]?(?:[0-9]|[0-9]+)(?:\.[0-9]+)?(?:[eE][-+]?[0-9]+)?\b/,

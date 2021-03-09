@@ -6,7 +6,7 @@
 // ===================================================================
 
 // require the parser function
-const parser = require('./src/mercuryParser.js').mercuryParser;
+const mercuryParser = require('./src/mercuryParser.js').mercuryParser;
 
 // export the parser function
-exports.mercuryParser = parser;
+module.exports = { mercuryParser }

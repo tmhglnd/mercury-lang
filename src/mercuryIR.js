@@ -57,7 +57,7 @@ function keyBind(f){
 // Generate a dictionary of keyword and binding pairs based on 
 // input dictionary of categorized keybindings 
 function keywordBindings(dict, obj){
-	console.log('Generating keyword bindings...');	
+	// console.log('Generating keyword bindings...');
 	let binds = { ...obj };
 	Object.keys(dict).forEach((k) => {
 		// store itself first
@@ -73,7 +73,7 @@ function keywordBindings(dict, obj){
 			// console.log('mapped: [ '+b+' ] to: [ '+k+' ]');
 		});
 	});
-	console.log('...done!');
+	// console.log('...done!');
 	return binds;
 }
 

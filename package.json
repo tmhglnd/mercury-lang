@@ -28,7 +28,8 @@
     "fs-extra": "^9.1.0",
     "nearley": "^2.20.1",
     "total-serialism": "^1.14.2",
-    "uglify-js": "^3.13.0"
+    "uglify-js": "^3.13.0",
+    "util": "^0.12.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",
