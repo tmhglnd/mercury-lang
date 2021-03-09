@@ -41,11 +41,8 @@ function mercuryParser(code){
 				// build the tokenized syntax tree
 				ast['@main'].push(parser.results[0]);
 			} catch (e) {
-				console.log("!!! Parse failed: \n", e.message);
-				// console.log("Interpreted as comment:", { '@comment': parser.lexer.buffer });
-				// console.log(parser.lexer);
-				// console.log("Trying: \n", s.substring(0, parser.lexer.index-1));
-				// parse(s.substring(0, parser.lexer.index-1));
+				// console.error(e);
+				console.error(`Syntax error at line ${Number(l)+1} col ${e.token.col}: Unexpected ${e.token.type}: ${e.token.value} at ${lines[l].slice(0, e.token.offset)}${e.token.text}<-`);
 			}
 		}
 	}

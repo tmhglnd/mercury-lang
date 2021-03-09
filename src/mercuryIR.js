@@ -114,14 +114,10 @@ function traverseTree(tree, code, level){
 		'@global' : (ccode, el) => {
 			// if global code (comments, numbers, functions)
 			// console.log('@global', el);
-
-			traverseTree(el, ccode);
-
-			// Object.keys(el).forEach((k) => {
-			// 	ccode = map[k](ccode, el[k], null, '@global');
-			// });
-			// console.log('@global', ccode);
-			// traverseTree(el)
+			Object.keys(el).forEach((k) => {
+				// console.error("Unknown function:", JSON.stringify(el[k]));
+				ccode = map[k](ccode, el[k]);
+			});
 			return ccode;
 		},
 		'@comment' : (ccode, el) => {
@@ -131,7 +127,7 @@ function traverseTree(tree, code, level){
 		'@print' : (ccode, el) => {
 			// console.log('@print', traverseTree(el, ccode));
 			// let prints = ccode.print;
-			let log = '';
+			let log = '> ';
 			el.map((e) => {
 				Object.keys(e).forEach((k) => {
 					let p = map[k](ccode, e[k]);
@@ -247,6 +243,7 @@ function traverseTree(tree, code, level){
 			// add all functions to object or parse for settings
 			// console.log('@funcs', ccode);			
 			if (level === '@setting'){
+				// set arguments from global settings
 				let args = [];
 
 				el.map((e) => {
@@ -255,11 +252,7 @@ function traverseTree(tree, code, level){
 					});
 				});
 				return args;
-			} 
-			// else if (level === '@global'){
-			// 	// console.log('@funcs', el);
-			// 	// return
-			// }
+			}
 			let funcs = inst.functions;
 			el.map((e) => {
 				Object.keys(e).map((k) => {

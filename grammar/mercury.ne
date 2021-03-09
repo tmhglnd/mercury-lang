@@ -16,7 +16,7 @@ const lexer = moo.compile({
 	newObject:	[/new\ /, /make\ /, /add\ /],
 	setObject:	[/set\ /, /apply\ /, /give\ /, /send\ /],
 	print:		[/print\ /, /post\ /, /log\ /],
-	
+
 	//action:		[/ring\ /, /new\ /, /set\ /],
 	//kill:		/kill[\-|_]?[a|A]ll/,
 
@@ -138,7 +138,7 @@ globalStatement ->
 		{% (d) => { return { "@print" : d[2] }} %}
 	|
 	objExpression
-		{% (d) => { return { "@functions" : d[0] }} %}
+		{% (d) => { return { "@print" : d[0] }} %}
 	# |
 	# objExpression _ %seperator:?
 	# 	{% (d) => d[0] %}

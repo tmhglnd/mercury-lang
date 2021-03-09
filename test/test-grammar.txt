@@ -1,16 +1,4 @@
-set randomSeed 4829
-ring v1 random(10 0 12)
-print v1 
 
-set randomSeed 3145
-ring v2 random(10 0 12)
-print v2
+Hello, World!
 
-set randomSeed 4829
-ring v1 random(10 0 12)
-print 'random(10 0 12)'
-
-// print [ random(20) spread(5) choose(100 [hat kick snare]) ]
-// print v1
-// print [ v1 v2 ]
-// print spread(5)
+a# B# C# Dx Gb
