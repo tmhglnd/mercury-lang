@@ -1,0 +1,296 @@
+{
+  "global": {
+    "volume": [
+      3,
+      5000
+    ],
+    "tempo": [
+      143
+    ],
+    "scale": [
+      "pentatonic_minor",
+      "c"
+    ],
+    "root": [
+      "c"
+    ],
+    "randomSeed": [
+      9123
+    ],
+    "silence": false
+  },
+  "variables": {
+    "bassLine": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -3,
+      -3,
+      -3,
+      -3,
+      -3,
+      -3,
+      -3,
+      -3,
+      -3,
+      -3,
+      -3,
+      -3,
+      -3,
+      -3,
+      -3,
+      -3
+    ],
+    "notes": [
+      0,
+      2,
+      4,
+      7,
+      9
+    ],
+    "nts": [
+      0,
+      2,
+      4,
+      7,
+      9,
+      9,
+      7,
+      4,
+      2,
+      0
+    ]
+  },
+  "objects": {
+    "obj1615063487214": {
+      "object": "synth",
+      "type": "sine",
+      "functions": {
+        "name": "obj1615063487214",
+        "group": [
+          "sn",
+          "bass"
+        ],
+        "time": [
+          "1/4"
+        ],
+        "note": [
+          7,
+          1
+        ],
+        "env": [
+          1,
+          300
+        ],
+        "beat": [
+          0.2
+        ],
+        "amp": 0.7,
+        "wave2": [
+          "saw",
+          0
+        ],
+        "add_fx": [
+          [
+            "reverb",
+            0.9,
+            11
+          ],
+          [
+            "lfo",
+            "1/4",
+            "up"
+          ],
+          [
+            "reverb",
+            1,
+            20
+          ],
+          [
+            "chip",
+            0.5
+          ]
+        ]
+      }
+    },
+    "aSynth": {
+      "object": "synth",
+      "type": "sine",
+      "functions": {
+        "name": [
+          "aSynth"
+        ],
+        "group": [
+          "sn",
+          "ld"
+        ],
+        "time": [
+          "1/16"
+        ],
+        "note": [
+          [
+            0,
+            2,
+            4,
+            7,
+            9
+          ],
+          1
+        ],
+        "env": [
+          1000,
+          200
+        ],
+        "beat": [
+          0.8
+        ],
+        "amp": [
+          0.5,
+          100
+        ],
+        "wave2": [
+          "sine",
+          2
+        ],
+        "add_fx": [
+          [
+            "drive",
+            16
+          ],
+          [
+            "lfo",
+            "1/4",
+            "sine"
+          ],
+          [
+            "reverb",
+            1,
+            20
+          ],
+          [
+            "chip",
+            0.5
+          ]
+        ]
+      }
+    },
+    "bSynth": {
+      "object": "synth",
+      "type": "saw",
+      "functions": {
+        "name": [
+          "bSynth"
+        ],
+        "group": [
+          "bass",
+          "intro"
+        ],
+        "time": [
+          "1/16"
+        ],
+        "note": [
+          [
+            3,
+            7,
+            0,
+            5
+          ],
+          2
+        ],
+        "env": [
+          300,
+          1000
+        ],
+        "beat": [
+          0.7
+        ],
+        "amp": [
+          0
+        ],
+        "wave2": [
+          "saw",
+          0
+        ],
+        "add_fx": [
+          [
+            "reverb",
+            1,
+            20
+          ],
+          [
+            "chip",
+            0.5
+          ]
+        ],
+        "pan": [
+          "random"
+        ]
+      }
+    },
+    "kck": {
+      "object": "sample",
+      "type": "kick_min",
+      "functions": {
+        "name": [
+          "kck"
+        ],
+        "group": [],
+        "time": [
+          "1/4"
+        ],
+        "speed": 1,
+        "env": [
+          -1
+        ],
+        "beat": 1,
+        "amp": 0.9,
+        "stretch": [
+          0,
+          1,
+          1
+        ],
+        "add_fx": [
+          [
+            "drive",
+            1.1
+          ],
+          [
+            "filter",
+            "low",
+            500,
+            0.3
+          ],
+          [
+            "reverb",
+            1,
+            20
+          ],
+          [
+            "chip",
+            0.5
+          ]
+        ]
+      }
+    }
+  },
+  "groups": {
+    "all": [
+      "aSynth",
+      "bSynth",
+      "kck"
+    ]
+  }
+}

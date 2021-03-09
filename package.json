@@ -1,0 +1,40 @@
+{
+  "name": "mercury-parser",
+  "version": "1.0.0",
+  "description": "Parser for the mercury language",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/mercury.test.js",
+    "build": "npm run grammar && npm run graph && npm run clean && npm run bundle && npm run build-es5 && npm run build-min",
+    "clean": "rm -rf build",
+    "grammar": "nearleyc grammar/mercury.ne -o src/mercuryGrammar.js",
+    "graph": "nearley-railroad grammar/mercury.ne -o grammar/mercuryGrammarGraph.html",
+    "bundle": "mkdir build && browserify --standalone MercuryParser index.js > build/mercury.bundle.js",
+    "build-es5": "babel build/mercury.bundle.js -o build/mercury.es5.js && rm -rf build/mercury.bundle.js",
+    "build-min": "uglifyjs build/mercury.es5.js -o build/mercury.es5.min.js && rm -rf build/mercury.es5.js"
+  },
+  "keywords": [
+    "mercury",
+    "live",
+    "coding",
+    "creative",
+    "coding",
+    "algorithmic",
+    "composition"
+  ],
+  "author": "Timo Hoogland",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^9.1.0",
+    "nearley": "^2.20.1",
+    "total-serialism": "^1.14.2",
+    "uglify-js": "^3.13.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
+    "browserify": "^17.0.0",
+    "nodemon": "^2.0.7"
+  }
+}
