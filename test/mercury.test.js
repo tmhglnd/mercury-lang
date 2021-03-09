@@ -10,7 +10,7 @@ const fs = require('fs-extra');
 const util = require('util');
 
 let entryPoint = "../index.js";
-// entryPoint = "../build/mercury.es5.min.js";
+entryPoint = "../build/mercury.es5.min.js";
 
 const Mercury = require(entryPoint).mercuryParser;
 
@@ -27,8 +27,8 @@ function parseFile(f){
 	time = Date.now() - time;
 	console.log(`\nParsed code succesful within: ${time} ms\n`);
 	
-	console.log(util.inspect(result.parseTree, { showHidden: false, depth: null, colors: true }));
-	console.log(util.inspect(result.syntaxTree, { showHidden: false, depth: null, colors: true }));
+	// console.log(util.inspect(result.parseTree, { showHidden: false, depth: null, colors: true }));
+	// console.log(util.inspect(result.syntaxTree, { showHidden: false, depth: null, colors: true }));
 	// console.log(util.inspect(result, { showHidden: false, depth: null, colors: true }));
 
 	// write to disk for check
@@ -36,6 +36,6 @@ function parseFile(f){
 }
 
 parseFile('./test/test-small.txt');
-// parseFile('./test/test-grammar.txt');
-// parseFile('./test/test-rings.txt');
-// parseFile('./test/test-synth.txt');
+parseFile('./test/test-grammar.txt');
+parseFile('./test/test-rings.txt');
+parseFile('./test/test-synth.txt');

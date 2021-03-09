@@ -20,22 +20,25 @@
     "creative",
     "coding",
     "algorithmic",
-    "composition"
+    "composition",
+    "electronic",
+    "music",
+    "audiovisual"
   ],
   "author": "Timo Hoogland",
   "license": "ISC",
   "dependencies": {
-    "fs-extra": "^9.1.0",
+    "moo": "^0.5.1",
     "nearley": "^2.20.1",
-    "total-serialism": "^1.14.2",
-    "uglify-js": "^3.13.0",
-    "util": "^0.12.3"
+    "total-serialism": "^1.14.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",
     "@babel/core": "^7.13.8",
     "@babel/preset-env": "^7.13.9",
     "browserify": "^17.0.0",
-    "nodemon": "^2.0.7"
+    "fs-extra": "^9.1.0",
+    "nodemon": "^2.0.7",
+    "uglify-js": "^3.13.0"
   }
 }
