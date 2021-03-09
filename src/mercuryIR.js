@@ -84,11 +84,14 @@ let code = {
 		'scale' : [ 'chromatic', 'c' ],
 		'root' : [ 'c' ],
 		'randomSeed' : [ 0 ],
-		'silence' : false
+		'highPass' : [ 20000, 0 ],
+		'lowPass' : [ 1, 0 ],
+		'silence' : false,
 	},
 	'variables' : {},
 	'objects' : {},
-	'groups' : {}
+	'groups' : {},
+	'print' : [],
 }
 
 function deepCopy(o){
@@ -110,8 +113,34 @@ function traverseTree(tree, code, level){
 	let map = {
 		'@global' : (ccode, el) => {
 			// if global code (comments, numbers, functions)
-			
 			// console.log('@global', el);
+
+			traverseTree(el, ccode);
+
+			// Object.keys(el).forEach((k) => {
+			// 	ccode = map[k](ccode, el[k], null, '@global');
+			// });
+			// console.log('@global', ccode);
+			// traverseTree(el)
+			return ccode;
+		},
+		'@comment' : (ccode, el) => {
+			// if a comment, just return
+			return ccode;
+		},
+		'@print' : (ccode, el) => {
+			// console.log('@print', traverseTree(el, ccode));
+			// let prints = ccode.print;
+			let log = '';
+			el.map((e) => {
+				Object.keys(e).forEach((k) => {
+					let p = map[k](ccode, e[k]);
+					log += (Array.isArray(p)? p.flat(Infinity).join(' ') : p) + ' ';
+					ccode.print.push(p);
+				});
+			});
+			console.log(log);
+			// ccode.print = prints;
 			return ccode;
 		},
 		'@list' : (ccode, el) => {
@@ -174,6 +203,14 @@ function traverseTree(tree, code, level){
 				Object.keys(el).forEach((k) => {
 					args = map[k](ccode, el[k], args, '@setting');
 				});
+				// if name is a total-serialism function
+				if (tsIR[name]){
+					if (args){
+						tsIR[name](...args);
+					} else {
+						tsIR[name]();
+					}
+				}
 				ccode.global[name] = args;
 			} else {
 				console.error(`Unkown instrument or setting name: ${name}`);
@@ -207,8 +244,7 @@ function traverseTree(tree, code, level){
 			return inst;
 		},
 		'@functions' : (ccode, el, inst, level) => {
-			// add all functions to object or parse for settigns
-
+			// add all functions to object or parse for settings
 			// console.log('@funcs', ccode);			
 			if (level === '@setting'){
 				let args = [];
@@ -219,7 +255,11 @@ function traverseTree(tree, code, level){
 					});
 				});
 				return args;
-			}
+			} 
+			// else if (level === '@global'){
+			// 	// console.log('@funcs', el);
+			// 	// return
+			// }
 			let funcs = inst.functions;
 			el.map((e) => {
 				Object.keys(e).map((k) => {
@@ -293,6 +333,7 @@ function traverseTree(tree, code, level){
 		},
 		'@identifier' : (ccode, el) => {
 			// console.log('@identifier', ccode, el);
+
 			if (code.variables[el]){
 				return code.variables[el];
 			}
@@ -316,13 +357,14 @@ function traverseTree(tree, code, level){
 	}
 
 	if (Array.isArray(tree)) {
+		// console.log('array process of', tree);
 		tree.map((el) => {
 			Object.keys(el).map((k) => {
-				console.log('array process', k);
 				code = map[k](code, el[k], level);
 			});
 		})
 	} else {
+		// console.log('object process of', tree);
 		Object.keys(tree).map((k) => {
 			// console.log(k);
 			code = map[k](code, tree[k], level);

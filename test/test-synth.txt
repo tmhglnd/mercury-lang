@@ -1,7 +1,9 @@
-set volume 3 5000
+set volume 0.9 5000
 set tempo 143
 set randomSeed 9123
 set scale pentatonic_minor c
+set highPass 800 5000
+// set lowPass 5000 100
 
 ring bassLine fill(0 16 -3 16)
 ring notes spread(5 0 12)
@@ -26,8 +28,8 @@ new sample kick_min name(kck)
 	set kck time(1/4) fx(drive 1.1) fx(filter low 500 0.3)
 
 set all fx(reverb 1 20) fx(chip 0.5)
-set sn fx(reverb 0.9 17)
-set bass fx(drive 5)
+// set sn fx(reverb 0.9 17)
+// set bass fx(drive 5)
 
 // audio(1)
-set silence true
+// set silence true

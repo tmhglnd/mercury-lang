@@ -15,6 +15,8 @@ const lexer = moo.compile({
 	list:		[/ring\ /, /array\ /, /list\ /],
 	newObject:	[/new\ /, /make\ /, /add\ /],
 	setObject:	[/set\ /, /apply\ /, /give\ /, /send\ /],
+	print:		[/print\ /, /post\ /, /log\ /],
+	
 	//action:		[/ring\ /, /new\ /, /set\ /],
 	//kill:		/kill[\-|_]?[a|A]ll/,
 
@@ -130,7 +132,10 @@ listStatement ->
 
 globalStatement ->
 	%comment
-		{% (d) => { return { "@comment": d[0].value }} %}
+		{% (d) => { return { "@comment" : d[0].value }} %}
+	|
+	%print _ objExpression
+		{% (d) => { return { "@print" : d[2] }} %}
 	|
 	objExpression
 		{% (d) => { return { "@functions" : d[0] }} %}

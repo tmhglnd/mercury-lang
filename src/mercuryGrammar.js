@@ -18,6 +18,7 @@ const lexer = moo.compile({
 	list:		[/ring\ /, /array\ /, /list\ /],
 	newObject:	[/new\ /, /make\ /, /add\ /],
 	setObject:	[/set\ /, /apply\ /, /give\ /, /send\ /],
+	print:		[/print\ /, /post\ /, /log\ /],
 	//action:		[/ring\ /, /new\ /, /set\ /],
 	//kill:		/kill[\-|_]?[a|A]ll/,
 
@@ -98,7 +99,8 @@ var grammar = {
         		"@params" : d[4]
         	}
         } },
-    {"name": "globalStatement", "symbols": [(lexer.has("comment") ? {type: "comment"} : comment)], "postprocess": (d) => { return { "@comment": d[0].value }}},
+    {"name": "globalStatement", "symbols": [(lexer.has("comment") ? {type: "comment"} : comment)], "postprocess": (d) => { return { "@comment" : d[0].value }}},
+    {"name": "globalStatement", "symbols": [(lexer.has("print") ? {type: "print"} : print), "_", "objExpression"], "postprocess": (d) => { return { "@print" : d[2] }}},
     {"name": "globalStatement", "symbols": ["objExpression"], "postprocess": (d) => { return { "@functions" : d[0] }}},
     {"name": "objExpression", "symbols": ["paramElement"], "postprocess": (d) => [d[0]]},
     {"name": "objExpression", "symbols": ["paramElement", "__", "objExpression"], "postprocess": (d) => [d[0], d[2]].flat(Infinity)},

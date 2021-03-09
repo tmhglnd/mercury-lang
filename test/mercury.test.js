@@ -26,8 +26,9 @@ function parseFile(f){
 	console.log(`parsed code succesful within: ${time} ms`);
 }
 
-parseFile('./test/test-rings.txt');
-parseFile('./test/test-synth.txt');
+parseFile('./test/test-grammar.txt');
+// parseFile('./test/test-rings.txt');
+// parseFile('./test/test-synth.txt');
 
 // @global:
 // parseNumbers();

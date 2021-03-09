@@ -1,51 +1,16 @@
+set randomSeed 4829
+ring v1 random(10 0 12)
+print v1 
 
-// this is a comment
+set randomSeed 3145
+ring v2 random(10 0 12)
+print v2
 
-// GLOBAL
-killall
+set randomSeed 4829
+ring v1 random(10 0 12)
+print 'random(10 0 12)'
 
-// multiple keywords on one line
-audio on, record on, tempo 143
-audio(1) record(1)
-
-// // set function
-// set audio bool
-// set record bool
-// set tempo number number
-// set scale string string/number
-// set root string/number
-// set osc string number number
-
-// set audio(bool)
-// set record(bool)
-// set tempo(number number)
-// set scale(string string/number)
-// set root(string/number)
-// set osc(string number number)
-
-// variables
-ring name 0
-ring name [0 1 2.3]
-ring name [0 1 [2 3] 4 [5 6 7]]
-ring name func(args)
-ring name func(funct(args func(args)))
-ring name [0 1 func(args) 2]
-
-ring name [], name [], (...)
-
-// // 
-// give bass note(0 0) fx(reverb 0.9 11)
-
-// // OBJECT / INSTRUMENTS
-// new synth saw
-// new sample kick
-// new emitter osc
-// new emitter midi
-// new osc address
-// new midi channel
-
-// new synth(saw)
-// new sample(kick)
-// new osc(name)
-// new midi(channel)
-
+// print [ random(20) spread(5) choose(100 [hat kick snare]) ]
+// print v1
+// print [ v1 v2 ]
+// print spread(5)
