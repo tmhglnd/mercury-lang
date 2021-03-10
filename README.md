@@ -10,9 +10,9 @@ This Package does not generate any sound or visuals. This package only parses Me
 [**🙏 Support Mercury by becoming a Patron**](https://www.patreon.com/bePatron?u=9649817) 
 
 [**💬 Join the Discord Community!**](https://discord.gg/vt59NYU)
-## How To Use This Parser
+# How To Use This Parser
 
-1. Run `npm install`
+1. `git clone` and run `npm install`
 
 2. Open the `mercury.ne` file to view the grammar in the Nearley language including the moo tokenizer.
 
@@ -24,7 +24,7 @@ This Package does not generate any sound or visuals. This package only parses Me
 
 4. Run a test with `npm test` and view result in `/test/tree`
 
-# Require
+# Use via require
 
 ## Install in node_modules
 
@@ -33,13 +33,13 @@ $ npm install mercury-lang
 ```
 
 ```js
-const Mercury = require('mercury-lang').mercuryParser;
+const Mercury = require('mercury-lang');
 ```
 
 ## Import es5 version
 
 ```js
-const Srl = require('mercury-lang/build/mercury.es5.min.js');
+const Mercury = require('mercury-lang/build/mercury.es5.min.js');
 ```
 
 ## Include in html
@@ -54,7 +54,7 @@ Use in a html `<script>` like so:
 
 ```js
 // entire package
-const Mercury = MercuryParser.mercuryParser;
+const Mercury = MercuryParser;
 ```
 
 ## Example
@@ -74,10 +74,10 @@ new synth saw time(1/8) play(myBeat) name(s1)
 Input the code in the Mercury parser
 
 ```js
-const Mercury = require('mercury-parser');
+const mercury = require('mercury-lang');
 const code = fs.readFileSync('example.txt', 'utf-8');
 
-const result = Mercury.mercuryParser(code);
+const result = mercury(code);
 ```
 
 The result is a JS object consisting of a `parseTree`...
