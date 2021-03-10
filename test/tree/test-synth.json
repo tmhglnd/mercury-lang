@@ -29,7 +29,7 @@
     },
     "variables": {},
     "objects": {
-      "Q376AYZX": {
+      "7LXE7TYW": {
         "object": "synth",
         "type": [
           "sine",
@@ -75,11 +75,11 @@
             ]
           ],
           "name": [
-            "Q376AYZX"
+            "7LXE7TYW"
           ]
         }
       },
-      "SIM24SGY": {
+      "WGZ6B5V8": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -111,7 +111,7 @@
           ],
           "add_fx": [],
           "name": [
-            "SIM24SGY"
+            "WGZ6B5V8"
           ]
         }
       }
