@@ -29,7 +29,7 @@
     },
     "variables": {},
     "objects": {
-      "7LXE7TYW": {
+      "5H7KQER9": {
         "object": "synth",
         "type": [
           "sine",
@@ -75,11 +75,11 @@
             ]
           ],
           "name": [
-            "7LXE7TYW"
+            "5H7KQER9"
           ]
         }
       },
-      "WGZ6B5V8": {
+      "ZIPCGIPB": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -111,7 +111,7 @@
           ],
           "add_fx": [],
           "name": [
-            "WGZ6B5V8"
+            "ZIPCGIPB"
           ]
         }
       }

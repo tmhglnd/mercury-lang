@@ -94,12 +94,12 @@
       ],
       "grv": [
         "hat",
+        "snare",
+        "snare",
         "kick",
-        "hat",
-        "hat",
         "snare",
         "hat",
-        "kick",
+        "snare",
         "snare"
       ],
       "arpMel": [
@@ -162,8 +162,8 @@
         20
       ],
       "bsLine2": [
-        10,
         13,
+        10,
         3,
         6,
         0
@@ -194,7 +194,7 @@
       ]
     },
     "objects": {
-      "XNMNUN6E": {
+      "SO0KNXBK": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -223,11 +223,11 @@
           ],
           "add_fx": [],
           "name": [
-            "XNMNUN6E"
+            "SO0KNXBK"
           ]
         }
       },
-      "0F1EHCEM": {
+      "QOVLUHXP": {
         "object": "sample",
         "type": "hat_min",
         "functions": {
@@ -255,11 +255,11 @@
           ],
           "add_fx": [],
           "name": [
-            "0F1EHCEM"
+            "QOVLUHXP"
           ]
         }
       },
-      "LWVUJ72W": {
+      "FXBIHQV0": {
         "object": "sample",
         "type": [
           "hat_min",
@@ -292,11 +292,11 @@
           ],
           "add_fx": [],
           "name": [
-            "LWVUJ72W"
+            "FXBIHQV0"
           ]
         }
       },
-      "HFOCHDHK": {
+      "TYKYQ7TD": {
         "object": "synth",
         "type": [
           "saw",
@@ -328,7 +328,7 @@
           ],
           "add_fx": [],
           "name": [
-            "HFOCHDHK"
+            "TYKYQ7TD"
           ]
         }
       },

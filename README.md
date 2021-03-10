@@ -24,6 +24,39 @@ This Package does not generate any sound or visuals. This package only parses Me
 
 4. Run a test with `npm test` and view result in `/test/tree`
 
+# Require
+
+## Install in node_modules
+
+```
+$ npm install mercury-lang
+```
+
+```js
+const Mercury = require('mercury-lang').mercuryParser;
+```
+
+## Import es5 version
+
+```js
+const Srl = require('mercury-lang/build/mercury.es5.min.js');
+```
+
+## Include in html
+
+Include latest or specific version of bundled minified es5 through url in index.html 
+
+```html
+<script src="https://unpkg.com/mercury-lang@1.0.0/build/mercury.es5.min.js"></script>
+```
+
+Use in a html `<script>` like so:
+
+```js
+// entire package
+const Mercury = MercuryParser.mercuryParser;
+```
+
 ## Example
 
 A small code file of Mercury below

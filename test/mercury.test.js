@@ -12,7 +12,7 @@ const util = require('util');
 let entryPoint = "../index.js";
 entryPoint = "../build/mercury.es5.min.js";
 
-const Mercury = require(entryPoint).mercuryParser;
+const Mercury = require(entryPoint);
 
 function parseFile(f){
 	let file = fs.readFileSync(f, 'utf-8');
