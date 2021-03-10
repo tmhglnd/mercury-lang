@@ -1,7 +1,7 @@
 {
-  "name": "mercury-parser",
+  "name": "mercury-lang",
   "version": "1.0.0",
-  "description": "Parser for the mercury language",
+  "description": "Parser for the mercury live coding language",
   "main": "index.js",
   "scripts": {
     "test": "node test/mercury.test.js",
