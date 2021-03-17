@@ -10,7 +10,8 @@ This Package does not generate any sound or visuals. This package only parses Me
 [**🙏 Support Mercury by becoming a Patron**](https://www.patreon.com/bePatron?u=9649817) 
 
 [**💬 Join the Discord Community!**](https://discord.gg/vt59NYU)
-# How To Use This Parser
+
+# How to use this parser
 
 1. `git clone` and run `npm install`
 
