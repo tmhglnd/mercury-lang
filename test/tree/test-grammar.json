@@ -1,20 +1,6 @@
 {
   "parseTree": {
     "global": {
-      "volume": [
-        0.8
-      ],
-      "tempo": [
-        143,
-        1000
-      ],
-      "scale": [
-        "major",
-        "g#"
-      ],
-      "root": [
-        "c"
-      ],
       "randomSeed": [
         0
       ],
@@ -26,7 +12,14 @@
         1,
         0
       ],
-      "silence": false
+      "tempo": [
+        143,
+        1000
+      ],
+      "scale": [
+        "major",
+        "g#"
+      ]
     },
     "variables": {
       "myVal": 3.141592654,
@@ -95,11 +88,11 @@
       "grv": [
         "hat",
         "snare",
-        "snare",
         "kick",
-        "snare",
         "hat",
-        "snare",
+        "hat",
+        "hat",
+        "kick",
         "snare"
       ],
       "arpMel": [
@@ -162,11 +155,11 @@
         20
       ],
       "bsLine2": [
-        13,
-        10,
+        0,
         3,
         6,
-        0
+        13,
+        10
       ],
       "bsLine3": [
         0,
@@ -194,7 +187,7 @@
       ]
     },
     "objects": {
-      "SO0KNXBK": {
+      "HXVEAEZW": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -223,11 +216,11 @@
           ],
           "add_fx": [],
           "name": [
-            "SO0KNXBK"
+            "HXVEAEZW"
           ]
         }
       },
-      "QOVLUHXP": {
+      "IKYJ55F7": {
         "object": "sample",
         "type": "hat_min",
         "functions": {
@@ -255,11 +248,11 @@
           ],
           "add_fx": [],
           "name": [
-            "QOVLUHXP"
+            "IKYJ55F7"
           ]
         }
       },
-      "FXBIHQV0": {
+      "KN9CK1PX": {
         "object": "sample",
         "type": [
           "hat_min",
@@ -292,11 +285,11 @@
           ],
           "add_fx": [],
           "name": [
-            "FXBIHQV0"
+            "KN9CK1PX"
           ]
         }
       },
-      "TYKYQ7TD": {
+      "7SBGET4B": {
         "object": "synth",
         "type": [
           "saw",
@@ -328,7 +321,7 @@
           ],
           "add_fx": [],
           "name": [
-            "TYKYQ7TD"
+            "7SBGET4B"
           ]
         }
       },

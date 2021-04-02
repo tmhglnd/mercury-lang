@@ -21,6 +21,8 @@ const miniLang = require('../data/mini-functions.json');
 let keywordBinds = {};
 keywordBinds = keywordBindings(keywords, keywordBinds);
 keywordBinds = keywordBindings(miniLang, keywordBinds);
+
+// keywordBinds = keywordBindings(langDutch, keywordBinds);
 // console.log(keywordBinds);
 
 // processing for identifiers
@@ -77,16 +79,20 @@ function keywordBindings(dict, obj){
 	return binds;
 }
 
+// code accepted global parameters
+const globals = 'tempo volume scale root randomSeed highPass lowPass silence'.split(' ');
+
+// code defaults
 let code = {
 	'global' : {
-		'volume' : [ 0.8 ],
-		'tempo' : [ 90 ],
-		'scale' : [ 'chromatic', 'c' ],
-		'root' : [ 'c' ],
+		// 'tempo' : [ 90 ],
+		// 'volume' : [ 0.8 ],
+		// 'scale' : [ 'chromatic', 'c' ],
+		// 'root' : [ 'c' ],
 		'randomSeed' : [ 0 ],
 		'highPass' : [ 20000, 0 ],
 		'lowPass' : [ 1, 0 ],
-		'silence' : false,
+		// 'silence' : false,
 	},
 	'variables' : {},
 	'objects' : {},
@@ -200,7 +206,8 @@ function traverseTree(tree, code, level){
 					});
 					ccode.objects[inst.functions.name] = inst;
 				});
-			} else if (ccode.global[name]){
+			// } else if (ccode.global[name]){
+			} else if (globals.includes(name)){
 				let args;
 				Object.keys(el).forEach((k) => {
 					args = map[k](ccode, el[k], args, '@setting');
