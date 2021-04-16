@@ -46,7 +46,7 @@ const objects = {
 			'group' : [],
 			'time' : [ '1/1', 0 ],
 			'note' : [0, 0],
-			'shape' : [ 100 ],
+			'env' : [ 100 ],
 			'out' : [ 1 ],
 			'chord' : 'off',
 			'sync' : 'off',

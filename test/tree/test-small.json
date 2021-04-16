@@ -43,7 +43,7 @@
           ],
           "env": [
             5,
-            500
+            100
           ],
           "beat": [
             [
@@ -73,6 +73,32 @@
           ],
           "name": [
             "s1"
+          ]
+        }
+      },
+      "XP94FCDX": {
+        "object": "midi",
+        "type": "my device",
+        "functions": {
+          "group": [],
+          "time": [
+            "1/1",
+            0
+          ],
+          "note": [
+            0,
+            0
+          ],
+          "env": [
+            250
+          ],
+          "out": [
+            1
+          ],
+          "chord": "off",
+          "sync": "off",
+          "name": [
+            "XP94FCDX"
           ]
         }
       }
@@ -183,6 +209,53 @@
                     },
                     {
                       "@number": 7
+                    }
+                  ]
+                }
+              },
+              {
+                "@function": {
+                  "@name": "env",
+                  "@args": [
+                    {
+                      "@number": 5
+                    },
+                    {
+                      "@number": 100
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "@object": {
+          "@new": {
+            "@type": {
+              "@string": "my device"
+            },
+            "@functions": [
+              {
+                "@function": {
+                  "@name": "note",
+                  "@args": [
+                    {
+                      "@number": 0
+                    },
+                    {
+                      "@number": 0
+                    }
+                  ]
+                }
+              },
+              {
+                "@function": {
+                  "@name": "env",
+                  "@args": [
+                    {
+                      "@number": 250
                     }
                   ]
                 }
