@@ -1,6 +1,6 @@
 {
   "name": "mercury-lang",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Parser for the mercury live coding language",
   "main": "index.js",
   "scripts": {
