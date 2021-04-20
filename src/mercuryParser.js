@@ -21,13 +21,13 @@ function mercuryParser(code){
 	let parseTree = {};
 
 	for (let l in lines){
-		let parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar));
-		// create a Parser object from our grammar
 		if (lines[l] !== ''){
+			// create a Parser object from our grammar
+			let parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar));
+
 			try {
 				// parse something!
 				parser.feed(lines[l]);
-
 				// parser.results is an array of possible parsings.
 				let results = parser.results.length;
 
@@ -46,7 +46,8 @@ function mercuryParser(code){
 				syntaxTree['@main'].push(parser.results[0]);
 			} catch (e) {
 				// console.error(e)
-				let err = `Syntax error at line ${Number(l)+1} col ${e.token.col}: Unexpected ${e.token.type}: ${e.token.value} at ${lines[l].slice(0, e.token.offset)}${e.token.text}<-`;
+				// column: ${e.token.col}
+				let err = `Syntax error at line ${Number(l)+1}: Unexpected ${e.token.type}: ${e.token.value} at ${lines[l].slice(0, e.token.offset)}${e.token.text}<-`;
 				if (DEBUG){
 					console.error(err);
 				}
@@ -57,6 +58,8 @@ function mercuryParser(code){
 	// traverse Syntax Tree and create Intermediate Representation
 	parseTree = worker.traverseTreeIR(syntaxTree['@main']);
 
+	errors = parseTree.errors.concat(errors);
+	delete parseTree.errors;
 	// return both the parseTree and syntaxTree in one object
 	return { 
 		'parseTree': parseTree, 

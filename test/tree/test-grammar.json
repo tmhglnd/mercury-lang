@@ -69,12 +69,12 @@
       "grv": [
         "hat",
         "kick",
-        "snare",
-        "hat",
-        "snare",
-        "hat",
         "kick",
-        "hat"
+        "kick",
+        "hat",
+        "snare",
+        "snare",
+        "kick"
       ],
       "arpMel": [
         0,
@@ -136,11 +136,11 @@
         20
       ],
       "bsLine2": [
-        0,
-        6,
         3,
         10,
-        13
+        13,
+        0,
+        6
       ],
       "bsLine3": [
         0,
@@ -168,7 +168,7 @@
       ]
     },
     "objects": {
-      "P5P77I9W": {
+      "MR27OYSE": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -197,11 +197,11 @@
           ],
           "add_fx": [],
           "name": [
-            "P5P77I9W"
+            "MR27OYSE"
           ]
         }
       },
-      "HRP1XNEA": {
+      "77JK9TMB": {
         "object": "sample",
         "type": "hat_min",
         "functions": {
@@ -229,11 +229,11 @@
           ],
           "add_fx": [],
           "name": [
-            "HRP1XNEA"
+            "77JK9TMB"
           ]
         }
       },
-      "HMUC466H": {
+      "228WVFTX": {
         "object": "sample",
         "type": [
           "hat_min",
@@ -266,11 +266,11 @@
           ],
           "add_fx": [],
           "name": [
-            "HMUC466H"
+            "228WVFTX"
           ]
         }
       },
-      "H02Z5FP2": {
+      "IZE6P6CO": {
         "object": "synth",
         "type": [
           "saw",
@@ -302,7 +302,7 @@
           ],
           "add_fx": [],
           "name": [
-            "H02Z5FP2"
+            "IZE6P6CO"
           ]
         }
       },
@@ -396,15 +396,92 @@
         "alice"
       ]
     },
-    "print": [],
+    "print": [
+      12,
+      34,
+      -56,
+      7.89,
+      101112.13141,
+      0.4321,
+      12,
+      34,
+      -56,
+      7.89,
+      [
+        1,
+        2,
+        3.14,
+        5,
+        "foo",
+        "bar",
+        "to_to t1T1"
+      ],
+      [],
+      "a",
+      "A",
+      "b",
+      "B",
+      "c",
+      "C",
+      "d",
+      "D",
+      "e",
+      "E",
+      "f",
+      "F",
+      "g",
+      "G",
+      "a#",
+      "B#",
+      "C#",
+      "Dx",
+      "Gb",
+      "a##",
+      "Bbb",
+      "C##",
+      "Dx",
+      "Gb",
+      "fbb",
+      "a1",
+      "A0",
+      "b2b",
+      "B4#",
+      "c1",
+      "C2bb",
+      "d4##",
+      "D3",
+      "e2",
+      "E1",
+      "f4#",
+      "F5",
+      "g6",
+      "G2",
+      "1/4",
+      "3/16",
+      "7/16",
+      "4/5",
+      "3/1",
+      "7/8",
+      "3/2",
+      "1/5",
+      "hello world",
+      "also a string",
+      "and another! ",
+      "this works?",
+      " this does as well?",
+      "1 +2 /3.14* 45.67",
+      "Kick_dub",
+      "dub_15",
+      "foLey-02.wav",
+      "-negative"
+    ],
     "comments": [
       "// Parse numbers",
       "// 1 + 2 / 4",
       "// Parse note names",
       "// Parse rhythmic division values",
       "// Parse comments",
-      "$ also a type of comment",
-      "// 1.0111213141E5 < commented",
+      "// 1.0111213141E5 < commented number",
       "// valid strings start and end with: \"\" '' ``",
       "// or a combination of those works as well",
       "// Parse identifier/name",
@@ -456,7 +533,119 @@
       },
       {
         "@global": {
+          "@print": [
+            {
+              "@number": 12
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@number": 34
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@number": -56
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@number": 7.89
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@number": 101112.13141
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@number": 0.4321
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@number": 12
+            },
+            {
+              "@number": 34
+            },
+            {
+              "@number": -56
+            },
+            {
+              "@number": 7.89
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
           "@comment": "// 1 + 2 / 4"
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@array": [
+                {
+                  "@number": 1
+                },
+                {
+                  "@number": 2
+                },
+                {
+                  "@number": 3.14
+                },
+                {
+                  "@number": 5
+                },
+                {
+                  "@identifier": "foo"
+                },
+                {
+                  "@identifier": "bar"
+                },
+                {
+                  "@string": "to_to t1T1"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@array": null
+            }
+          ]
         }
       },
       {
@@ -466,7 +655,196 @@
       },
       {
         "@global": {
+          "@print": [
+            {
+              "@note": "a"
+            },
+            {
+              "@note": "A"
+            },
+            {
+              "@note": "b"
+            },
+            {
+              "@note": "B"
+            },
+            {
+              "@note": "c"
+            },
+            {
+              "@note": "C"
+            },
+            {
+              "@note": "d"
+            },
+            {
+              "@note": "D"
+            },
+            {
+              "@note": "e"
+            },
+            {
+              "@note": "E"
+            },
+            {
+              "@note": "f"
+            },
+            {
+              "@note": "F"
+            },
+            {
+              "@note": "g"
+            },
+            {
+              "@note": "G"
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@note": "a#"
+            },
+            {
+              "@note": "B#"
+            },
+            {
+              "@note": "C#"
+            },
+            {
+              "@note": "Dx"
+            },
+            {
+              "@note": "Gb"
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@note": "a##"
+            },
+            {
+              "@note": "Bbb"
+            },
+            {
+              "@note": "C##"
+            },
+            {
+              "@note": "Dx"
+            },
+            {
+              "@note": "Gb"
+            },
+            {
+              "@note": "fbb"
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@note": "a1"
+            },
+            {
+              "@note": "A0"
+            },
+            {
+              "@identifier": "b2b"
+            },
+            {
+              "@identifier": "B4#"
+            },
+            {
+              "@note": "c1"
+            },
+            {
+              "@identifier": "C2bb"
+            },
+            {
+              "@identifier": "d4##"
+            },
+            {
+              "@note": "D3"
+            },
+            {
+              "@note": "e2"
+            },
+            {
+              "@note": "E1"
+            },
+            {
+              "@identifier": "f4#"
+            },
+            {
+              "@note": "F5"
+            },
+            {
+              "@note": "g6"
+            },
+            {
+              "@note": "G2"
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
           "@comment": "// Parse rhythmic division values"
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@division": "1/4"
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@division": "3/16"
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@division": "7/16"
+            },
+            {
+              "@division": "4/5"
+            },
+            {
+              "@division": "3/1"
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@division": "7/8"
+            },
+            {
+              "@division": "3/2"
+            },
+            {
+              "@division": "1/5"
+            }
+          ]
         }
       },
       {
@@ -476,12 +854,7 @@
       },
       {
         "@global": {
-          "@comment": "$ also a type of comment"
-        }
-      },
-      {
-        "@global": {
-          "@comment": "// 1.0111213141E5 < commented"
+          "@comment": "// 1.0111213141E5 < commented number"
         }
       },
       {
@@ -492,6 +865,60 @@
       {
         "@global": {
           "@comment": "// or a combination of those works as well"
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@string": "hello world"
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@string": "also a string"
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@string": "and another! "
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@string": "this works?"
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@string": " this does as well?"
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@string": "1 +2 /3.14* 45.67"
+            }
+          ]
         }
       },
       {
@@ -507,6 +934,42 @@
       {
         "@global": {
           "@comment": "// can have _ - . and numbers [0-9]"
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@identifier": "Kick_dub"
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@identifier": "dub_15"
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@identifier": "foLey-02.wav"
+            }
+          ]
+        }
+      },
+      {
+        "@global": {
+          "@print": [
+            {
+              "@identifier": "-negative"
+            }
+          ]
         }
       },
       {
@@ -1219,36 +1682,10 @@
     ]
   },
   "errors": [
-    "Syntax error at line 3 col 1: Unexpected number: 012 at 012<-",
-    "Syntax error at line 4 col 1: Unexpected number: 34 at 34<-",
-    "Syntax error at line 5 col 1: Unexpected number: -56 at -56<-",
-    "Syntax error at line 6 col 1: Unexpected number: +7.89 at +7.89<-",
-    "Syntax error at line 7 col 1: Unexpected number: 1.0111213141E5 at 1.0111213141E5<-",
-    "Syntax error at line 8 col 1: Unexpected number: 0.4321 at 0.4321<-",
-    "Syntax error at line 9 col 1: Unexpected number: 12 at 12<-",
-    "Syntax error at line 11 col 1: Unexpected lArray: [ at [<-",
-    "Syntax error at line 12 col 1: Unexpected lArray: [ at [<-",
-    "Syntax error at line 15 col 1: Unexpected identifier: a at a<-",
-    "Syntax error at line 16 col 1: Unexpected identifier: a# at a#<-",
-    "Syntax error at line 17 col 1: Unexpected identifier: a## at a##<-",
-    "Syntax error at line 18 col 1: Unexpected identifier: a1 at a1<-",
-    "Syntax error at line 21 col 1: Unexpected number: 1 at 1<-",
-    "Syntax error at line 22 col 1: Unexpected number: 3 at 3<-",
-    "Syntax error at line 23 col 1: Unexpected number: 7 at 7<-",
-    "Syntax error at line 24 col 1: Unexpected number: 7 at 7<-",
-    "Syntax error at line 27 col 1: Unexpected identifier: # at #<-",
-    "Syntax error at line 29 col 1: Unexpected identifier: not at not<-",
-    "Syntax error at line 34 col 1: Unexpected string: hello world at \"hello world\"<-",
-    "Syntax error at line 35 col 1: Unexpected string: also a string at 'also a string'<-",
-    "Syntax error at line 36 col 1: Unexpected string: and another!  at `and another! `<-",
-    "Syntax error at line 37 col 1: Unexpected string: this works? at 'this works?`<-",
-    "Syntax error at line 38 col 1: Unexpected string:  this does as well? at ` this does as well?\"<-",
-    "Syntax error at line 39 col 1: Unexpected string: 1 +2 /3.14* 45.67 at '1 +2 /3.14* 45.67'<-",
-    "Syntax error at line 44 col 1: Unexpected identifier: Kick_dub at Kick_dub<-",
-    "Syntax error at line 45 col 1: Unexpected identifier: dub_15 at dub_15<-",
-    "Syntax error at line 46 col 1: Unexpected identifier: foLey-02.wav at foLey-02.wav<-",
-    "Syntax error at line 47 col 1: Unexpected identifier: -negative at -negative<-",
-    "Syntax error at line 76 col 6: Unexpected list: ring at ring ring<-",
-    "Syntax error at line 104 col 49: Unexpected newObject: new at apply alice pitch([0 7 12 3] 2) shape(1 200) id(new<-"
+    "Syntax error at line 27: Unexpected identifier: # at #<-",
+    "Syntax error at line 28: Unexpected identifier: $ at $<-",
+    "Syntax error at line 29: Unexpected identifier: not at not<-",
+    "Syntax error at line 76: Unexpected list: ring at ring ring<-",
+    "Syntax error at line 104: Unexpected newObject: new at apply alice pitch([0 7 12 3] 2) shape(1 200) id(new<-"
   ]
 }

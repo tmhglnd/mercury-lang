@@ -4,7 +4,8 @@ const moo = require('moo');
 const IR = require('./mercuryIR.js');
 
 const lexer = moo.compile({
-	comment:	/(?:\/\/|\$).*?$/,
+	// comment:	/(?:\/\/|\$).*?$/,
+	comment:	/(?:\/\/).*?$/,
 	
 	//instrument: [/synth/, /sample/, /polySynth/, /loop/, /emitter/],
 	/*instrument:	{
@@ -13,14 +14,15 @@ const lexer = moo.compile({
 				},*/
 
 	list:		[/ring/, /array/, /list/],
-	newObject:	[/new/, /make/, /add/],
+	newObject:	[/new/, /make/, /add(?: |$)/],
 	setObject:	[/set/, /apply/, /give/, /send/],
 	print:		[/print/, /post/, /log/],
 
 	//action:		[/ring\ /, /new\ /, /set\ /],
 	//kill:		/kill[\-|_]?[a|A]ll/,
 
-	//seperator:	/&/,
+	seperator:	/,/,
+	//newLine:	/[&;]/,
 	
 	//note:		/[a-gA-G](?:[0-9])?(?:#+|b+|x)?/,
 	number:		/[+-]?(?:[0-9]|[0-9]+)(?:\.[0-9]+)?(?:[eE][-+]?[0-9]+)?\b/,
@@ -179,11 +181,11 @@ array ->
 		{% (d) => { return { "@array" : d[2] }} %}
 
 params ->
-	paramElement
+	paramElement _ %seperator:?
 		{% (d) => [d[0]] %}
 	|
-	paramElement _ params
-		{% (d) => [d[0], d[2]].flat(Infinity) %}
+	paramElement _ %seperator:? _ params
+		{% (d) => [d[0], d[4]].flat(Infinity) %}
 
 paramElement ->
 	%number

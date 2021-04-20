@@ -98,7 +98,8 @@ let code = {
 	'objects' : {},
 	'groups' : {},
 	'print' : [],
-	'comments' : []
+	'comments' : [],
+	'errors' : []
 }
 
 function deepCopy(o){
@@ -139,7 +140,7 @@ function traverseTree(tree, code, level){
 			el.map((e) => {
 				Object.keys(e).forEach((k) => {
 					let p = map[k](ccode, e[k]);
-					log += (Array.isArray(p)? p.flat(Infinity).join(' ') : p) + ' ';
+					// log += (Array.isArray(p)? p.flat(Infinity).join(' ') : p) + ' ';
 					ccode.print.push(p);
 				});
 			});
@@ -222,7 +223,8 @@ function traverseTree(tree, code, level){
 				}
 				ccode.global[name] = args;
 			} else {
-				console.error(`Unkown instrument or setting name: ${name}`);
+				// console.error(`Unkown instrument or setting name: ${name}`);
+				ccode.errors.push(`Unkown instrument or setting name: ${name}`);
 			}
 			return ccode;
 		},
@@ -235,7 +237,8 @@ function traverseTree(tree, code, level){
 			let inst;
 
 			if (!instruments[obj]){
-				console.error(`Unknown instrument type: ${obj}`);
+				// console.error(`Unknown instrument type: ${obj}`);
+				ccode.errors.push(`Unknown instrument type: ${obj}`);
 				inst = deepCopy(instruments['empty']);
 			}
 			inst = deepCopy(instruments[obj]);
@@ -299,7 +302,8 @@ function traverseTree(tree, code, level){
 				}
 				return tsIR[func]();
 			} else if (level === '@list'){
-				console.error(`Unknown list function: ${func}`);
+				// console.error(`Unknown list function: ${func}`);
+				ccode.errors.push(`Unknown list function: ${func}`);
 				return [0];
 			} else if (level === '@object'){
 				if (func === 'add_fx'){

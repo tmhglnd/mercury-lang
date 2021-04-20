@@ -194,6 +194,6 @@
     ]
   },
   "errors": [
-    "Syntax error at line 9 col 19: Unexpected number: 16 at list notes random 16<-"
+    "Syntax error at line 9: Unexpected number: 16 at list notes random 16<-"
   ]
 }

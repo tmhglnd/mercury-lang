@@ -7,7 +7,8 @@ const moo = require('moo');
 const IR = require('./mercuryIR.js');
 
 const lexer = moo.compile({
-	comment:	/(?:\/\/|\$).*?$/,
+	// comment:	/(?:\/\/|\$).*?$/,
+	comment:	/(?:\/\/).*?$/,
 	
 	//instrument: [/synth/, /sample/, /polySynth/, /loop/, /emitter/],
 	/*instrument:	{
@@ -16,14 +17,15 @@ const lexer = moo.compile({
 				},*/
 
 	list:		[/ring/, /array/, /list/],
-	newObject:	[/new/, /make/, /add/],
+	newObject:	[/new/, /make/, /add(?: |$)/],
 	setObject:	[/set/, /apply/, /give/, /send/],
 	print:		[/print/, /post/, /log/],
 
 	//action:		[/ring\ /, /new\ /, /set\ /],
 	//kill:		/kill[\-|_]?[a|A]ll/,
 
-	//seperator:	/&/,
+	seperator:	/,/,
+	//newLine:	/[&;]/,
 	
 	//note:		/[a-gA-G](?:[0-9])?(?:#+|b+|x)?/,
 	number:		/[+-]?(?:[0-9]|[0-9]+)(?:\.[0-9]+)?(?:[eE][-+]?[0-9]+)?\b/,
@@ -123,8 +125,12 @@ var grammar = {
     {"name": "array$ebnf$2", "symbols": [(lexer.has("rArray") ? {type: "rArray"} : rArray)], "postprocess": id},
     {"name": "array$ebnf$2", "symbols": [], "postprocess": function(d) {return null;}},
     {"name": "array", "symbols": [(lexer.has("lArray") ? {type: "lArray"} : lArray), "_", "array$ebnf$1", "_", "array$ebnf$2"], "postprocess": (d) => { return { "@array" : d[2] }}},
-    {"name": "params", "symbols": ["paramElement"], "postprocess": (d) => [d[0]]},
-    {"name": "params", "symbols": ["paramElement", "_", "params"], "postprocess": (d) => [d[0], d[2]].flat(Infinity)},
+    {"name": "params$ebnf$1", "symbols": [(lexer.has("seperator") ? {type: "seperator"} : seperator)], "postprocess": id},
+    {"name": "params$ebnf$1", "symbols": [], "postprocess": function(d) {return null;}},
+    {"name": "params", "symbols": ["paramElement", "_", "params$ebnf$1"], "postprocess": (d) => [d[0]]},
+    {"name": "params$ebnf$2", "symbols": [(lexer.has("seperator") ? {type: "seperator"} : seperator)], "postprocess": id},
+    {"name": "params$ebnf$2", "symbols": [], "postprocess": function(d) {return null;}},
+    {"name": "params", "symbols": ["paramElement", "_", "params$ebnf$2", "_", "params"], "postprocess": (d) => [d[0], d[4]].flat(Infinity)},
     {"name": "paramElement", "symbols": [(lexer.has("number") ? {type: "number"} : number)], "postprocess": (d) => { return IR.num(d) }},
     {"name": "paramElement", "symbols": ["name"], "postprocess": (d) => d[0]},
     {"name": "paramElement", "symbols": ["array"], "postprocess": (d) => d[0]},
