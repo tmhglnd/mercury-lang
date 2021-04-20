@@ -143,7 +143,7 @@ function traverseTree(tree, code, level){
 					ccode.print.push(p);
 				});
 			});
-			console.log(log);
+			// console.log(log);
 			// ccode.print = prints;
 			return ccode;
 		},
@@ -374,10 +374,12 @@ function traverseTree(tree, code, level){
 		})
 	} else {
 		// console.log('object process of', tree);
-		Object.keys(tree).map((k) => {
-			// console.log(k);
-			code = map[k](code, tree[k], level);
-		});
+		if (tree){
+			Object.keys(tree).map((k) => {
+				// console.log(k);
+				code = map[k](code, tree[k], level);
+			});
+		}
 	}
 	return code;
 }

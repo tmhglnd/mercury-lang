@@ -70,6 +70,8 @@ list myBeat euclidean(8 5 1)
 
 new synth saw time(1/8) play(myBeat) name(s1)
 	give s1 fx(reverb 0.9 7)
+
+list notes random 16 0 12)
 ```
 
 Input the code in the Mercury parser
@@ -132,7 +134,7 @@ console.log(result.parseTree);
 }
 ```
 
-...and a `syntaxTree`
+... a `syntaxTree`...
 
 ```js
 console.log(result.syntaxTree);
@@ -205,6 +207,14 @@ console.log(result.syntaxTree);
 		}
 	]
 }
+```
+
+...and an `errors` array with encountered syntax errors
+
+```js
+"errors": [
+    "Syntax error at line 9 col 19: Unexpected number: 16 at list notes random 16<-"
+  ]
 ```
 
 ## NPM dependencies

@@ -11,51 +11,15 @@
       "lowPass": [
         1,
         0
-      ],
-      "tempo": [
-        143
       ]
     },
     "variables": {},
-    "objects": {
-      "D2E6OOCX": {
-        "object": "midi",
-        "type": "AU DLS Synth 1",
-        "functions": {
-          "group": [],
-          "time": [
-            "1/4"
-          ],
-          "note": [
-            0,
-            0
-          ],
-          "shape": [
-            100
-          ],
-          "out": [
-            1
-          ],
-          "chord": "off",
-          "sync": "off",
-          "env": [
-            100
-          ],
-          "amp": [
-            0.8
-          ],
-          "name": [
-            "D2E6OOCX"
-          ]
-        }
-      }
-    },
+    "objects": {},
     "groups": {},
-    "print": [
-      "silence"
-    ],
+    "print": [],
     "comments": [
       "// set volume 0.9 5000",
+      "// set tempo 143",
       "// set randomSeed 9123",
       "// set scale minor_pentatonic d",
       "// set highPass 800 5000",
@@ -89,14 +53,8 @@
         }
       },
       {
-        "@object": {
-          "@set": {
-            "@functions": [
-              {
-                "@number": 143
-              }
-            ]
-          }
+        "@global": {
+          "@comment": "// set tempo 143"
         }
       },
       {
@@ -165,60 +123,6 @@
         }
       },
       {
-        "@object": {
-          "@new": {
-            "@type": {
-              "@string": "AU DLS Synth 1"
-            },
-            "@functions": [
-              {
-                "@function": {
-                  "@name": "time",
-                  "@args": [
-                    {
-                      "@division": "1/4"
-                    }
-                  ]
-                }
-              },
-              {
-                "@function": {
-                  "@name": "note",
-                  "@args": [
-                    {
-                      "@number": 0
-                    },
-                    {
-                      "@number": 0
-                    }
-                  ]
-                }
-              },
-              {
-                "@function": {
-                  "@name": "env",
-                  "@args": [
-                    {
-                      "@number": 100
-                    }
-                  ]
-                }
-              },
-              {
-                "@function": {
-                  "@name": "amp",
-                  "@args": [
-                    {
-                      "@number": 0.8
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        }
-      },
-      {
         "@global": {
           "@comment": "// \tset aSynth osc2(sine 2) withFX(drive 16) addFX(lfo 1/4 sine)"
         }
@@ -267,16 +171,8 @@
         "@global": {
           "@comment": "// set bass fx(drive 5)"
         }
-      },
-      {
-        "@global": {
-          "@print": [
-            {
-              "@identifier": "silence"
-            }
-          ]
-        }
       }
     ]
-  }
+  },
+  "errors": []
 }

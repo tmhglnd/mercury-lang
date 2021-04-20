@@ -17,6 +17,7 @@ function mercuryParser(code){
 	// split multiple lines into array of strings
 	let lines = code.split('\n');
 	let syntaxTree = { '@main' : [] };
+	let errors = [];
 	let parseTree = {};
 
 	for (let l in lines){
@@ -35,15 +36,21 @@ function mercuryParser(code){
 						console.log("Warning, ambiguous grammar!");
 						for (var i=0; i<results; i++){
 							// console.log("Result", i+1, "of", results, "\n", util.inspect(parser.results[i], { depth: 10 }), "\n");
-							// console.log(parser.results[i]);
+							console.log(parser.results[i]);
 						}
+					} else {
+						console.log(parser.results[0]);
 					}
 				}
 				// build the tokenized syntax tree
 				syntaxTree['@main'].push(parser.results[0]);
 			} catch (e) {
-				// console.error(e);
-				console.error(`Syntax error at line ${Number(l)+1} col ${e.token.col}: Unexpected ${e.token.type}: ${e.token.value} at ${lines[l].slice(0, e.token.offset)}${e.token.text}<-`);
+				// console.error(e)
+				let err = `Syntax error at line ${Number(l)+1} col ${e.token.col}: Unexpected ${e.token.type}: ${e.token.value} at ${lines[l].slice(0, e.token.offset)}${e.token.text}<-`;
+				if (DEBUG){
+					console.error(err);
+				}
+				errors.push(err);
 			}
 		}
 	}
@@ -51,6 +58,10 @@ function mercuryParser(code){
 	parseTree = worker.traverseTreeIR(syntaxTree['@main']);
 
 	// return both the parseTree and syntaxTree in one object
-	return { 'parseTree': parseTree, 'syntaxTree': syntaxTree };
+	return { 
+		'parseTree': parseTree, 
+		'syntaxTree': syntaxTree, 
+		'errors': errors 
+	};
 }
 exports.mercuryParser = mercuryParser;

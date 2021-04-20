@@ -43,7 +43,7 @@
           ],
           "env": [
             5,
-            100
+            500
           ],
           "beat": [
             [
@@ -73,32 +73,6 @@
           ],
           "name": [
             "s1"
-          ]
-        }
-      },
-      "XP94FCDX": {
-        "object": "midi",
-        "type": "my device",
-        "functions": {
-          "group": [],
-          "time": [
-            "1/1",
-            0
-          ],
-          "note": [
-            0,
-            0
-          ],
-          "env": [
-            250
-          ],
-          "out": [
-            1
-          ],
-          "chord": "off",
-          "sync": "off",
-          "name": [
-            "XP94FCDX"
           ]
         }
       }
@@ -212,58 +186,14 @@
                     }
                   ]
                 }
-              },
-              {
-                "@function": {
-                  "@name": "env",
-                  "@args": [
-                    {
-                      "@number": 5
-                    },
-                    {
-                      "@number": 100
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        }
-      },
-      {
-        "@object": {
-          "@new": {
-            "@type": {
-              "@string": "my device"
-            },
-            "@functions": [
-              {
-                "@function": {
-                  "@name": "note",
-                  "@args": [
-                    {
-                      "@number": 0
-                    },
-                    {
-                      "@number": 0
-                    }
-                  ]
-                }
-              },
-              {
-                "@function": {
-                  "@name": "env",
-                  "@args": [
-                    {
-                      "@number": 250
-                    }
-                  ]
-                }
               }
             ]
           }
         }
       }
     ]
-  }
+  },
+  "errors": [
+    "Syntax error at line 9 col 19: Unexpected number: 16 at list notes random 16<-"
+  ]
 }

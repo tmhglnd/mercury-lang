@@ -12,10 +12,10 @@ const lexer = moo.compile({
 					value: x => x.slice(0, x.length-1)
 				},*/
 
-	list:		[/ring\ /, /array\ /, /list\ /],
-	newObject:	[/new\ /, /make\ /, /add\ /],
-	setObject:	[/set\ /, /apply\ /, /give\ /, /send\ /],
-	print:		[/print\ /, /post\ /, /log\ /],
+	list:		[/ring/, /array/, /list/],
+	newObject:	[/new/, /make/, /add/],
+	setObject:	[/set/, /apply/, /give/, /send/],
+	print:		[/print/, /post/, /log/],
 
 	//action:		[/ring\ /, /new\ /, /set\ /],
 	//kill:		/kill[\-|_]?[a|A]ll/,
@@ -71,7 +71,7 @@ main ->
 	# 	}%}
 
 objectStatement ->
-	%newObject _ %identifier __ objectIdentifier
+	%newObject __ %identifier __ objectIdentifier
 		{% (d) => {
 			return {
 				//"@action" : 'new',
@@ -82,7 +82,7 @@ objectStatement ->
 			}
 		}%}
 	|
-	%newObject _ %identifier __ objectIdentifier __ objExpression
+	%newObject __ %identifier __ objectIdentifier __ objExpression
 		{% (d) => {
 			return {
 				//"@action" : 'new',
@@ -94,7 +94,7 @@ objectStatement ->
 			}
 		}%}
 	|
-	%setObject _ %identifier __ objExpression
+	%setObject __ %identifier __ objExpression
 		{% (d) => {	
 			return {
 				"@set" : {
@@ -136,9 +136,9 @@ globalStatement ->
 	|
 	%print _ objExpression
 		{% (d) => { return { "@print" : d[2] }} %}
-	|
-	objExpression
-		{% (d) => { return { "@print" : d[0] }} %}
+	# |
+	# objExpression
+		# {% (d) => { return { "@print" : d[0] }} %}
 	# |
 	# objExpression _ %seperator:?
 	# 	{% (d) => d[0] %}
@@ -158,23 +158,24 @@ objExpression ->
 # 		{% (d) => d[0] %}
 
 function ->
-	%identifier functionArguments
+	# optional whitespace between name and (
+	%identifier _ functionArguments
 		{% (d) => {
 			return { 
 				//"@function": IR.bindFunction(d[0].value),
 				"@function": { 
 					"@name": IR.keyBind(d[0].value),
-					"@args": d[1]
+					"@args": d[2]
 				}
 			}
 		}%}
 
 functionArguments ->
-	%lParam _ params:? _ %rParam
+	%lParam _ params:? _ %rParam:?
 		{% (d) => d[2] %}
 
 array ->
-	%lArray _ params:? _ %rArray
+	%lArray _ params:? _ %rArray:?
 		{% (d) => { return { "@array" : d[2] }} %}
 
 params ->

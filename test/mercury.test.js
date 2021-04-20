@@ -10,7 +10,7 @@ const fs = require('fs-extra');
 const util = require('util');
 
 let entryPoint = "../index.js";
-// entryPoint = "../build/mercury.es5.min.js";
+entryPoint = "../build/mercury.es5.min.js";
 
 const Mercury = require(entryPoint);
 
@@ -35,8 +35,9 @@ function parseFile(f){
 	fs.outputJSONSync(`./test/tree/${name}.json`, result, { spaces: 2 });
 }
 
+parseFile('./test/test-errors.txt');
 parseFile('./test/test-small.txt');
-// parseFile('./test/test-grammar.txt');
-// parseFile('./test/test-rings.txt');
-// parseFile('./test/test-synth.txt');
-// parseFile('./test/test-mini.txt');
+parseFile('./test/test-grammar.txt');
+parseFile('./test/test-rings.txt');
+parseFile('./test/test-synth.txt');
+parseFile('./test/test-mini.txt');
