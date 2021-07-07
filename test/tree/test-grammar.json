@@ -67,14 +67,14 @@
         0
       ],
       "grv": [
+        "snare",
         "kick",
+        "kick",
+        "kick",
+        "snare",
         "hat",
-        "hat",
-        "kick",
-        "kick",
-        "hat",
-        "kick",
-        "hat"
+        "snare",
+        "snare"
       ],
       "arpMel": [
         0,
@@ -136,10 +136,10 @@
         20
       ],
       "bsLine2": [
-        3,
-        6,
-        13,
         10,
+        3,
+        13,
+        6,
         0
       ],
       "bsLine3": [
@@ -168,7 +168,7 @@
       ]
     },
     "objects": {
-      "L9SJ4H76": {
+      "LPBK20G7": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -197,11 +197,11 @@
           ],
           "add_fx": [],
           "name": [
-            "L9SJ4H76"
+            "LPBK20G7"
           ]
         }
       },
-      "UVD7N09S": {
+      "X8A64FG3": {
         "object": "sample",
         "type": "hat_min",
         "functions": {
@@ -229,11 +229,11 @@
           ],
           "add_fx": [],
           "name": [
-            "UVD7N09S"
+            "X8A64FG3"
           ]
         }
       },
-      "81UEXN48": {
+      "0PIVSNHF": {
         "object": "sample",
         "type": [
           "hat_min",
@@ -266,11 +266,11 @@
           ],
           "add_fx": [],
           "name": [
-            "81UEXN48"
+            "0PIVSNHF"
           ]
         }
       },
-      "PC4HDNV0": {
+      "7RZ4Z8E5": {
         "object": "synth",
         "type": [
           "saw",
@@ -302,7 +302,7 @@
           ],
           "add_fx": [],
           "name": [
-            "PC4HDNV0"
+            "7RZ4Z8E5"
           ]
         }
       },
