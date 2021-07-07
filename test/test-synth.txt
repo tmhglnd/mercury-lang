@@ -30,7 +30,7 @@ new sample kick_min name(kck)
 
 new midi 'to Max 1' name(myMidi)
 	set myMidi time(1/8) length(150) out(2) 
-	set myMidi fx(15 100) fx(22 60)
+	set myMidi change(15 100) cc(22 60)
 
 set all fx(reverb 1 20) fx(chip 0.5)
 set sn fx(reverb 0.9 17)

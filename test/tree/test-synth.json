@@ -87,7 +87,7 @@
       ]
     },
     "objects": {
-      "TQTWSAMV": {
+      "0GBVC53H": {
         "object": "synth",
         "type": [
           "sine",
@@ -142,11 +142,11 @@
             ]
           ],
           "name": [
-            "TQTWSAMV"
+            "0GBVC53H"
           ]
         }
       },
-      "A4ZS1TE3": {
+      "DCO0WELM": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -188,7 +188,7 @@
             ]
           ],
           "name": [
-            "A4ZS1TE3"
+            "DCO0WELM"
           ]
         }
       },
