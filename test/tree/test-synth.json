@@ -87,7 +87,7 @@
       ]
     },
     "objects": {
-      "XEYWNNU0": {
+      "ZSL0LS6L": {
         "object": "synth",
         "type": [
           "sine",
@@ -142,11 +142,11 @@
             ]
           ],
           "name": [
-            "XEYWNNU0"
+            "ZSL0LS6L"
           ]
         }
       },
-      "DO5S05Q8": {
+      "532Z9PN8": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -188,7 +188,7 @@
             ]
           ],
           "name": [
-            "DO5S05Q8"
+            "532Z9PN8"
           ]
         }
       },

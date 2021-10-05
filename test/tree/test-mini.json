@@ -31,7 +31,7 @@
       ]
     },
     "objects": {
-      "Z2DPOLRO": {
+      "OPCNTBRV": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -85,7 +85,7 @@
             ]
           ],
           "name": [
-            "Z2DPOLRO"
+            "OPCNTBRV"
           ]
         }
       },
@@ -144,7 +144,7 @@
           ]
         }
       },
-      "0H4BF7U2": {
+      "3UV6RE55": {
         "object": "sample",
         "type": "violin_g",
         "functions": {
@@ -179,7 +179,7 @@
             -0.3
           ],
           "name": [
-            "0H4BF7U2"
+            "3UV6RE55"
           ]
         }
       }
