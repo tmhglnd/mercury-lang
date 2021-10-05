@@ -36,16 +36,16 @@
   "dependencies": {
     "moo": "^0.5.1",
     "nearley": "^2.20.1",
-    "total-serialism": "^1.15.2"
+    "total-serialism": "^1.16.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.16",
-    "@babel/core": "^7.14.0",
-    "@babel/preset-env": "^7.14.1",
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
     "browserify": "^17.0.0",
     "fs-extra": "^9.1.0",
-    "nodemon": "^2.0.7",
-    "terser": "^5.7.0",
-    "uglify-js": "^3.13.5"
+    "nodemon": "^2.0.13",
+    "terser": "^5.9.0",
+    "uglify-js": "^3.14.2"
   }
 }

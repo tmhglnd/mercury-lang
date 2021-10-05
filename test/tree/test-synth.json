@@ -87,7 +87,7 @@
       ]
     },
     "objects": {
-      "0GBVC53H": {
+      "XEYWNNU0": {
         "object": "synth",
         "type": [
           "sine",
@@ -142,11 +142,11 @@
             ]
           ],
           "name": [
-            "0GBVC53H"
+            "XEYWNNU0"
           ]
         }
       },
-      "DCO0WELM": {
+      "DO5S05Q8": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -188,7 +188,7 @@
             ]
           ],
           "name": [
-            "DCO0WELM"
+            "DO5S05Q8"
           ]
         }
       },
