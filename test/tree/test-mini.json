@@ -31,7 +31,7 @@
       ]
     },
     "objects": {
-      "OPCNTBRV": {
+      "2VEDWIOU": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -85,7 +85,7 @@
             ]
           ],
           "name": [
-            "OPCNTBRV"
+            "2VEDWIOU"
           ]
         }
       },
@@ -144,7 +144,7 @@
           ]
         }
       },
-      "3UV6RE55": {
+      "ISFBYTE7": {
         "object": "sample",
         "type": "violin_g",
         "functions": {
@@ -179,7 +179,7 @@
             -0.3
           ],
           "name": [
-            "3UV6RE55"
+            "ISFBYTE7"
           ]
         }
       }

@@ -372,6 +372,12 @@ ring ms3 dtoms(ratios)
 print ms3
 // => [500 1000 250 375 500 333.33 4000]
 
+list ntm1 [c4 c5 eb4 f4 g#3]
+list mdi1 n2m(ntm1)
+
+list ntm2 [c3 g2 a3 bb4 fx3]
+list mdi2 n2m(ntm2)
+
 ring nts [0 12 5 7]
 ring str stretch(nts 50)
 print str

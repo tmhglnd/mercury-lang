@@ -327,6 +327,12 @@ const functionMap = {
 	'dtoms' : (...v) => {
 		return TL.divisionToMs(...v);
 	},
+	'noteToMidi' : (...v) => {
+		return TL.ntom(...v);
+	},
+	'n2m' : (...v) => {
+		return TL.ntom(...v);
+	},
 	// 
 	// Statistic Methods
 	// 

@@ -87,7 +87,7 @@
       ]
     },
     "objects": {
-      "ZSL0LS6L": {
+      "YCSNRJYY": {
         "object": "synth",
         "type": [
           "sine",
@@ -142,11 +142,11 @@
             ]
           ],
           "name": [
-            "ZSL0LS6L"
+            "YCSNRJYY"
           ]
         }
       },
-      "532Z9PN8": {
+      "6VYLEESL": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -188,7 +188,7 @@
             ]
           ],
           "name": [
-            "532Z9PN8"
+            "6VYLEESL"
           ]
         }
       },
