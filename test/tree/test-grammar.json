@@ -67,13 +67,13 @@
         0
       ],
       "grv": [
-        "snare",
-        "kick",
         "hat",
-        "kick",
         "kick",
         "snare",
         "hat",
+        "snare",
+        "snare",
+        "kick",
         "kick"
       ],
       "arpMel": [
@@ -136,23 +136,18 @@
         20
       ],
       "bsLine2": [
-        6,
+        3,
         0,
         13,
-        10,
-        3
+        6,
+        10
       ],
       "bsLine3": [
         0,
-        "b0",
-        "a0",
-        "s0",
-        "s0",
-        0,
-        "b0",
-        "a0",
-        "s0",
-        "s0"
+        "bassBt",
+        "bassBt",
+        "bassBt",
+        "bassBt"
       ],
       "notes": [
         "c4",
@@ -168,7 +163,7 @@
       ]
     },
     "objects": {
-      "VCLXLK3V": {
+      "K9WS54TB": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -197,11 +192,11 @@
           ],
           "add_fx": [],
           "name": [
-            "VCLXLK3V"
+            "K9WS54TB"
           ]
         }
       },
-      "OG37RNO5": {
+      "NB6SQFZA": {
         "object": "sample",
         "type": "hat_min",
         "functions": {
@@ -229,11 +224,11 @@
           ],
           "add_fx": [],
           "name": [
-            "OG37RNO5"
+            "NB6SQFZA"
           ]
         }
       },
-      "KSFJMGHE": {
+      "QTOWLJTF": {
         "object": "sample",
         "type": [
           "hat_min",
@@ -266,11 +261,11 @@
           ],
           "add_fx": [],
           "name": [
-            "KSFJMGHE"
+            "QTOWLJTF"
           ]
         }
       },
-      "SCRZZK6U": {
+      "6SDYDIFS": {
         "object": "synth",
         "type": [
           "saw",
@@ -302,7 +297,7 @@
           ],
           "add_fx": [],
           "name": [
-            "SCRZZK6U"
+            "6SDYDIFS"
           ]
         }
       },

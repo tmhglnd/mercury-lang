@@ -46,12 +46,26 @@ ring spi4 spreadInclusive(5 12 0)
 print spi4
 // => [12 9 6 3 0]
 
+ring spe1 spreadExp(10 0 10 2)
+//=> [ 0, 0, 0, 0, 1, 2, 3, 4, 6, 8 ] 
+
+ring spe3 spreadExpF(10 0 1 2)
+
+
+ring spe2 spreadIncExp(10 0 10 2)
+//=> [ 0, 0, 0, 1,  1, 3, 4, 6, 7, 10 ] 
+
 ring fll1 fill(10 2 15 3 20 4)
 print fll1
 // => [10 10 15 15 15 20 20 20 20]
 ring fll2 fill(kick_min 2 hat_min 3)
 print fll2
 // => [kick_min kick_min hat_min hat_min hat_min]
+
+// list fll3 fill([10 20 2 15 3 20 4])
+// not supported yet!
+
+list fll4 fill([10 20] 2 [30 40] 3 50 4)
 
 ring sin1 sine(10)
 print sin1
@@ -85,15 +99,19 @@ ring cos5 cosineF(12 3 -1 1)
 print cos5
 // => [1 0 -1 0 1 0 -1 0 1 0 -1 0]
 
+ring cos6 cosF(30 sinF(30 2) -5 5)
+
 ring euc1 euclidean()
 print euc1
 // => [1 0 1 0 1 0 1 0]
 ring euc2 euclid(7 5)
 print euc2
 // => [1 1 0 1 1 0 1]
+// => [1 0 1 1 0 1 1]
 ring euc3 euclid(7 5 2)
 print euc3
 //=> [0 1 1 1 0 1 1]
+//=> [1 1 1 0 1 1 0]
 
 ring hex1 hexBeat()
 print hex1
@@ -138,13 +156,13 @@ print tfi1
 set randomSeed 31415
 ring rnd1 random(5)
 print rnd1
-// => [1 0 0 1 1]
+// => [1 0 1 0 1]
 ring rnd2 random(5 12)
 print rnd2
-// => [0 10 3 2 2]
+// => [10 6 5 7 2]
 ring rnd3 rand(5 -12 12)
 print rnd3
-// => [-2 -5 -8 -11 6]
+// => [-7 3 8 3 -5]
 
 set randomSeed 31415
 ring rnf1 randomFloat(5)

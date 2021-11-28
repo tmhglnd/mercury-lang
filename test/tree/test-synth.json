@@ -87,7 +87,7 @@
       ]
     },
     "objects": {
-      "YCSNRJYY": {
+      "OYHM7KSE": {
         "object": "synth",
         "type": [
           "sine",
@@ -142,11 +142,11 @@
             ]
           ],
           "name": [
-            "YCSNRJYY"
+            "OYHM7KSE"
           ]
         }
       },
-      "6VYLEESL": {
+      "P797OPB5": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -188,7 +188,7 @@
             ]
           ],
           "name": [
-            "6VYLEESL"
+            "P797OPB5"
           ]
         }
       },

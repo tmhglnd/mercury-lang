@@ -31,7 +31,7 @@
       ]
     },
     "objects": {
-      "2VEDWIOU": {
+      "AJDQZCMN": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -85,7 +85,7 @@
             ]
           ],
           "name": [
-            "2VEDWIOU"
+            "AJDQZCMN"
           ]
         }
       },
@@ -144,7 +144,7 @@
           ]
         }
       },
-      "ISFBYTE7": {
+      "26911SH4": {
         "object": "sample",
         "type": "violin_g",
         "functions": {
@@ -179,7 +179,7 @@
             -0.3
           ],
           "name": [
-            "ISFBYTE7"
+            "26911SH4"
           ]
         }
       }

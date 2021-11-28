@@ -35,6 +35,28 @@ const functionMap = {
 	'spreadInclusiveF' : (...v) => {
 		return Gen.spreadInclusiveFloat(...v);
 	},
+	// generate an array between range (exponentially)
+	'spreadExp' : (...v) => {
+		return Gen.spreadExp(...v);
+	},
+	'spreadExpFloat' : (...v) => {
+		return Gen.spreadExpFloat(...v);
+	},
+	'spreadExpF' : (...v) => {
+		return Gen.spreadExpFloat(...v);
+	},
+	'spreadInclusiveExp' : (...v) => {
+		return Gen.spreadInclusiveExp(...v);
+	},
+	'spreadIncExp' : (...v) => {
+		return Gen.spreadInclusiveExp(...v);
+	},
+	'spreadInclusiveExpFloat' : (...v) => {
+		return Gen.spreadInclusiveExpFloat(...v);
+	},
+	'spreadIncExpF' : (...v) => {
+		return Gen.spreadInclusiveExpFloat(...v);
+	},
 	// fill an array with duplicates of a value
 	'fill' : (...v) => {
 		return Gen.fill(...v);
@@ -49,6 +71,9 @@ const functionMap = {
 	'sineF' : (...v) => {
 		return Gen.sineFloat(...v);
 	},
+	'sinF' : (...v) => {
+		return Gen.sineFloat(...v);
+	},
 	// generate an array from a cosine function
 	'cosine' : (...v) => {
 		return Gen.cosine(...v);
@@ -59,15 +84,21 @@ const functionMap = {
 	'cosineF' : (...v) => {
 		return Gen.cosineFloat(...v);
 	},
+	'cosF' : (...v) => {
+		return Gen.cosineFloat(...v);
+	},
 	// 
 	// Algorithmic Methods
 	// 
 	// generate a euclidean rhythm evenly spacing n-beats amongst n-steps
+	// switched to fastEuclid method
 	'euclid' : (...v) => {
-		return Algo.euclid(...v);
+		// return Algo.euclid(...v);
+		return Algo.fastEuclid(...v);
 	},
 	'euclidean' : (...v) => {
-		return Algo.euclid(...v);
+		// return Algo.euclid(...v);
+		return Algo.fastEuclid(...v);
 	},
 	// generate a rhythm based on a hexadecimal string (0-f)
 	'hexBeat' : (...v) => {
@@ -83,7 +114,6 @@ const functionMap = {
 	},
 	// generate the pisano periods from the fibonacci sequence
 	'pisano' : (...v) => {
-		// console.log('pisano() =>', Algo.pisano(...v));
 		return Algo.pisano(...v);
 	},
 	// generate the numbers in the fibonacci sequence
@@ -103,8 +133,7 @@ const functionMap = {
 	// 
 	// set the random number generator seed
 	'randomSeed' : (...v) => {
-		// console.log("seed", ...v);
-		Rand.seed(v[0]);
+		Rand.seed(String(v[0]));
 	},
 	// generate an array of random integers in range
 	'random' : (...v) => {
@@ -127,10 +156,10 @@ const functionMap = {
 	'drunk' : (...v) => {
 		return Rand.drunk(...v);
 	},
-	'drunkF' : (...v) => {
+	'drunkFloat' : (...v) => {
 		return Rand.drunkFloat(...v);
 	},
-	'drunkFloat' : (...v) => {
+	'drunkF' : (...v) => {
 		return Rand.drunkFloat(...v);
 	},
 	// generate random values picked from an urn

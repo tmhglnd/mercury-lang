@@ -9,7 +9,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const util = require('util');
 
-let verbose = false;
+let verbose = true;
 let entryPoint = "../index.js";
 // entryPoint = "../build/mercury.es5.min.js";
 
@@ -30,8 +30,8 @@ function parseFile(f){
 	
 	if (verbose){
 		console.log(util.inspect(result.parseTree, { showHidden: false, depth: null, colors: true }));
-		console.log(util.inspect(result.syntaxTree, { showHidden: false, depth: null, colors: true }));
-		console.log(util.inspect(result.errors, { showHidden: false, depth: null, colors: true }));
+		// console.log(util.inspect(result.syntaxTree, { showHidden: false, depth: null, colors: true }));
+		// console.log(util.inspect(result.errors, { showHidden: false, depth: null, colors: true }));
 		// console.log(util.inspect(result, { showHidden: false, depth: null, colors: true }));
 	}
 
@@ -39,10 +39,10 @@ function parseFile(f){
 	fs.outputJSONSync(`./test/tree/${name}.json`, result, { spaces: 2 });
 }
 
-parseFile('./test/test-errors.txt');
-parseFile('./test/test-small.txt');
-parseFile('./test/test-grammar.txt');
 parseFile('./test/test-rings.txt');
-parseFile('./test/test-synth.txt');
-parseFile('./test/test-mini.txt');
-parseFile('./test/test-sample.txt');
+// parseFile('./test/test-errors.txt');
+// parseFile('./test/test-small.txt');
+// parseFile('./test/test-grammar.txt');
+// parseFile('./test/test-synth.txt');
+// parseFile('./test/test-mini.txt');
+// parseFile('./test/test-sample.txt');
