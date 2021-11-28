@@ -255,42 +255,65 @@ list exp5 expand([0 9 7 3 5 0 -1] 12)
 // => [ 0 9 7 3 5 0 -1 -2 0 -5 -9 -11 ],
 
 ring notes [0 3 7]
-ring melody clone(notes 0 12 7 -7)
-print melody
+ring cln1 clone(notes 0 12 7 -7)
+print cln1
 // => [0 3 7 12 15 19 7 10 14 -7 -4 0]
 
-ring partA [0 3 7]
-ring partB [24 19 12]
-ring partC [-7 -5 -3]
-ring phrase combine(partA partB partC)
-print phrase
-// => [0 3 7 24 19 12 -7 -5 -3]
+ring chrd [[0 3 7] 0]
+ring cln2 clone(chrd 0 10 20 -10)
+// [[ 0, 3, 7 ], 0, [ 10, 13, 17 ], 10, [ 20, 23, 27 ], 20, [ -10, -7, -3 ] -10]
+
+ring chrd2 [[c e] [g b] d]
+ring cln3 clone(chrd2 4 5)
+// [[ 'c4', 'e4' ],[ 'g4', 'b4' ],'d4',[ 'c5', 'e5' ],[ 'g5', 'b5' ],'d5']
+
+ring partA [[0 3] 7]
+ring partB [24 [19] 12]
+ring partC [-7 [-5 [-3]]]
+ring cmb1 combine(partA partB partC)
+print cmb1
+// => [ [ 0, 3 ], 7, 24, [ 19 ], 12, -7, [ -5, [ -3 ] ] ]
 
 ring partC [kick hat snare hat]
-ring partD [hat hat hat snare]
-ring sequence join(partC partD)
-print sequence
-// => [kick hat snare hat hat hat hat snare]
+ring partD [hat [hat hat snare]]
+ring jn1 join(partC partD)
+print jn1
+// => [ 'kick', 'hat', 'snare', 'hat', 'hat', [ 'hat', 'hat', 'snare' ] ]
 // concat()
 
-ring notes [0 3 7]
-ring phrase duplicate(notes 4)
-print phrase
-// => [0 3 7 0 3 7 0 3 7 0 3 7]
+ring notes [0 [3 7] 9]
+ring dup1 duplicate(notes 3)
+print dup1
+// => [ 0, [ 3, 7 ], 9, 0, [ 3, 7 ], 9, 0, [ 3, 7 ], 9 ]
 // dup()
 
+list pad1 [3 7 11 12]
+list pad2 pad(pad1 9)
+// [ 3, 7, 11, 12, 0, 0, 0, 0, 0]
+
+list pad3 pad([c f g] 11 - 4)
+// [ '-', '-', '-', '-', 'c', 'f', 'g', '-', '-', '-', '-' ]
+
 ring rhythm [1 0 1 1 0 1 1]
-ring sequence every(rhythm 2 8)
-print sequence
+ring evr1 every(rhythm 2 8)
+print evr1
 // => [1 0 1 1 0 1 1 0 0 0 0 0 0 0 0 0]
+
 ring melody [5 7 3 9 1]
-ring phrase every(melody 2 7 12)
-print phrase
+ring evr2 every(melody 2 7 12)
+print evr2
 // => [5 7 3 9 1 12 12 12 12 12 12 12 12 12]
 ring rhythm [1 1 0 1 1]
-ring sequence every(rhythm 2 8 0 1)
-print sequence
+ring evr3 every(rhythm 2 8 0 1)
+print evr3
 // => [0 0 0 0 0 0 0 0 1 1 0 1 1 0 0 0]
+
+list evr4 every([c4 eb4 g4 f4 eb4] 2 8 r)
+print evr4
+//=> [ 'c4',  'eb4', 'g4', 'f4',
+//     'eb4', 'r',   'r',  'r',
+//     'r',   'r',   'r',  'r',
+//     'r',   'r',   'r',  'r' ] 
 
 ring notes [0 3 7 12]
 ring inv1 invert(notes)

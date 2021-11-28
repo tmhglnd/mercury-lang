@@ -259,6 +259,10 @@ const functionMap = {
 	'repeat' : (...v) => {
 		return Mod.repeat(...v);
 	},
+	// Pad an array with zeroes (or any other value) up to the length specified.
+	'pad' : (...v) => {
+		return Mod.pad(...v);
+	},
 	// add zeroes to a rhythm to make it play once over a certain amount of bars
 	'every' : (...v) => {
 		return Mod.every(...v);
