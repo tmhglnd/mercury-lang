@@ -267,6 +267,10 @@ const functionMap = {
 	'every' : (...v) => {
 		return Mod.every(...v);
 	},
+	// flatten a multidimensional array to 1D (or specified)
+	'flat' : (...v) => {
+		return Util.flatten(...v);
+	},
 	// invert an array around a center point
 	'invert' : (...v) => {
 		return Mod.invert(...v);
@@ -278,7 +282,6 @@ const functionMap = {
 		return Mod.invert(...v);
 	},
 	'filter' : (...v) => {
-		let args = [...v];
 		return Mod.filter(v[0], v.slice(1, v.length));
 	},
 	'inv' : (...v) => {
@@ -343,6 +346,18 @@ const functionMap = {
 	'spray' : (...v) => {
 		return Mod.spray(...v);
 	},
+	// slice an array into one or multiple parts
+	'slice' : (...v) => {
+		return Mod.slice(...v);
+	},
+	// split an array recursively till the end
+	'split' : (...v) => {
+		return Mod.split(...v);
+	},
+	// cut a piece of the array and return
+	'cut' : (...v) => {
+		return Mod.slice(...v)[0];
+	},
 	// stretch an array to a specified length, interpolating values
 	'stretch' : (...v) => {
 		// swap because of implementation in total-serialism
@@ -380,17 +395,71 @@ const functionMap = {
 	'toScale' : (...v) => {
 		return TL.toScale(...v);
 	},
-	'divisionToMs' : (...v) => {
+	'division2ms' : (...v) => {
 		return TL.divisionToMs(...v);
 	},
-	'dtoms' : (...v) => {
+	'd2ms' : (...v) => {
 		return TL.divisionToMs(...v);
 	},
-	'noteToMidi' : (...v) => {
+	'ratio2ms' : (...v) => {
+		return TL.ratioToMs(...v);
+	},
+	'r2ms' : (...v) => {
+		return TL.ratioToMs(...v);
+	},
+	'note2midi' : (...v) => {
 		return TL.ntom(...v);
 	},
 	'n2m' : (...v) => {
 		return TL.ntom(...v);
+	},
+	'note2freq' : (...v) => {
+		return TL.noteToFreq(...v);
+	},
+	'n2f' : (...v) => {
+		return TL.noteToFreq(...v);
+	},
+	'midi2note' : (...v) => {
+		return TL.midiToNote(...v);
+	},
+	'm2n' : (...v) => {
+		return TL.midiToNote(...v);
+	},
+	'midi2freq' : (...v) => {
+		return TL.midiToFreq(...v);
+	},
+	'm2f' : (...v) => {
+		return TL.midiToFreq(...v);
+	},
+	'freq2midi' : (...v) => {
+		return TL.freqToMidi(...v);
+	},
+	'f2m' : (...v) => {
+		return TL.freqToMidi(...v);
+	},
+	'freq2note' : (...v) => {
+		return TL.freqToNote(...v);
+	},
+	'f2n' : (...v) => {
+		return TL.freqToNote(...v);
+	},
+	'relative2midi' : (...v) => {
+		return TL.relativeToMidi(...v);
+	},
+	'r2m' : (...v) => {
+		return TL.relativeToMidi(...v);
+	},
+	'relative2freq' : (...v) => {
+		return TL.relativeToFreq(...v);
+	},
+	'r2f' : (...v) => {
+		return TL.relativeToFreq(...v);
+	},
+	'ratio2cent' : (...v) => {
+		return TL.ratioToCent(...v);
+	},
+	'rtc' : (...v) => {
+		return TL.ratioToCent(...v);
 	},
 	// 
 	// Statistic Methods
@@ -405,6 +474,25 @@ const functionMap = {
 	// 
 	// Utility Methods
 	// 
+	// wrap values between a low and high range
+	'wrap' : (...v) => {
+		return Util.wrap(...v);
+	},
+	// fold values between a low and high range
+	'fold' : (...v) => {
+		return Util.fold(...v);
+	},
+	// clip values between a low and high range
+	'clip' : (...v) => {
+		return Util.constrain(...v);
+	},
+	'constrain' : (...v) => {
+		return Util.constrain(...v);
+	},
+	// scale values from an input range to an output range
+	'map' : (...v) => {
+		return Util.map(...v);
+	},
 	// add 1 or more values to an array
 	'add' : (...v) => {
 		return Util.add(...v);
