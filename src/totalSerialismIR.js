@@ -87,6 +87,32 @@ const functionMap = {
 	'cosF' : (...v) => {
 		return Gen.cosineFloat(...v);
 	},
+	// generate an array from a sawtooth function
+	'saw' : (...v) => {
+		return Gen.saw(...v);
+	},
+	'sawFloat' : (...v) => {
+		return Gen.sawFloat(...v);
+	},
+	'sawF' : (...v) => {
+		return Gen.sawFloat(...v);
+	},
+	// generate an array from a squarewave function
+	'square' : (...v) => {
+		return Gen.square(...v);
+	},
+	'rect' : (...v) => {
+		return Gen.square(...v);
+	},
+	'squareFloat' : (...v) => {
+		return Gen.squareFloat(...v);
+	},
+	'squareF' : (...v) => {
+		return Gen.squareFloat(...v);
+	},
+	'rectF' : (...v) => {
+		return Gen.squareFloat(...v);
+	},
 	// 
 	// Algorithmic Methods
 	// 
@@ -133,7 +159,7 @@ const functionMap = {
 	// 
 	// set the random number generator seed
 	'randomSeed' : (...v) => {
-		Rand.seed(String(v[0]));
+		Rand.seed(v[0]);
 	},
 	// generate an array of random integers in range
 	'random' : (...v) => {

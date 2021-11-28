@@ -101,6 +101,14 @@ print cos5
 
 ring cos6 cosF(30 sinF(30 2) -5 5)
 
+list saw1 saw(16 8.5)
+// => [ 0 6 0 7 1 7 2 8 3 9 3 10 4 10 5 11 ]
+
+list saw2 sawF(25 2.5)
+
+list sqr1 square(15 4 0 1 0.2)
+// => [ 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 ]
+
 ring euc1 euclidean()
 print euc1
 // => [1 0 1 0 1 0 1 0]
@@ -153,18 +161,19 @@ ring tfi1 threeFibonacci(8)
 print tfi1
 // => [0 1 3 10 33 109 360 1189]
 
-set randomSeed 31415
+// Values have changed because seed is now parsed as Number instead of String()
+set randomSeed '31415'
 ring rnd1 random(5)
 print rnd1
-// => [1 0 1 0 1]
+// => [1 0 0 1 1]
 ring rnd2 random(5 12)
 print rnd2
-// => [10 6 5 7 2]
+// => [0 10 3 2 2]
 ring rnd3 rand(5 -12 12)
 print rnd3
-// => [-7 3 8 3 -5]
+// => [-2 -5 -8 -11 6]
 
-set randomSeed 31415
+set randomSeed '31415'
 ring rnf1 randomFloat(5)
 print rnf1
 // => [0.81 0.32 0.01 0.85 0.88]
@@ -175,7 +184,7 @@ ring rnf3 randF(5 -12 12)
 print rnf3
 // => [-1.19 -4.21 -7.36 -10.31 6.82]
 
-set randomSeed 1618
+set randomSeed '1618'
 ring urn1 urn(5)
 print urn1
 // => [3 7 10 0 2]
@@ -186,7 +195,7 @@ ring urn3 urn(8 10 14)
 print urn3
 // => [13 10 12 11 12 10 13 11]
 
-set randomSeed 271828
+set randomSeed '271828'
 ring coin1 coin(8)
 print coin1
 // => [1 0 1 0 1 0 1 1]
@@ -194,32 +203,32 @@ ring dice1 dice(8)
 print dice1
 // => [5 4 6 4 4 5 4 2]
 
-set randomSeed 271828
+set randomSeed '271828'
 ring twv1 twelveTone()
 print twv1
 // => [10 7 6 3 2 9 8 4 1 5 0 11]
 
-set randomSeed 62832
+set randomSeed '62832'
 ring samples [hat snare kick]
-ring sequence choose(10 samples)
-print sequence
+ring chs1 choose(10 samples)
+print chs1
 // => [hat kick hat kick hat snare kick hat hat hat]
 ring notes [0 3 7 5 9 12]
-ring melody choose(10 notes)
-print melody
+ring chs2 choose(10 notes)
+print chs2
 // => [0 5 3 9 0 7 3 12 3 7]
 
-set randomSeed 62832
+set randomSeed '62832'
 ring samples [hat snare kick tom]
-ring sequence pick(10 samples)
-print sequence
+ring pck1 pick(10 samples)
+print pck1
 // => [hat kick tom snare tom hat snare kick tom hat]
 ring notes [0 3 7 5 9 12]
-ring melody pick(10 notes)
-print melody
+ring pck2 pick(10 notes)
+print pck2
 // => [3 0 7 9 12 5 0 7 12 9]
 
-set randomSeed 14142
+set randomSeed '14142'
 ring samples [hat snare kick tom]
 ring shf1 shuffle(samples)
 print shf1
@@ -228,6 +237,22 @@ ring notes [0 3 7 5 9 12]
 ring shf2 scramble(notes)
 print shf2
 // => [12 0 3 7 5 9]
+
+set randomSeed 7482
+list clv1 clave(8)
+// => [1 0 1 0 1 0 0 1],
+list clv2 clave(16 4)
+// => [1 0 0 1 0 0 1 0 1 0 0 0 1 0 1 0],
+list clv3 clave(11 3 1)
+// => [1 0 0 1 0 0 1 0 0 1 1]
+
+set randomSeed 3141
+list exp4 expand([0 9 7 3 5 0 -1] 12)
+// => [ 0 9 7 3 5 0 -1 -3 -1 8 3 2 ],
+
+set randomSeed 6181
+list exp5 expand([0 9 7 3 5 0 -1] 12)
+// => [ 0 9 7 3 5 0 -1 -2 0 -5 -9 -11 ],
 
 ring notes [0 3 7]
 ring melody clone(notes 0 12 7 -7)
