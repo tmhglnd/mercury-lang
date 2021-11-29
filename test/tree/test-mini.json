@@ -31,7 +31,7 @@
       ]
     },
     "objects": {
-      "AJDQZCMN": {
+      "OWPCC5BU": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -85,7 +85,7 @@
             ]
           ],
           "name": [
-            "AJDQZCMN"
+            "OWPCC5BU"
           ]
         }
       },
@@ -110,8 +110,6 @@
               1,
               0,
               0,
-              1,
-              0,
               0,
               1,
               0,
@@ -121,6 +119,8 @@
               0,
               1,
               0,
+              0,
+              1,
               0,
               0
             ]
@@ -144,7 +144,7 @@
           ]
         }
       },
-      "26911SH4": {
+      "8CVU4FEA": {
         "object": "sample",
         "type": "violin_g",
         "functions": {
@@ -179,7 +179,7 @@
             -0.3
           ],
           "name": [
-            "26911SH4"
+            "8CVU4FEA"
           ]
         }
       }

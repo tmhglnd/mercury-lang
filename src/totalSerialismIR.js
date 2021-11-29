@@ -395,11 +395,18 @@ const functionMap = {
 	'toScale' : (...v) => {
 		return TL.toScale(...v);
 	},
+	// tempo translate methods
 	'division2ms' : (...v) => {
 		return TL.divisionToMs(...v);
 	},
 	'd2ms' : (...v) => {
 		return TL.divisionToMs(...v);
+	},
+	'division2ratio' : (...v) => {
+		return TL.divisionToRatio(...v);
+	},
+	'd2r' : (...v) => {
+		return TL.divisionToRatio(...v);
 	},
 	'ratio2ms' : (...v) => {
 		return TL.ratioToMs(...v);
@@ -407,6 +414,13 @@ const functionMap = {
 	'r2ms' : (...v) => {
 		return TL.ratioToMs(...v);
 	},
+	'time2ratio' : (...v) => {
+		return TL.timevalueToRatio(...v);
+	},
+	't2r' : (...v) => {
+		return TL.timevalueToRatio(...v);
+	},
+	// pitch translate methods
 	'note2midi' : (...v) => {
 		return TL.ntom(...v);
 	},

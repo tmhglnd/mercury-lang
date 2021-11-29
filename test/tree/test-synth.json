@@ -87,7 +87,7 @@
       ]
     },
     "objects": {
-      "OYHM7KSE": {
+      "BK7XFNZ1": {
         "object": "synth",
         "type": [
           "sine",
@@ -142,11 +142,11 @@
             ]
           ],
           "name": [
-            "OYHM7KSE"
+            "BK7XFNZ1"
           ]
         }
       },
-      "P797OPB5": {
+      "KT73X4SO": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -188,7 +188,7 @@
             ]
           ],
           "name": [
-            "P797OPB5"
+            "KT73X4SO"
           ]
         }
       },
