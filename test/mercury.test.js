@@ -40,9 +40,9 @@ function parseFile(f){
 }
 
 parseFile('./test/test-rings.txt');
-// parseFile('./test/test-errors.txt');
-// parseFile('./test/test-small.txt');
-// parseFile('./test/test-grammar.txt');
-// parseFile('./test/test-synth.txt');
-// parseFile('./test/test-mini.txt');
-// parseFile('./test/test-sample.txt');
+parseFile('./test/test-errors.txt');
+parseFile('./test/test-small.txt');
+parseFile('./test/test-grammar.txt');
+parseFile('./test/test-synth.txt');
+parseFile('./test/test-mini.txt');
+parseFile('./test/test-sample.txt');

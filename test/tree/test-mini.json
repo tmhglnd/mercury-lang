@@ -31,7 +31,7 @@
       ]
     },
     "objects": {
-      "OWPCC5BU": {
+      "PIA7WLGR": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -85,7 +85,7 @@
             ]
           ],
           "name": [
-            "OWPCC5BU"
+            "PIA7WLGR"
           ]
         }
       },
@@ -144,7 +144,7 @@
           ]
         }
       },
-      "8CVU4FEA": {
+      "IWTCDDQV": {
         "object": "sample",
         "type": "violin_g",
         "functions": {
@@ -179,7 +179,7 @@
             -0.3
           ],
           "name": [
-            "8CVU4FEA"
+            "IWTCDDQV"
           ]
         }
       }

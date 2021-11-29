@@ -80,7 +80,7 @@ function keywordBindings(dict, obj){
 }
 
 // code accepted global parameters
-const globals = 'tempo volume scale root randomSeed highPass lowPass silence'.split(' ');
+const globals = 'tempo signature volume scale root randomSeed highPass lowPass silence'.split(' ');
 
 // code defaults
 let code = {
@@ -89,6 +89,7 @@ let code = {
 		// 'volume' : [ 0.8 ],
 		// 'scale' : [ 'chromatic', 'c' ],
 		// 'root' : [ 'c' ],
+		// 'signature' : [ '4/4' ],
 		'randomSeed' : [ 0 ],
 		'highPass' : [ 20000, 0 ],
 		'lowPass' : [ 1, 0 ],
@@ -192,7 +193,8 @@ function traverseTree(tree, code, level){
 			// environment settings, otherwise error log
 
 			// console.log('@set', el);
-			let name = el['@name'];
+			// let name = el['@name'];
+			let name = keyBind(el['@name']);
 			delete el['@name'];
 
 			if (ccode.objects[name]){

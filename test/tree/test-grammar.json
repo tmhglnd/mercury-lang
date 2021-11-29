@@ -163,7 +163,7 @@
       ]
     },
     "objects": {
-      "70IVDSRU": {
+      "1L39SYIO": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -192,11 +192,11 @@
           ],
           "add_fx": [],
           "name": [
-            "70IVDSRU"
+            "1L39SYIO"
           ]
         }
       },
-      "U474I0WN": {
+      "HWKHHVTD": {
         "object": "sample",
         "type": "hat_min",
         "functions": {
@@ -224,11 +224,11 @@
           ],
           "add_fx": [],
           "name": [
-            "U474I0WN"
+            "HWKHHVTD"
           ]
         }
       },
-      "5157YCHY": {
+      "ZUG8DHNJ": {
         "object": "sample",
         "type": [
           "hat_min",
@@ -261,11 +261,11 @@
           ],
           "add_fx": [],
           "name": [
-            "5157YCHY"
+            "ZUG8DHNJ"
           ]
         }
       },
-      "7SQ958SQ": {
+      "YY64ELLS": {
         "object": "synth",
         "type": [
           "saw",
@@ -297,7 +297,7 @@
           ],
           "add_fx": [],
           "name": [
-            "7SQ958SQ"
+            "YY64ELLS"
           ]
         }
       },
@@ -1686,10 +1686,10 @@
     ]
   },
   "errors": [
-    "Syntax error at line 27: Unexpected identifier: # at #<-",
-    "Syntax error at line 28: Unexpected identifier: $ at $<-",
-    "Syntax error at line 29: Unexpected identifier: not at not<-",
-    "Syntax error at line 76: Unexpected list: ring at ring ring<-",
-    "Syntax error at line 104: Unexpected newObject: new at apply alice pitch([0 7 12 3] 2) shape(1 200) id(new<-"
+    "Syntax error at line 27 col 0: Unexpected identifier: # at #<-",
+    "Syntax error at line 28 col 0: Unexpected identifier: $ at $<-",
+    "Syntax error at line 29 col 0: Unexpected identifier: not at not<-",
+    "Syntax error at line 76 col 2: Unexpected list: ring at ring ring<-",
+    "Syntax error at line 104 col 28: Unexpected newObject: new at apply alice pitch([0 7 12 3] 2) shape(1 200) id(new<-"
   ]
 }

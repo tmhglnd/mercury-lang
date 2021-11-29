@@ -124,11 +124,6 @@
 		"id"
 	],
 
-	"tempo" : [
-		"pace",
-		"bpm"
-	],
-
 	"address" : [
 		"tag",
 		"url"
@@ -150,5 +145,36 @@
 	"poly" : [
 		"chords",
 		"polyphonic"
+	], 
+
+	"tempo" : [
+		"pace",
+		"bpm"
+	],
+
+	"signature" : [
+		"timeSignature",
+		"timeSig",
+		"measure"
+	],
+
+	"randomSeed" : [
+		"seed"
+	],
+
+	"lowPass" : [
+		"lowpass",
+		"lopass",
+		"loPass",
+		"highCut",
+		"hiCut"
+	],
+
+	"highPass" : [
+		"highpass",
+		"hipass",
+		"hiPass",
+		"lowCut",
+		"loCut"
 	]
 }

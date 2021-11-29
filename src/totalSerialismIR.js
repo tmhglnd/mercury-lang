@@ -255,6 +255,9 @@ const functionMap = {
 	'dup' : (...v) => {
 		return Mod.duplicate(...v);
 	},
+	'copy' : (...v) => {
+		return Mod.duplicate(...v);
+	},
 	// repeat the individual values of an array by a certain amount
 	'repeat' : (...v) => {
 		return Mod.repeat(...v);

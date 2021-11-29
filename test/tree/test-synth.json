@@ -12,10 +12,6 @@
         5000,
         100
       ],
-      "volume": [
-        0.9,
-        5000
-      ],
       "tempo": [
         143
       ],
@@ -87,7 +83,7 @@
       ]
     },
     "objects": {
-      "BK7XFNZ1": {
+      "0836YLA0": {
         "object": "synth",
         "type": [
           "sine",
@@ -142,11 +138,11 @@
             ]
           ],
           "name": [
-            "BK7XFNZ1"
+            "0836YLA0"
           ]
         }
       },
-      "KT73X4SO": {
+      "67LKN2GX": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -188,7 +184,7 @@
             ]
           ],
           "name": [
-            "KT73X4SO"
+            "67LKN2GX"
           ]
         }
       },
@@ -1349,6 +1345,7 @@
     ]
   },
   "errors": [
+    "Unkown instrument or setting name: amp",
     "Unkown instrument or setting name: sn",
     "Unkown instrument or setting name: bass"
   ]
