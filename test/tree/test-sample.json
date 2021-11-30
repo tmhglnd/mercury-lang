@@ -12,6 +12,7 @@
         5000,
         100
       ],
+      "silence": false,
       "signature": [
         "11/16"
       ],
@@ -36,7 +37,7 @@
       ]
     },
     "objects": {
-      "4FYMY0ZR": {
+      "K0FIN3BO": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -72,7 +73,7 @@
           ],
           "add_fx": [],
           "name": [
-            "4FYMY0ZR"
+            "K0FIN3BO"
           ]
         }
       },

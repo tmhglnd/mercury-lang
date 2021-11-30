@@ -12,6 +12,7 @@
         1,
         0
       ],
+      "silence": false,
       "tempo": [
         143
       ]
@@ -31,7 +32,7 @@
       ]
     },
     "objects": {
-      "PIA7WLGR": {
+      "F7QOX8PK": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -85,7 +86,7 @@
             ]
           ],
           "name": [
-            "PIA7WLGR"
+            "F7QOX8PK"
           ]
         }
       },
@@ -144,7 +145,7 @@
           ]
         }
       },
-      "IWTCDDQV": {
+      "BFB5TLA1": {
         "object": "sample",
         "type": "violin_g",
         "functions": {
@@ -179,7 +180,7 @@
             -0.3
           ],
           "name": [
-            "IWTCDDQV"
+            "BFB5TLA1"
           ]
         }
       }

@@ -1,7 +1,7 @@
 {
 	"new" : [
 		"make",
-		"sound"
+		"add"
 	],
 
 	"ring" : [
@@ -176,5 +176,10 @@
 		"hiPass",
 		"lowCut",
 		"loCut"
+	],
+
+	"silence" : [
+		"mute",
+		"killAll"
 	]
 }

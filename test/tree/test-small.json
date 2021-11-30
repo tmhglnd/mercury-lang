@@ -12,6 +12,7 @@
         1,
         0
       ],
+      "silence": false,
       "tempo": [
         140
       ]
@@ -35,18 +36,24 @@
         1,
         0
       ],
-      "drives": [
-        1,
-        2,
-        2,
-        3,
-        4,
-        6,
-        9,
-        3,
-        11,
-        2
-      ]
+      "drives": {
+        "@name": "new",
+        "@args": [
+          [
+            0,
+            1,
+            1,
+            2,
+            3,
+            5,
+            8,
+            2,
+            10,
+            1
+          ],
+          1
+        ]
+      }
     },
     "objects": {
       "s1": {
@@ -102,18 +109,24 @@
             ],
             [
               "drive",
-              [
-                1,
-                2,
-                2,
-                3,
-                4,
-                6,
-                9,
-                3,
-                11,
-                2
-              ]
+              {
+                "@name": "new",
+                "@args": [
+                  [
+                    0,
+                    1,
+                    1,
+                    2,
+                    3,
+                    5,
+                    8,
+                    2,
+                    10,
+                    1
+                  ],
+                  1
+                ]
+              }
             ]
           ],
           "name": [
@@ -224,7 +237,7 @@
           "@name": "drives",
           "@params": {
             "@function": {
-              "@name": "add",
+              "@name": "new",
               "@args": [
                 {
                   "@function": {
@@ -353,6 +366,6 @@
     ]
   },
   "errors": [
-    "Syntax error at line 13 col 6: Unexpected number: 16 at list notes random 16<-"
+    "Error at line 13: Unexpected number: '16' at list notes random 16<-"
   ]
 }

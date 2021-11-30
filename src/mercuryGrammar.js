@@ -16,10 +16,10 @@ const lexer = moo.compile({
 					value: x => x.slice(0, x.length-1)
 				},*/
 
-	list:		[/ring/, /array/, /list/],
-	newObject:	[/new/, /make/, /add(?: |$)/],
-	setObject:	[/set/, /apply/, /give/, /send/],
-	print:		[/print/, /post/, /log/],
+	list:		[/ring /, /array /, /list /],
+	newObject:	[/new /, /make /, /add(?: |$)/],
+	setObject:	[/set /, /apply /, /give /, /send /],
+	print:		[/print /, /post /, /log /],
 
 	//action:		[/ring\ /, /new\ /, /set\ /],
 	//kill:		/kill[\-|_]?[a|A]ll/,
@@ -66,7 +66,7 @@ var grammar = {
     {"name": "main$ebnf$3", "symbols": [(lexer.has("comment") ? {type: "comment"} : comment)], "postprocess": id},
     {"name": "main$ebnf$3", "symbols": [], "postprocess": function(d) {return null;}},
     {"name": "main", "symbols": ["_", "objectStatement", "_", "main$ebnf$3"], "postprocess": (d) => { return { "@object" : d[1] }}},
-    {"name": "objectStatement", "symbols": [(lexer.has("newObject") ? {type: "newObject"} : newObject), "__", (lexer.has("identifier") ? {type: "identifier"} : identifier), "__", "objectIdentifier"], "postprocess":  (d) => {
+    {"name": "objectStatement", "symbols": [(lexer.has("newObject") ? {type: "newObject"} : newObject), "_", (lexer.has("identifier") ? {type: "identifier"} : identifier), "__", "objectIdentifier"], "postprocess":  (d) => {
         	return {
         		//"@action" : 'new',
         		"@new" : {
@@ -75,7 +75,7 @@ var grammar = {
         		}
         	}
         }},
-    {"name": "objectStatement", "symbols": [(lexer.has("newObject") ? {type: "newObject"} : newObject), "__", (lexer.has("identifier") ? {type: "identifier"} : identifier), "__", "objectIdentifier", "__", "objExpression"], "postprocess":  (d) => {
+    {"name": "objectStatement", "symbols": [(lexer.has("newObject") ? {type: "newObject"} : newObject), "_", (lexer.has("identifier") ? {type: "identifier"} : identifier), "__", "objectIdentifier", "__", "objExpression"], "postprocess":  (d) => {
         	return {
         		//"@action" : 'new',
         		"@new" : {
@@ -85,7 +85,7 @@ var grammar = {
         		}
         	}
         }},
-    {"name": "objectStatement", "symbols": [(lexer.has("setObject") ? {type: "setObject"} : setObject), "__", (lexer.has("identifier") ? {type: "identifier"} : identifier), "__", "objExpression"], "postprocess":  (d) => {	
+    {"name": "objectStatement", "symbols": [(lexer.has("setObject") ? {type: "setObject"} : setObject), "_", (lexer.has("identifier") ? {type: "identifier"} : identifier), "__", "objExpression"], "postprocess":  (d) => {	
         	return {
         		"@set" : {
         			"@name" : d[2].value,
@@ -104,6 +104,7 @@ var grammar = {
         } },
     {"name": "globalStatement", "symbols": [(lexer.has("comment") ? {type: "comment"} : comment)], "postprocess": (d) => { return { "@comment" : d[0].value }}},
     {"name": "globalStatement", "symbols": [(lexer.has("print") ? {type: "print"} : print), "_", "objExpression"], "postprocess": (d) => { return { "@print" : d[2] }}},
+    {"name": "globalStatement", "symbols": ["name"], "postprocess": (d) => { return { "@settings" : d[0] }}},
     {"name": "objExpression", "symbols": ["paramElement"], "postprocess": (d) => [d[0]]},
     {"name": "objExpression", "symbols": ["paramElement", "__", "objExpression"], "postprocess": (d) => [d[0], d[2]].flat(Infinity)},
     {"name": "function", "symbols": [(lexer.has("identifier") ? {type: "identifier"} : identifier), "functionArguments"], "postprocess":  (d) => {

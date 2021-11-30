@@ -39,6 +39,7 @@ function parseFile(f){
 	fs.outputJSONSync(`./test/tree/${name}.json`, result, { spaces: 2 });
 }
 
+parseFile('./test/test-dev.txt');
 parseFile('./test/test-rings.txt');
 parseFile('./test/test-errors.txt');
 parseFile('./test/test-small.txt');

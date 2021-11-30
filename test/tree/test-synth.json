@@ -12,6 +12,7 @@
         5000,
         100
       ],
+      "silence": false,
       "tempo": [
         143
       ],
@@ -83,7 +84,7 @@
       ]
     },
     "objects": {
-      "0836YLA0": {
+      "DFBNBT4W": {
         "object": "synth",
         "type": [
           "sine",
@@ -138,11 +139,11 @@
             ]
           ],
           "name": [
-            "0836YLA0"
+            "DFBNBT4W"
           ]
         }
       },
-      "67LKN2GX": {
+      "PW7FFI01": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -184,7 +185,7 @@
             ]
           ],
           "name": [
-            "67LKN2GX"
+            "PW7FFI01"
           ]
         }
       },

@@ -80,7 +80,7 @@ function keywordBindings(dict, obj){
 }
 
 // code accepted global parameters
-const globals = 'tempo signature volume scale root randomSeed highPass lowPass silence'.split(' ');
+const globals = 'tempo signature volume scale root randomSeed highPass lowPass silence sound'.split(' ');
 
 // code defaults
 let code = {
@@ -93,7 +93,7 @@ let code = {
 		'randomSeed' : [ 0 ],
 		'highPass' : [ 20000, 0 ],
 		'lowPass' : [ 1, 0 ],
-		// 'silence' : false,
+		'silence' : false,
 	},
 	'variables' : {},
 	'objects' : {},
@@ -127,7 +127,7 @@ function traverseTree(tree, code, level){
 			// console.log('@global', el);
 			Object.keys(el).forEach((k) => {
 				// console.error("Unknown function:", JSON.stringify(el[k]));
-				ccode = map[k](ccode, el[k]);
+				ccode = map[k](ccode, el[k], '', '@setting');
 			});
 			return ccode;
 		},
@@ -149,6 +149,16 @@ function traverseTree(tree, code, level){
 			});
 			// console.log(log);
 			// ccode.print = prints;
+			return ccode;
+		},
+		'@settings' : (ccode, el) => {
+			// console.log('@settings', traverseTree(el, ccode));
+			let name = keyBind(traverseTree(el, ccode));
+			if (globals.includes(name)){
+				ccode.global[name] = true;
+			} else {
+				ccode.errors.push(`Unkown setting name: ${name}`);
+			}
 			return ccode;
 		},
 		'@list' : (ccode, el) => {
@@ -262,7 +272,7 @@ function traverseTree(tree, code, level){
 		},
 		'@functions' : (ccode, el, inst, level) => {
 			// add all functions to object or parse for settings
-			// console.log('@funcs', ccode);			
+			// console.log('@f', ccode, '@e', el, '@i', inst, '@l', level);
 			if (level === '@setting'){
 				// set arguments from global settings
 				let args = [];
@@ -351,7 +361,6 @@ function traverseTree(tree, code, level){
 		},
 		'@identifier' : (ccode, el) => {
 			// console.log('@identifier', ccode, el);
-
 			if (code.variables[el]){
 				return code.variables[el];
 			}
@@ -368,10 +377,7 @@ function traverseTree(tree, code, level){
 		},
 		'@note' : (ccode, el) => {
 			return el;
-		},
-		// '@comment' : (ccode, el) => {
-		// 	return;
-		// }
+		}
 	}
 
 	if (Array.isArray(tree)) {

@@ -382,7 +382,8 @@ const functionMap = {
 	// Translate Methods
 	//
 	'tempo' : (...v) => {
-		return TL.setTempo(v[0]);
+		TL.setTempo(v[0]);
+		return TL.getTempo();
 	},
 	'scale' : (...v) => {
 		TL.setScale(...v);

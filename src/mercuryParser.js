@@ -46,11 +46,9 @@ function mercuryParser(code){
 				syntaxTree['@main'].push(parser.results[0]);
 			} catch (e) {
 				// console.error(e);
-				// column: ${e.token.col}
-				
-				let err = `Syntax error at line ${Number(l)+1} col ${e.offset}`;
+				let err = `Error at line ${Number(l)+1}`;
 				try {
-					err += `: Unexpected ${e.token.type}: ${e.token.value} at ${lines[l].slice(0, e.token.offset)}${e.token.text}<-`;
+					err += `: Unexpected ${e.token.type}: '${e.token.value}' at ${lines[l].slice(0, e.token.offset)}${e.token.text}<-`;
 				} catch (e) {}
 
 				if (DEBUG){

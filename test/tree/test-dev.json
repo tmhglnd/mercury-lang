@@ -1,0 +1,35 @@
+{
+  "parseTree": {
+    "global": {
+      "randomSeed": [
+        0
+      ],
+      "highPass": [
+        20000,
+        0
+      ],
+      "lowPass": [
+        1,
+        0
+      ],
+      "silence": true
+    },
+    "variables": {},
+    "objects": {},
+    "groups": {},
+    "print": [],
+    "comments": []
+  },
+  "syntaxTree": {
+    "@main": [
+      {
+        "@global": {
+          "@settings": {
+            "@identifier": "silence"
+          }
+        }
+      }
+    ]
+  },
+  "errors": []
+}
