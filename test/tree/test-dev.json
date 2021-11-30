@@ -31,5 +31,7 @@
       }
     ]
   },
-  "errors": []
+  "errors": [
+    "Error at line 2"
+  ]
 }

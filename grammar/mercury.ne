@@ -24,18 +24,20 @@ const lexer = moo.compile({
 	seperator:	/,/,
 	//newLine:	/[&;]/,
 	
-	//note:		/[a-gA-G](?:[0-9])?(?:#+|b+|x)?/,
+	//note:	/[a-gA-G](?:[0-9])?(?:#+|b+|x)?/,
 	number:		/[+-]?(?:[0-9]|[0-9]+)(?:\.[0-9]+)?(?:[eE][-+]?[0-9]+)?\b/,
-	// hex:		/0x[0-9a-f]+/,
+	//hex:		/0x[0-9a-f]+/,
 	
 	divider:	/[/:]/,
+
+	//timevalue:	/[nm]/,
 
 	lParam:		'(',
 	rParam:		')',
 	lArray:		'[',
 	rArray:		']',
-	// lFunc:		'{',
-	// rFunc:		'}'
+	//lFunc:		'{',
+	//rFunc:		'}'
 	
 	string:		{ 
 					match: /["'`](?:\\["\\]|[^\n"'``])*["'`]/, 
@@ -46,8 +48,8 @@ const lexer = moo.compile({
 	//identifier:	/[a-zA-Z\_\-][^\s]*/,
 	identifier:	/[^0-9\s][^\s\(\)\[\]]*/,
 
-	// signal:		/~(?:\\["\\]|[^\n"\\ \t])+/,
-	// osc:		/\/(?:\\["\\]|[^\n"\\ \t])*/,
+	//signal:		/~(?:\\["\\]|[^\n"\\ \t])+/,
+	//osc:		/\/(?:\\["\\]|[^\n"\\ \t])*/,
 
 	ws:			/[ \t]+/,
 });
@@ -217,6 +219,9 @@ paramElement ->
 	|
 	division
 		{% (d) => d[0] %}
+	# |
+	# timing
+	# 	{% (d) => d[0] %}
 	# |	
 	# %osc
 	# 	{% (d) => { return { "@address" : d[0].value }} %}
@@ -225,6 +230,11 @@ paramElement ->
 division ->
 	%number %divider %number
 		{% (d) => { return IR.division(d) } %}
+
+# a timevalue syntax in the form of \d+[nm](dt.)? (eg. 8n, 16nt, 4nd)
+# timing ->
+# 	%number %timevalue
+# 		{% (d) => { return IR.identifier(d) } %}
 
 # any string or identifier
 # other identifiers: note (c g# eb ax), signal (~)

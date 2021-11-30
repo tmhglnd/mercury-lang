@@ -84,7 +84,7 @@
       ]
     },
     "objects": {
-      "DFBNBT4W": {
+      "PD3MA255": {
         "object": "synth",
         "type": [
           "sine",
@@ -139,11 +139,11 @@
             ]
           ],
           "name": [
-            "DFBNBT4W"
+            "PD3MA255"
           ]
         }
       },
-      "PW7FFI01": {
+      "96FVWDH9": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -185,7 +185,7 @@
             ]
           ],
           "name": [
-            "PW7FFI01"
+            "96FVWDH9"
           ]
         }
       },

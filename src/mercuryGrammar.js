@@ -27,18 +27,20 @@ const lexer = moo.compile({
 	seperator:	/,/,
 	//newLine:	/[&;]/,
 	
-	//note:		/[a-gA-G](?:[0-9])?(?:#+|b+|x)?/,
+	//note:	/[a-gA-G](?:[0-9])?(?:#+|b+|x)?/,
 	number:		/[+-]?(?:[0-9]|[0-9]+)(?:\.[0-9]+)?(?:[eE][-+]?[0-9]+)?\b/,
-	// hex:		/0x[0-9a-f]+/,
+	//hex:		/0x[0-9a-f]+/,
 	
 	divider:	/[/:]/,
+
+	//timevalue:	/[nm]/,
 
 	lParam:		'(',
 	rParam:		')',
 	lArray:		'[',
 	rArray:		']',
-	// lFunc:		'{',
-	// rFunc:		'}'
+	//lFunc:		'{',
+	//rFunc:		'}'
 	
 	string:		{ 
 					match: /["'`](?:\\["\\]|[^\n"'``])*["'`]/, 
@@ -49,8 +51,8 @@ const lexer = moo.compile({
 	//identifier:	/[a-zA-Z\_\-][^\s]*/,
 	identifier:	/[^0-9\s][^\s\(\)\[\]]*/,
 
-	// signal:		/~(?:\\["\\]|[^\n"\\ \t])+/,
-	// osc:		/\/(?:\\["\\]|[^\n"\\ \t])*/,
+	//signal:		/~(?:\\["\\]|[^\n"\\ \t])+/,
+	//osc:		/\/(?:\\["\\]|[^\n"\\ \t])*/,
 
 	ws:			/[ \t]+/,
 });

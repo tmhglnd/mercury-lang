@@ -32,7 +32,7 @@
       ]
     },
     "objects": {
-      "F7QOX8PK": {
+      "B5359QN8": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -86,7 +86,7 @@
             ]
           ],
           "name": [
-            "F7QOX8PK"
+            "B5359QN8"
           ]
         }
       },
@@ -145,7 +145,7 @@
           ]
         }
       },
-      "BFB5TLA1": {
+      "3X8IZNYU": {
         "object": "sample",
         "type": "violin_g",
         "functions": {
@@ -180,7 +180,7 @@
             -0.3
           ],
           "name": [
-            "BFB5TLA1"
+            "3X8IZNYU"
           ]
         }
       }
