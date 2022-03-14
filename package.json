@@ -1,6 +1,6 @@
 {
   "name": "mercury-lang",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "description": "Parser for the mercury live coding language",
   "main": "index.js",
   "scripts": {
@@ -36,16 +36,16 @@
   "dependencies": {
     "moo": "^0.5.1",
     "nearley": "^2.20.1",
-    "total-serialism": "^2.0.2"
+    "total-serialism": "^2.1.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/core": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
     "browserify": "^17.0.0",
     "fs-extra": "^9.1.0",
     "nodemon": "^2.0.15",
-    "terser": "^5.10.0",
-    "uglify-js": "^3.14.3"
+    "terser": "^5.12.0",
+    "uglify-js": "^3.15.3"
   }
 }
