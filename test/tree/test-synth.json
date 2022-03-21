@@ -88,7 +88,7 @@
       ]
     },
     "objects": {
-      "B1E4XYIU": {
+      "J607SG9L": {
         "object": "synth",
         "type": [
           "sine",
@@ -143,11 +143,11 @@
             ]
           ],
           "name": [
-            "B1E4XYIU"
+            "J607SG9L"
           ]
         }
       },
-      "EQ5YLM4P": {
+      "KDAWHGRJ": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -189,7 +189,7 @@
             ]
           ],
           "name": [
-            "EQ5YLM4P"
+            "KDAWHGRJ"
           ]
         }
       },

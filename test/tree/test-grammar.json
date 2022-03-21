@@ -189,7 +189,7 @@
       ]
     },
     "objects": {
-      "KBTIP6DU": {
+      "5NYL1PV7": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -218,11 +218,11 @@
           ],
           "add_fx": [],
           "name": [
-            "KBTIP6DU"
+            "5NYL1PV7"
           ]
         }
       },
-      "W217OUN3": {
+      "BRVJNP0V": {
         "object": "sample",
         "type": "hat_min",
         "functions": {
@@ -250,11 +250,11 @@
           ],
           "add_fx": [],
           "name": [
-            "W217OUN3"
+            "BRVJNP0V"
           ]
         }
       },
-      "QGSBHZZN": {
+      "AY6OO6PT": {
         "object": "sample",
         "type": [
           "hat_min",
@@ -287,11 +287,11 @@
           ],
           "add_fx": [],
           "name": [
-            "QGSBHZZN"
+            "AY6OO6PT"
           ]
         }
       },
-      "QZCMEL63": {
+      "7MCBA3PV": {
         "object": "synth",
         "type": [
           "saw",
@@ -323,7 +323,7 @@
           ],
           "add_fx": [],
           "name": [
-            "QZCMEL63"
+            "7MCBA3PV"
           ]
         }
       },

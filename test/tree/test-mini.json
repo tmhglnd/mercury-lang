@@ -32,7 +32,7 @@
       ]
     },
     "objects": {
-      "2S22QTEA": {
+      "80WNX2JF": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -86,7 +86,7 @@
             ]
           ],
           "name": [
-            "2S22QTEA"
+            "80WNX2JF"
           ]
         }
       },
@@ -145,7 +145,7 @@
           ]
         }
       },
-      "WMI2LOAU": {
+      "SCZMMHT4": {
         "object": "sample",
         "type": "violin_g",
         "functions": {
@@ -180,7 +180,7 @@
             -0.3
           ],
           "name": [
-            "WMI2LOAU"
+            "SCZMMHT4"
           ]
         }
       }
