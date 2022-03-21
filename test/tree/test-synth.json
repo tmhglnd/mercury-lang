@@ -88,7 +88,7 @@
       ]
     },
     "objects": {
-      "J607SG9L": {
+      "BNEFTDPV": {
         "object": "synth",
         "type": [
           "sine",
@@ -143,11 +143,11 @@
             ]
           ],
           "name": [
-            "J607SG9L"
+            "BNEFTDPV"
           ]
         }
       },
-      "KDAWHGRJ": {
+      "9034EJIG": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -189,7 +189,7 @@
             ]
           ],
           "name": [
-            "KDAWHGRJ"
+            "9034EJIG"
           ]
         }
       },

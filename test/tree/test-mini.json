@@ -32,7 +32,7 @@
       ]
     },
     "objects": {
-      "80WNX2JF": {
+      "56XRI962": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -86,7 +86,7 @@
             ]
           ],
           "name": [
-            "80WNX2JF"
+            "56XRI962"
           ]
         }
       },
@@ -145,7 +145,7 @@
           ]
         }
       },
-      "SCZMMHT4": {
+      "B3PRIDRT": {
         "object": "sample",
         "type": "violin_g",
         "functions": {
@@ -180,7 +180,7 @@
             -0.3
           ],
           "name": [
-            "SCZMMHT4"
+            "B3PRIDRT"
           ]
         }
       }
