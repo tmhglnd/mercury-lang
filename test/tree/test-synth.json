@@ -88,7 +88,7 @@
       ]
     },
     "objects": {
-      "Y13N25QA": {
+      "3VWVHTEX": {
         "object": "synth",
         "type": [
           "sine",
@@ -143,11 +143,11 @@
             ]
           ],
           "name": [
-            "Y13N25QA"
+            "3VWVHTEX"
           ]
         }
       },
-      "JBK6VH5F": {
+      "I6XW27Z2": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -189,7 +189,7 @@
             ]
           ],
           "name": [
-            "JBK6VH5F"
+            "I6XW27Z2"
           ]
         }
       },
