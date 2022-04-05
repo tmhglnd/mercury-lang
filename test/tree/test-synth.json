@@ -88,7 +88,7 @@
       ]
     },
     "objects": {
-      "3VWVHTEX": {
+      "ZVW3Z887": {
         "object": "synth",
         "type": [
           "sine",
@@ -143,11 +143,11 @@
             ]
           ],
           "name": [
-            "3VWVHTEX"
+            "ZVW3Z887"
           ]
         }
       },
-      "I6XW27Z2": {
+      "WAF0ZZBH": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -189,7 +189,7 @@
             ]
           ],
           "name": [
-            "I6XW27Z2"
+            "WAF0ZZBH"
           ]
         }
       },

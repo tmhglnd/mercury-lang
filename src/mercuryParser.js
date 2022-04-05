@@ -21,7 +21,7 @@ function mercuryParser(code){
 	let parseTree = {};
 	let parser;
 
-	for (let l in lines){
+	for (let l=0; l<lines.length; l++){
 		if (lines[l] !== ''){
 			// create a Parser object from our grammar
 			parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar), { keepHistory: false });
