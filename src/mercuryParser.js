@@ -19,11 +19,12 @@ function mercuryParser(code){
 	let syntaxTree = { '@main' : [] };
 	let errors = [];
 	let parseTree = {};
+	let parser;
 
 	for (let l in lines){
 		if (lines[l] !== ''){
 			// create a Parser object from our grammar
-			let parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar), { keepHistory: false });
+			parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar), { keepHistory: false });
 
 			try {
 				// parse something!
@@ -39,13 +40,16 @@ function mercuryParser(code){
 							console.log(parser.results[i]);
 						}
 					} else {
-						// console.log(parser.results[0]);
+						console.log(parser.results[0]);
 					}
 				}
-				// remove other results
-				parser.results.length = 1;
-				// build the tokenized syntax tree
-				syntaxTree['@main'].push(parser.results[0]);
+				// only if not undefined
+				if (parser.results[0] !== undefined){
+					// build the tokenized syntax tree
+					syntaxTree['@main'].push(parser.results[0]);
+				} else {
+					throw new Error();
+				}
 			} catch (e) {
 				// console.error(e);
 				let err = `Error at line ${Number(l)+1}`;

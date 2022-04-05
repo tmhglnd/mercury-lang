@@ -5,12 +5,12 @@
         0
       ],
       "highPass": [
-        5,
-        0
+        900,
+        1500
       ],
       "lowPass": [
-        18000,
-        0
+        2500,
+        100
       ],
       "silence": true,
       "tempo": [
@@ -20,6 +20,9 @@
       "scale": [
         "major",
         "g#"
+      ],
+      "crossFade": [
+        100
       ]
     },
     "variables": {
@@ -88,12 +91,12 @@
       ],
       "grv": [
         "snare",
-        "kick",
-        "hat",
+        "snare",
         "snare",
         "hat",
+        "snare",
         "kick",
-        "kick",
+        "hat",
         "snare"
       ],
       "arpMel": [
@@ -156,11 +159,11 @@
         20
       ],
       "bsLine2": [
-        10,
         0,
+        10,
         13,
-        3,
-        6
+        6,
+        3
       ],
       "bsLine3": [
         0,
@@ -189,7 +192,7 @@
       ]
     },
     "objects": {
-      "LRWTWWLC": {
+      "WK793A1W": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -218,11 +221,11 @@
           ],
           "add_fx": [],
           "name": [
-            "LRWTWWLC"
+            "WK793A1W"
           ]
         }
       },
-      "ZAOXZRUR": {
+      "47C6DGKJ": {
         "object": "sample",
         "type": "hat_min",
         "functions": {
@@ -250,11 +253,11 @@
           ],
           "add_fx": [],
           "name": [
-            "ZAOXZRUR"
+            "47C6DGKJ"
           ]
         }
       },
-      "YVX6B459": {
+      "ZPLQHK24": {
         "object": "sample",
         "type": [
           "hat_min",
@@ -287,18 +290,20 @@
           ],
           "add_fx": [],
           "name": [
-            "YVX6B459"
+            "ZPLQHK24"
           ]
         }
       },
-      "A3M3B8W4": {
+      "LVV4FS04": {
         "object": "synth",
         "type": [
           "saw",
           "triangle"
         ],
         "functions": {
-          "group": [],
+          "group": [
+            "syn1"
+          ],
           "time": [
             "1",
             0
@@ -323,7 +328,7 @@
           ],
           "add_fx": [],
           "name": [
-            "A3M3B8W4"
+            "LVV4FS04"
           ]
         }
       },
@@ -331,7 +336,9 @@
         "object": "synth",
         "type": "saw",
         "functions": {
-          "group": [],
+          "group": [
+            "syn1"
+          ],
           "time": [
             "1",
             0
@@ -417,6 +424,47 @@
               3
             ],
             2
+          ]
+        }
+      },
+      "K5U4LYSU": {
+        "object": "loop",
+        "type": "amen-break02",
+        "functions": {
+          "group": [],
+          "time": [
+            "1",
+            0
+          ],
+          "speed": [
+            [
+              0.7912152651352506,
+              0.6516008761400924,
+              0.5424318953023765,
+              0.7928088440936151,
+              0.5664274701920032,
+              0.8656974602148211,
+              0.7677442399816562,
+              0.8646209888653175
+            ]
+          ],
+          "env": [
+            -1
+          ],
+          "beat": [
+            1
+          ],
+          "amp": [
+            0.9
+          ],
+          "stretch": [
+            1,
+            1,
+            1
+          ],
+          "add_fx": [],
+          "name": [
+            "K5U4LYSU"
           ]
         }
       },
@@ -584,7 +632,6 @@
       "// apply ",
       "// give ",
       "// TODO",
-      "// make loop amen-break02 speed(randomFloat(8 0.5 0.9))",
       "// new polySynth triangle",
       "// new emitter osc name(fred)",
       "// tempo(143 1000)",
@@ -1587,7 +1634,19 @@
                   "@identifier": "triangle"
                 }
               ]
-            }
+            },
+            "@functions": [
+              {
+                "@function": {
+                  "@name": "group",
+                  "@args": [
+                    {
+                      "@identifier": "syn1"
+                    }
+                  ]
+                }
+              }
+            ]
           }
         }
       },
@@ -1631,6 +1690,16 @@
                   "@args": [
                     {
                       "@identifier": "bob"
+                    }
+                  ]
+                }
+              },
+              {
+                "@function": {
+                  "@name": "group",
+                  "@args": [
+                    {
+                      "@identifier": "syn1"
                     }
                   ]
                 }
@@ -1692,13 +1761,43 @@
         }
       },
       {
-        "@global": {
-          "@comment": "// TODO"
+        "@object": {
+          "@new": {
+            "@inst": "loop",
+            "@type": {
+              "@identifier": "amen-break02"
+            },
+            "@functions": [
+              {
+                "@function": {
+                  "@name": "speed",
+                  "@args": [
+                    {
+                      "@function": {
+                        "@name": "randomFloat",
+                        "@args": [
+                          {
+                            "@number": 8
+                          },
+                          {
+                            "@number": 0.5
+                          },
+                          {
+                            "@number": 0.9
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
         }
       },
       {
         "@global": {
-          "@comment": "// make loop amen-break02 speed(randomFloat(8 0.5 0.9))"
+          "@comment": "// TODO"
         }
       },
       {
@@ -1910,6 +2009,48 @@
         "@global": {
           "@settings": {
             "@identifier": "killAll"
+          }
+        }
+      },
+      {
+        "@object": {
+          "@set": {
+            "@name": "hipass",
+            "@functions": [
+              {
+                "@number": 900
+              },
+              {
+                "@number": 1500
+              }
+            ]
+          }
+        }
+      },
+      {
+        "@object": {
+          "@set": {
+            "@name": "lopass",
+            "@functions": [
+              {
+                "@number": 2500
+              },
+              {
+                "@number": 100
+              }
+            ]
+          }
+        }
+      },
+      {
+        "@object": {
+          "@set": {
+            "@name": "crossFade",
+            "@functions": [
+              {
+                "@number": 100
+              }
+            ]
           }
         }
       }

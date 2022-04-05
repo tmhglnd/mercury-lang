@@ -9,30 +9,21 @@ const IR = require('./mercuryIR.js');
 const lexer = moo.compile({
 	// comment:	/(?:\/\/|\$).*?$/,
 	comment:	/(?:\/\/).*?$/,
-	
-	//instrument: [/synth/, /sample/, /polySynth/, /loop/, /emitter/],
-	/*instrument:	{
-					match: [/synth\ /, /sample\ /, /polySynth\ /, /loop\ /,/emitter\ / ],
-					value: x => x.slice(0, x.length-1)
-				},*/
 
 	list:		[/ring /, /array /, /list /],
-	newObject:	[/new /, /make /, /add(?: |$)/],
+	newObject:	[/new /, /make /],
 	setObject:	[/set /, /apply /, /give /, /send /],
 	print:		[/print /, /post /, /log /],
+	//global:		[/silence/, /mute/, /killAll/],
 
-	//action:		[/ring\ /, /new\ /, /set\ /],
-	//kill:		/kill[\-|_]?[a|A]ll/,
-
-	seperator:	/,/,
+	//seperator:	/,/,
 	//newLine:	/[&;]/,
 	
-	//note:	/[a-gA-G](?:[0-9])?(?:#+|b+|x)?/,
+	//note:		/[a-gA-G](?:[0-9])?(?:#+|b+|x)?/,
 	number:		/[+-]?(?:[0-9]|[0-9]+)(?:\.[0-9]+)?(?:[eE][-+]?[0-9]+)?\b/,
 	//hex:		/0x[0-9a-f]+/,
 	
 	divider:	/[/:]/,
-
 	//timevalue:	/[nm]/,
 
 	lParam:		'(',

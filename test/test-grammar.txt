@@ -90,13 +90,13 @@ new synth saw
 new sample hat_min
 
 new sample [hat_min kick snare tabla]
-new synth [ saw triangle ]
+new synth [ saw triangle ] group(syn1)
 
-make synth saw note([0 5 7 9] 0) name(bob)
+make synth saw note([0 5 7 9] 0) name(bob) group(syn1)
 make sample [kick snare] time(0.25 0.5) speed(0.9) name(alice)
+make loop amen-break02 speed(randomFloat(8 0.5 0.9))
 
 // TODO
-// make loop amen-break02 speed(randomFloat(8 0.5 0.9))
 // new polySynth triangle
 // new emitter osc name(fred)
 
@@ -120,3 +120,6 @@ apply alice pitch([0 7 12 3] 2) shape(1 200) id(newname)
 silence
 mute 
 killAll 
+set hipass 900 1500
+set lopass 2500 100
+set crossFade 100
