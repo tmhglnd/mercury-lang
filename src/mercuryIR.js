@@ -31,7 +31,7 @@ function identifier(obj){
 		// is the identifier a note?
 		return { "@note" : v }
 	} else if (v.match(/^~[^\s]*$/)){
-		// is the identiefer a signal?
+		// is the identifier a signal?
 		return { "@signal" : v }
 	}
 	return { "@identifier" : v };

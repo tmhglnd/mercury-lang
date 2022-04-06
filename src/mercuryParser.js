@@ -21,13 +21,9 @@ function mercuryParser(code){
 	let parseTree = {};
 	let parser;
 
-	// console.log('results:', parser.results.length);
-	// console.log(parser.results[0]);
-
 	for (let l=0; l<lines.length; l++){
 		// let line = lines[l].trim();
-		if (lines[l] !== ''){
-			// console.log('parsing line', lines[l]);
+		if (lines[l] !== ''){	
 			// create a Parser object from our grammar
 			parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar), { keepHistory: false });
 
@@ -36,6 +32,8 @@ function mercuryParser(code){
 				parser.feed(lines[l])
 				// parser.results is an array of possible parsings.
 				if (DEBUG){
+					console.log('parsing:', lines[l]);
+
 					if (parser.results.length > 1){
 						console.log("Warning, ambiguous grammar!");
 						for (var i=0; i<results; i++){

@@ -59,11 +59,12 @@ function traverseTreeIR(tree){
 }
 
 function traverseTree(tree, code, level){
-	// console.log(`tree at level ${level}`, tree, code);
+	// console.log(`traversing`, tree);
 	let map = {
 		'@global' : (ccode, el) => {
 			// if global code (comments, numbers, functions)
-			// console.log('@global', el);
+			// console.table({ '@global' : el });
+			// return traverseTree(ccode, el);
 			Object.keys(el).forEach((k) => {
 				// console.error("Unknown function:", JSON.stringify(el[k]));
 				ccode = map[k](ccode, el[k], '', '@setting');
@@ -71,23 +72,19 @@ function traverseTree(tree, code, level){
 			return ccode;
 		},
 		'@comment' : (ccode, el) => {
+			// console.table({ '@comment' : el });
 			// if a comment, just return
 			ccode.comments.push(el);
 			return ccode;
 		},
 		'@print' : (ccode, el) => {
-			// console.log('@print', traverseTree(el, ccode));
-			// let prints = ccode.print;
-			let log = '> ';
+			// console.log({ '@print' : el });
 			el.map((e) => {
 				Object.keys(e).forEach((k) => {
 					let p = map[k](ccode, e[k]);
-					// log += (Array.isArray(p)? p.flat(Infinity).join(' ') : p) + ' ';
 					ccode.print.push(p);
 				});
 			});
-			// console.log(log);
-			// ccode.print = prints;
 			return ccode;
 		},
 		'@settings' : (ccode, el) => {
@@ -316,21 +313,23 @@ function traverseTree(tree, code, level){
 		},
 		'@note' : (ccode, el) => {
 			return el;
+		},
+		'@signal' : (ccode, el) => {
+			return el;
 		}
 	}
 
 	if (Array.isArray(tree)) {
-		// console.log('array process of', tree);
+		console.log('array process of', tree);
 		tree.map((el) => {
 			Object.keys(el).map((k) => {
 				code = map[k](code, el[k], level);
 			});
-		})
+		});
 	} else {
-		// console.log('object process of', tree);
+		console.log('object process of', tree);
 		if (tree){
 			Object.keys(tree).map((k) => {
-				// console.log(k);
 				code = map[k](code, tree[k], level);
 			});
 		}

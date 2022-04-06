@@ -11,17 +11,17 @@ const util = require('util');
 
 let verbose = false;
 let entryPoint = "../index.js";
-entryPoint = "../build/mercury.es5.min.js";
+// entryPoint = "../build/mercury.es5.min.js";
 
 const Mercury = require(entryPoint);
 
-async function parseFile(f){
+function parseFile(f){
 	let file = fs.readFileSync(f, 'utf-8');
 	let name = path.parse(f).name;
 	console.log(`\nParsing: ${name}\n`);
 
 	// start time of parsing
-	let time = Date.now();	
+	let time = Date.now();
 	// store syntax tree result in variable
 	let result = Mercury(file);
 	// end time of parsing
@@ -29,14 +29,13 @@ async function parseFile(f){
 	console.log(`\nParsed code succesful within: ${time} ms\n`);
 	
 	if (verbose){
-		// console.log(util.inspect(result.parseTree, { showHidden: false, depth: null, colors: true }));
-		console.log(util.inspect(result.syntaxTree, { showHidden: false, depth: null, colors: true }));
+		console.log(util.inspect(result.parseTree, { showHidden: false, depth: null, colors: true }));
+		// console.log(util.inspect(result.syntaxTree, { showHidden: false, depth: null, colors: true }));
 		console.log(util.inspect(result.errors, { showHidden: false, depth: null, colors: true }));
 		// console.log(util.inspect(result, { showHidden: false, depth: null, colors: true }));
 	}
-
 	// write to disk for check
-	fs.outputJSONSync(`./test/tree/${name}.json`, result, { spaces: 2 });
+	fs.outputJSONSync(`./test/tree/${name}.json`, result, { spaces: 1 });
 }
 
 parseFile('./test/test-grammar.txt');
