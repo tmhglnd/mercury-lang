@@ -7,9 +7,9 @@
 
 const nearley = require('nearley');
 // const util = require('util');
-
 const grammar = require('./mercuryGrammar.js');
-const worker = require('./mercuryIR.js');
+// const worker = require('./mercuryIR.js');
+const worker = require('./mercuryTraverser.js');
 
 const DEBUG = false;
 
@@ -21,19 +21,22 @@ function mercuryParser(code){
 	let parseTree = {};
 	let parser;
 
+	// console.log('results:', parser.results.length);
+	// console.log(parser.results[0]);
+
 	for (let l=0; l<lines.length; l++){
+		// let line = lines[l].trim();
 		if (lines[l] !== ''){
+			// console.log('parsing line', lines[l]);
 			// create a Parser object from our grammar
 			parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar), { keepHistory: false });
 
 			try {
 				// parse something!
-				parser.feed(lines[l]);
+				parser.feed(lines[l])
 				// parser.results is an array of possible parsings.
-				let results = parser.results.length;
-
 				if (DEBUG){
-					if (results > 1){
+					if (parser.results.length > 1){
 						console.log("Warning, ambiguous grammar!");
 						for (var i=0; i<results; i++){
 							// console.log("Result", i+1, "of", results, "\n", util.inspect(parser.results[i], { depth: 10 }), "\n");
@@ -64,6 +67,7 @@ function mercuryParser(code){
 			}
 		}
 	}
+
 	// traverse Syntax Tree and create Intermediate Representation
 	parseTree = worker.traverseTreeIR(syntaxTree['@main']);
 

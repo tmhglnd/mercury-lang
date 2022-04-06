@@ -32,39 +32,25 @@
       ]
     },
     "objects": {
-      "7ZW1CEYO": {
+      "J60Y6F0T": {
         "object": "synth",
         "type": "saw",
         "functions": {
-          "group": [
-            "sn",
-            "bass"
-          ],
+          "group": [],
           "time": [
-            "1/4",
-            "1/8"
+            "1",
+            0
           ],
           "note": [
-            [
-              0,
-              2,
-              4,
-              7,
-              9,
-              9,
-              7,
-              4,
-              2,
-              0
-            ],
-            1
+            0,
+            0
           ],
           "env": [
-            1,
-            300
+            5,
+            500
           ],
           "beat": [
-            0.2
+            1
           ],
           "amp": [
             0.7
@@ -73,79 +59,94 @@
             "saw",
             0
           ],
-          "add_fx": [
+          "add_fx": [],
+          "%": [
+            "1/4",
+            "1/8"
+          ],
+          "#": [
             [
-              "reverb",
-              0.9,
-              11
+              0,
+              2,
+              4,
+              7,
+              9,
+              9,
+              7,
+              4,
+              2,
+              0
             ],
-            [
-              "lfo",
-              "1/4",
-              "up"
-            ]
+            1
+          ],
+          "^": [
+            1,
+            300
+          ],
+          "!": [
+            0.2
+          ],
+          "}": [
+            "sn",
+            "bass"
+          ],
+          "~": [
+            "lfo",
+            "1/4",
+            "up"
           ],
           "name": [
-            "7ZW1CEYO"
+            "J60Y6F0T"
           ]
         }
       },
-      "kick": {
+      "8SIVCESZ": {
         "object": "sample",
         "type": "kick_min",
         "functions": {
           "group": [],
           "time": [
-            "1/16"
+            "1",
+            0
           ],
           "speed": [
             1
           ],
           "env": [
-            1,
-            "1/32",
-            2
+            -1
           ],
           "beat": [
-            [
-              1,
-              0,
-              0,
-              0,
-              1,
-              0,
-              0,
-              1,
-              0,
-              0,
-              1,
-              0,
-              0,
-              1,
-              0,
-              0
-            ]
+            1
           ],
           "amp": [
-            1.1
+            0.9
           ],
           "stretch": [
             0,
             1,
             1
           ],
-          "add_fx": [
-            [
-              "drive",
-              4
-            ]
+          "add_fx": [],
+          "%": [
+            "1/16"
+          ],
+          "^": [
+            1,
+            "1/32",
+            2
+          ],
+          "@": [
+            "kick"
+          ],
+          "*": [
+            1.1
           ],
           "name": [
-            "kick"
+            "8SIVCESZ"
           ]
         }
       },
-      "TJ95SJ26": {
+      "PKYOOZ3D": {
         "object": "sample",
         "type": "violin_g",
         "functions": {
@@ -180,16 +181,12 @@
             -0.3
           ],
           "name": [
-            "TJ95SJ26"
+            "PKYOOZ3D"
           ]
         }
       }
     },
-    "groups": {
-      "all": [
-        "kick"
-      ]
-    },
+    "groups": {},
     "print": [],
     "comments": []
   },
@@ -245,7 +242,7 @@
             "@functions": [
               {
                 "@function": {
-                  "@name": "time",
+                  "@name": "%",
                   "@args": [
                     {
                       "@division": "1/4"
@@ -258,7 +255,7 @@
               },
               {
                 "@function": {
-                  "@name": "note",
+                  "@name": "#",
                   "@args": [
                     {
                       "@identifier": "notes"
@@ -271,7 +268,7 @@
               },
               {
                 "@function": {
-                  "@name": "env",
+                  "@name": "^",
                   "@args": [
                     {
                       "@number": 1
@@ -284,7 +281,7 @@
               },
               {
                 "@function": {
-                  "@name": "beat",
+                  "@name": "!",
                   "@args": [
                     {
                       "@number": 0.2
@@ -294,7 +291,7 @@
               },
               {
                 "@function": {
-                  "@name": "group",
+                  "@name": "}",
                   "@args": [
                     {
                       "@identifier": "sn"
@@ -307,7 +304,7 @@
               },
               {
                 "@function": {
-                  "@name": "add_fx",
+                  "@name": "~",
                   "@args": [
                     {
                       "@identifier": "reverb"
@@ -323,7 +320,7 @@
               },
               {
                 "@function": {
-                  "@name": "add_fx",
+                  "@name": "~",
                   "@args": [
                     {
                       "@identifier": "lfo"
@@ -351,7 +348,7 @@
             "@functions": [
               {
                 "@function": {
-                  "@name": "time",
+                  "@name": "%",
                   "@args": [
                     {
                       "@division": "1/16"
@@ -361,7 +358,7 @@
               },
               {
                 "@function": {
-                  "@name": "env",
+                  "@name": "^",
                   "@args": [
                     {
                       "@number": 1
@@ -377,7 +374,7 @@
               },
               {
                 "@function": {
-                  "@name": "name",
+                  "@name": "@",
                   "@args": [
                     {
                       "@identifier": "kick"
@@ -387,7 +384,7 @@
               },
               {
                 "@function": {
-                  "@name": "amp",
+                  "@name": "*",
                   "@args": [
                     {
                       "@number": 1.1
@@ -406,7 +403,7 @@
             "@functions": [
               {
                 "@function": {
-                  "@name": "beat",
+                  "@name": "!",
                   "@args": [
                     {
                       "@function": {
@@ -426,7 +423,7 @@
               },
               {
                 "@function": {
-                  "@name": "add_fx",
+                  "@name": "~",
                   "@args": [
                     {
                       "@identifier": "drive"
@@ -531,5 +528,7 @@
       }
     ]
   },
-  "errors": []
+  "errors": [
+    "Unkown instrument or setting name: kick"
+  ]
 }

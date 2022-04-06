@@ -23,7 +23,7 @@ async function parseFile(f){
 	// start time of parsing
 	let time = Date.now();	
 	// store syntax tree result in variable
-	let result = await Mercury(file);
+	let result = Mercury(file);
 	// end time of parsing
 	time = Date.now() - time;
 	console.log(`\nParsed code succesful within: ${time} ms\n`);
@@ -45,5 +45,5 @@ parseFile('./test/test-dev.txt');
 parseFile('./test/test-small.txt');
 parseFile('./test/test-synth.txt');
 parseFile('./test/test-sample.txt');
+parseFile('./test/test-mini.txt');
 parseFile('./test/test-rings.txt');
-// parseFile('./test/test-mini.txt');

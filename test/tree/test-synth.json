@@ -88,7 +88,7 @@
       ]
     },
     "objects": {
-      "ZVW3Z887": {
+      "UWZ7JZLM": {
         "object": "synth",
         "type": [
           "sine",
@@ -143,11 +143,11 @@
             ]
           ],
           "name": [
-            "ZVW3Z887"
+            "UWZ7JZLM"
           ]
         }
       },
-      "WAF0ZZBH": {
+      "TMJ7DGGW": {
         "object": "sample",
         "type": [
           "kick_min",
@@ -189,7 +189,7 @@
             ]
           ],
           "name": [
-            "WAF0ZZBH"
+            "TMJ7DGGW"
           ]
         }
       },

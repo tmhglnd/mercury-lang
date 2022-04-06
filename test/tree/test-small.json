@@ -23,7 +23,6 @@
         0,
         0,
         0,
-        1,
         0,
         1,
         0,
@@ -31,6 +30,7 @@
         0,
         0,
         1,
+        0,
         0,
         0,
         1,
@@ -74,7 +74,6 @@
               0,
               0,
               0,
-              1,
               0,
               1,
               0,
@@ -82,6 +81,7 @@
               0,
               0,
               1,
+              0,
               0,
               0,
               1,
@@ -161,7 +161,8 @@
       ]
     ],
     "comments": [
-      "// A small example for the Mercury parser"
+      "// A small example for the Mercury parser",
+      "// list notes random 16 0 12)"
     ]
   },
   "syntaxTree": {
@@ -350,10 +351,13 @@
             ]
           }
         }
+      },
+      {
+        "@global": {
+          "@comment": "// list notes random 16 0 12)"
+        }
       }
     ]
   },
-  "errors": [
-    "Error at line 13: Unexpected number: '16' at list notes random 16<-"
-  ]
+  "errors": []
 }

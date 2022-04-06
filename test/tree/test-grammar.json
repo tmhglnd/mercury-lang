@@ -90,12 +90,12 @@
         1
       ],
       "grv": [
+        "snare",
+        "kick",
         "hat",
-        "kick",
-        "kick",
-        "kick",
+        "hat",
         "snare",
-        "snare",
+        "kick",
         "snare",
         "kick"
       ],
@@ -159,11 +159,11 @@
         20
       ],
       "bsLine2": [
-        3,
-        13,
-        0,
+        6,
         10,
-        6
+        13,
+        3,
+        0
       ],
       "bsLine3": [
         0,
@@ -192,7 +192,7 @@
       ]
     },
     "objects": {
-      "OGB2E5NF": {
+      "TJBCQH78": {
         "object": "synth",
         "type": "saw",
         "functions": {
@@ -221,11 +221,11 @@
           ],
           "add_fx": [],
           "name": [
-            "OGB2E5NF"
+            "TJBCQH78"
           ]
         }
       },
-      "LK3CWA8V": {
+      "6AM257HJ": {
         "object": "sample",
         "type": "hat_min",
         "functions": {
@@ -253,11 +253,11 @@
           ],
           "add_fx": [],
           "name": [
-            "LK3CWA8V"
+            "6AM257HJ"
           ]
         }
       },
-      "0KLFZ65F": {
+      "EWNWD2F6": {
         "object": "sample",
         "type": [
           "hat_min",
@@ -290,11 +290,11 @@
           ],
           "add_fx": [],
           "name": [
-            "0KLFZ65F"
+            "EWNWD2F6"
           ]
         }
       },
-      "J47P11MK": {
+      "XWXDCHCK": {
         "object": "synth",
         "type": [
           "saw",
@@ -328,7 +328,7 @@
           ],
           "add_fx": [],
           "name": [
-            "J47P11MK"
+            "XWXDCHCK"
           ]
         }
       },
@@ -427,7 +427,7 @@
           ]
         }
       },
-      "6Q7A4QTG": {
+      "GDDK2TE7": {
         "object": "loop",
         "type": "amen-break02",
         "functions": {
@@ -438,14 +438,14 @@
           ],
           "speed": [
             [
-              0.745186341209713,
-              0.7672261665144394,
-              0.5425774842453719,
-              0.7372775264026058,
-              0.6198151600284458,
-              0.533331996007393,
-              0.553855181708343,
-              0.898498576449049
+              0.7281613508584004,
+              0.5978664047167623,
+              0.7725723065522486,
+              0.806466552297133,
+              0.6786181170363431,
+              0.893614089584206,
+              0.6725226603018217,
+              0.8360326162870252
             ]
           ],
           "env": [
@@ -464,7 +464,7 @@
           ],
           "add_fx": [],
           "name": [
-            "6Q7A4QTG"
+            "GDDK2TE7"
           ]
         }
       },
@@ -606,6 +606,9 @@
       "// Parse note names",
       "// Parse rhythmic division values",
       "// Parse comments",
+      "// # not another comment",
+      "// $ also not a type of comment",
+      "// not a type of comment",
       "// 1.0111213141E5 < commented number",
       "// valid strings start and end with: \"\" '' ``",
       "// or a combination of those works as well",
@@ -973,6 +976,21 @@
       {
         "@global": {
           "@comment": "// Parse comments"
+        }
+      },
+      {
+        "@global": {
+          "@comment": "// # not another comment"
+        }
+      },
+      {
+        "@global": {
+          "@comment": "// $ also not a type of comment"
+        }
+      },
+      {
+        "@global": {
+          "@comment": "// not a type of comment"
         }
       },
       {
@@ -2056,9 +2074,5 @@
       }
     ]
   },
-  "errors": [
-    "Error at line 27: Unexpected identifier: 'not' at # not<-",
-    "Error at line 28: Unexpected identifier: 'also' at $ also<-",
-    "Error at line 29: Unexpected identifier: 'a' at not a<-"
-  ]
+  "errors": []
 }

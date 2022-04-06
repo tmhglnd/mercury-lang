@@ -4,13 +4,13 @@ const moo = require('moo');
 const IR = require('./mercuryIR.js');
 
 const lexer = moo.compile({
-	// comment:	/(?:\/\/|\$).*?$/,
 	comment:	/(?:\/\/).*?$/,
-
-	list:		[/ring /, /array /, /list /],
-	newObject:	[/new /, /make /],
-	setObject:	[/set /, /apply /, /give /, /send /],
-	print:		[/print /, /post /, /log /],
+	//nl:			{ match: /[\n|\r\n]+/, lineBreaks: true },
+	
+	//list:		[/ring /, /array /, /list /],
+	//newObject:	[/new /, /make /],
+	//setObject:	[/set /, /apply /, /give /, /send /],
+	//print:		[/print /, /post /, /log /],
 	//global:		[/silence/, /mute/, /killAll/],
 
 	//seperator:	/,/,
@@ -37,77 +37,74 @@ const lexer = moo.compile({
 	
 	//identifier:	/[a-zA-Z\_\-][a-zA-Z0-9\_\-\.]*/,
 	//identifier:	/[a-zA-Z\_\-][^\s]*/,
-	identifier:	/[^0-9\s][^\s\(\)\[\]]*/,
+	identifier:	{ 
+					match: /[^0-9\s][^\s\(\)\[\]]*/,
+					type: moo.keywords({
+						list: ['ring', 'array', 'list'],
+						newObject: ['new', 'make'],
+						setObject: ['set', 'apply', 'give'],
+						print: ['print', 'post', 'log']
+					})
+				},
 
 	//signal:		/~(?:\\["\\]|[^\n"\\ \t])+/,
 	//osc:		/\/(?:\\["\\]|[^\n"\\ \t])*/,
 
-	ws:			/[ \t]+/,
+	ws:			/[ \t]+/
 });
+
+lexer.next = (next => () => {
+    let tok;
+    while ((tok = next.call(lexer)) && tok.type === "ws") {}
+    return tok;
+})(lexer.next);
+
 %}
 
 # Pass your lexer object using the @lexer option:
 @lexer lexer
 
 main ->
-	_ globalStatement _ %comment:?
-		{% (d) => { return { "@global" : d[1] }} %}
+	globalStatement %comment:?
+		{% (d) => { return { "@global" : d[0] }} %}
 	|
-	_ listStatement _ %comment:?
-		{% (d) => { return { "@list" : d[1] }} %}
+	listStatement %comment:?
+		{% (d) => { return { "@list" : d[0] }} %}
 	|
-	_ objectStatement _ %comment:?
-		{% (d) => { return { "@object" : d[1] }} %}
-	# |
-	# _ %newObject | %setObject | %ring _
-	# 	{% (d) => {
-	# 		console.log('not enough arguments for message');
-	# 		return null; 
-	# 	}%}
+	objectStatement %comment:?
+		{% (d) => { return { "@object" : d[0] }} %}
 
 objectStatement ->
-	%newObject _ %identifier __ objectIdentifier
+	%newObject %identifier objectIdentifier
 		{% (d) => {
 			return {
-				//"@action" : 'new',
 				"@new" : {
-					"@inst" : d[2].value,
-					"@type" : d[4]
+					"@inst" : d[1].value,
+					"@type" : d[2]
 				}
 			}
 		}%}
 	|
-	%newObject _ %identifier __ objectIdentifier __ objExpression
+	%newObject %identifier objectIdentifier objExpression
 		{% (d) => {
 			return {
-				//"@action" : 'new',
 				"@new" : {
-					"@inst" : d[2].value,
-					"@type" : d[4],
-					"@functions" : d[6]
+					"@inst" : d[1].value,
+					"@type" : d[2],
+					"@functions" : d[3]
 				}
 			}
 		}%}
 	|
-	%setObject _ %identifier __ objExpression
+	%setObject %identifier objExpression
 		{% (d) => {	
 			return {
 				"@set" : {
-					"@name" : d[2].value,
-					"@functions" : d[4]
+					"@name" : d[1].value,
+					"@functions" : d[2]
 				}
-				//"@action" : 'set',
 			}
 		}%}
-	# |
-	# %setObject _ name __ objExpression
-	# 	{% (d) => {	
-	# 		return {
-	# 			"@action" : 'set',
-	# 			"@name" : d[2],
-	# 			"@functions" : d[4]
-	# 		}
-	# 	}%}
 
 # an identifier can be a name or a 'string'
 objectIdentifier ->
@@ -119,11 +116,11 @@ objectIdentifier ->
 
 # lists in the form of: list identifier [ params ]
 listStatement ->
-	%list _ %identifier _ paramElement
+	%list %identifier paramElement
 		{% (d) => {
 			return {
-				"@name" : d[2].value,
-				"@params" : d[4]
+				"@name" : d[1].value,
+				"@params" : d[2]
 			}
 		} %}
 
@@ -132,8 +129,8 @@ globalStatement ->
 	%comment
 		{% (d) => { return { "@comment" : d[0].value }} %}
 	|
-	%print _ objExpression
-		{% (d) => { return { "@print" : d[2] }} %}
+	%print objExpression
+		{% (d) => { return { "@print" : d[1] }} %}
 	|
 	name
 		{% (d) => { return { "@settings" : d[0] }} %}
@@ -152,8 +149,8 @@ objExpression ->
 	paramElement
 		{% (d) => [d[0]] %}
 	|
-	paramElement __ objExpression
-		{% (d) => [d[0], d[2]].flat(Infinity) %}
+	paramElement objExpression
+		{% (d) => [d[0], d[1]].flat(Infinity) %}
 
 # ringExpression ->
 # 	paramElement
@@ -174,21 +171,21 @@ function ->
 
 # arguments start with '(', some optional params, end with ')'
 functionArguments ->
-	%lParam _ params:? _ %rParam
-		{% (d) => d[2] %}
+	%lParam params:? %rParam
+		{% (d) => d[1] %}
 
 # array starts with '[', some optional params, ends with ']'
 array ->
-	%lArray _ params:? _ %rArray
-		{% (d) => { return { "@array" : d[2] }} %}
+	%lArray params:? %rArray
+		{% (d) => { return { "@array" : d[1] }} %}
 
 # parameters can be param element or element followed by more params
 params ->
 	paramElement
 		{% (d) => [d[0]] %}
 	|
-	paramElement _ params
-		{% (d) => [d[0], d[2]].flat(Infinity) %}
+	paramElement params
+		{% (d) => [d[0], d[1]].flat(Infinity) %}
 
 # parameter elements can be:
 # number, name, string, array, function, division
@@ -234,8 +231,8 @@ name ->
 		{% (d) => { return { "@string" : d[0].value }} %}
 
 # optional whitespace
-_  -> 		wschar:* 	{% (d) => null %}
+# _  -> 		wschar:* 	{% (d) => null %}
 # mendatory whitespace
-__ -> 		wschar:+ 	{% (d) => null %}
+# __ -> 		wschar:+ 	{% (d) => null %}
 # whitespace
-wschar -> 	%ws 		{% id %}
+# wschar -> 	%ws 		{% id %}
