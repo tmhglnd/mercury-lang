@@ -88,7 +88,7 @@
    ]
   },
   "objects": {
-   "JL5G6ALF": {
+   "GNG5J0FK": {
     "object": "synth",
     "type": [
      "sine",
@@ -143,11 +143,11 @@
       ]
      ],
      "name": [
-      "JL5G6ALF"
+      "GNG5J0FK"
      ]
     }
    },
-   "1AQTXIS2": {
+   "M5CF1QET": {
     "object": "sample",
     "type": [
      "kick_min",
@@ -189,7 +189,7 @@
       ]
      ],
      "name": [
-      "1AQTXIS2"
+      "M5CF1QET"
      ]
     }
    },

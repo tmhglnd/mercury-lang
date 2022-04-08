@@ -6,9 +6,7 @@
 //====================================================================
 
 const nearley = require('nearley');
-// const util = require('util');
 const grammar = require('./mercuryGrammar.js');
-// const worker = require('./mercuryIR.js');
 const worker = require('./mercuryTraverser.js');
 
 const DEBUG = false;
@@ -74,7 +72,7 @@ function mercuryParser(code){
 	// return both the parseTree and syntaxTree in one object
 	return { 
 		'parseTree': parseTree, 
-		'syntaxTree': syntaxTree, 
+		'syntaxTree': syntaxTree,
 		'errors': errors 
 	};
 }

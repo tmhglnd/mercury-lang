@@ -32,7 +32,7 @@
    ]
   },
   "objects": {
-   "OCBVAUBM": {
+   "NVE176OI": {
     "object": "synth",
     "type": "saw",
     "functions": {
@@ -96,11 +96,11 @@
       "up"
      ],
      "name": [
-      "OCBVAUBM"
+      "NVE176OI"
      ]
     }
    },
-   "XVRCANMY": {
+   "EOYX0ZZB": {
     "object": "sample",
     "type": "kick_min",
     "functions": {
@@ -142,11 +142,11 @@
       1.1
      ],
      "name": [
-      "XVRCANMY"
+      "EOYX0ZZB"
      ]
     }
    },
-   "4UU4X4XZ": {
+   "NOVFVJWK": {
     "object": "sample",
     "type": "violin_g",
     "functions": {
@@ -181,7 +181,7 @@
       -0.3
      ],
      "name": [
-      "4UU4X4XZ"
+      "NOVFVJWK"
      ]
     }
    }
