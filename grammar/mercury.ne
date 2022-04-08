@@ -43,8 +43,8 @@ const lexer = moo.compile({
 						list: ['ring', 'array', 'list'],
 						newObject: ['new', 'make'],
 						setObject: ['set', 'apply', 'give'],
-						print: ['print', 'post', 'log'],
-						global: ['silence']
+						print: ['print', 'post', 'log']
+						// global: ['silence']
 					})
 				},
 

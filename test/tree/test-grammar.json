@@ -12,7 +12,7 @@
     2000,
     500
    ],
-   "silence": false,
+   "silence": true,
    "tempo": [
     143,
     1000
@@ -92,12 +92,12 @@
    "grv": [
     "kick",
     "kick",
-    "hat",
+    "snare",
+    "snare",
+    "kick",
     "kick",
     "hat",
-    "hat",
-    "hat",
-    "kick"
+    "snare"
    ],
    "arpMel": [
     0,
@@ -143,16 +143,16 @@
    ],
    "join": [
     [
-     10,
      17,
-     16,
-     16
+     14,
+     19,
+     11
     ],
     [
      5,
-     9,
+     7,
      2,
-     6
+     9
     ]
    ],
    "notes": [
@@ -169,13 +169,13 @@
    ]
   },
   "objects": {
-   "1NRU3B84": {
+   "82GILKOH": {
     "object": "synth",
     "type": "saw",
     "functions": {
      "group": [],
      "time": [
-      "1",
+      "1/1",
       0
      ],
      "note": [
@@ -183,8 +183,8 @@
       0
      ],
      "env": [
-      5,
-      500
+      1,
+      250
      ],
      "beat": [
       1
@@ -204,17 +204,17 @@
       ]
      ],
      "name": [
-      "1NRU3B84"
+      "82GILKOH"
      ]
     }
    },
-   "TYIWD7DC": {
+   "PU3LMW0R": {
     "object": "sample",
     "type": "hat",
     "functions": {
      "group": [],
      "time": [
-      "1",
+      "1/1",
       0
      ],
      "speed": [
@@ -242,11 +242,11 @@
       ]
      ],
      "name": [
-      "TYIWD7DC"
+      "PU3LMW0R"
      ]
     }
    },
-   "00TS6IF1": {
+   "ZNEANL26": {
     "object": "midi",
     "type": "default",
     "functions": {
@@ -275,17 +275,17 @@
       ]
      ],
      "name": [
-      "00TS6IF1"
+      "ZNEANL26"
      ]
     }
    },
-   "YBYG4QYI": {
+   "5DSR0AAP": {
     "object": "loop",
     "type": "amen",
     "functions": {
      "group": [],
      "time": [
-      "1",
+      "1/1",
       0
      ],
      "speed": [
@@ -313,11 +313,11 @@
       ]
      ],
      "name": [
-      "YBYG4QYI"
+      "5DSR0AAP"
      ]
     }
    },
-   "B1TCNAYH": {
+   "BXJ7GVPT": {
     "object": "polySynth",
     "type": "sine",
     "functions": {
@@ -330,11 +330,11 @@
       ]
      ],
      "name": [
-      "B1TCNAYH"
+      "BXJ7GVPT"
      ]
     }
    },
-   "YQQP7MFE": {
+   "TMZHJJHQ": {
     "object": "polySample",
     "type": "kick",
     "functions": {
@@ -347,11 +347,11 @@
       ]
      ],
      "name": [
-      "YQQP7MFE"
+      "TMZHJJHQ"
      ]
     }
    },
-   "EG15XAGO": {
+   "Y2KHOO7C": {
     "object": "osc",
     "type": "address",
     "functions": {
@@ -364,11 +364,11 @@
       ]
      ],
      "name": [
-      "EG15XAGO"
+      "Y2KHOO7C"
      ]
     }
    },
-   "BH87XGPR": {
+   "6U4QFXY0": {
     "object": "sample",
     "type": [
      "hat",
@@ -378,7 +378,7 @@
     "functions": {
      "group": [],
      "time": [
-      "1",
+      "1/1",
       0
      ],
      "speed": [
@@ -406,11 +406,11 @@
       ]
      ],
      "name": [
-      "BH87XGPR"
+      "6U4QFXY0"
      ]
     }
    },
-   "H28ZF7W4": {
+   "BVQ5SUU1": {
     "object": "synth",
     "type": [
      "saw",
@@ -420,7 +420,7 @@
     "functions": {
      "group": [],
      "time": [
-      "1",
+      "1/1",
       0
      ],
      "note": [
@@ -428,8 +428,8 @@
       0
      ],
      "env": [
-      5,
-      500
+      1,
+      250
      ],
      "beat": [
       1
@@ -449,7 +449,7 @@
       ]
      ],
      "name": [
-      "H28ZF7W4"
+      "BVQ5SUU1"
      ]
     }
    },
@@ -549,14 +549,13 @@
      ]
     }
    },
-   "9EQQN1KY": {
+   "LU642BMK": {
     "object": "synth",
     "type": "square",
     "functions": {
      "group": [],
      "time": [
-      "1",
-      0
+      "1/16"
      ],
      "note": [
       [
@@ -571,8 +570,8 @@
       ]
      ],
      "env": [
-      5,
-      500
+      1,
+      250
      ],
      "beat": [
       [
@@ -601,7 +600,7 @@
       ]
      ],
      "name": [
-      "9EQQN1KY"
+      "LU642BMK"
      ]
     }
    }
@@ -1680,6 +1679,16 @@
           }
          ]
         }
+       },
+       {
+        "@function": {
+         "@name": "time",
+         "@args": [
+          {
+           "@division": "1/16"
+          }
+         ]
+        }
        }
       ]
      }
@@ -1850,13 +1859,19 @@
       ]
      }
     }
+   },
+   {
+    "@global": {
+     "@settings": {
+      "@identifier": "silence"
+     }
+    }
    }
   ]
  },
  "errors": [
   "Unknown instrument type: polySynth",
   "Unknown instrument type: polySample",
-  "Unknown instrument type: osc",
-  "Error at line 80: Unexpected global: 'silence' at silence<-"
+  "Unknown instrument type: osc"
  ]
 }

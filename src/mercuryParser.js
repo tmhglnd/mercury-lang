@@ -23,7 +23,7 @@ function mercuryParser(code){
 
 	for (let l=0; l<lines.length; l++){
 		// let line = lines[l].trim();
-		if (lines[l] !== ''){	
+		if (lines[l].trim() !== ''){	
 			// create a Parser object from our grammar
 			parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar), { keepHistory: false });
 

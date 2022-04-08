@@ -53,7 +53,9 @@
    ]
   },
   "objects": {},
-  "groups": {},
+  "groups": {
+   "all": []
+  },
   "print": [],
   "comments": []
  },

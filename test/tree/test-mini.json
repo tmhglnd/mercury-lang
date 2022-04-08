@@ -32,13 +32,13 @@
    ]
   },
   "objects": {
-   "N9WOM048": {
+   "OCBVAUBM": {
     "object": "synth",
     "type": "saw",
     "functions": {
      "group": [],
      "time": [
-      "1",
+      "1/1",
       0
      ],
      "note": [
@@ -46,8 +46,8 @@
       0
      ],
      "env": [
-      5,
-      500
+      1,
+      250
      ],
      "beat": [
       1
@@ -96,17 +96,17 @@
       "up"
      ],
      "name": [
-      "N9WOM048"
+      "OCBVAUBM"
      ]
     }
    },
-   "MO9VKOYX": {
+   "XVRCANMY": {
     "object": "sample",
     "type": "kick_min",
     "functions": {
      "group": [],
      "time": [
-      "1",
+      "1/1",
       0
      ],
      "speed": [
@@ -142,11 +142,11 @@
       1.1
      ],
      "name": [
-      "MO9VKOYX"
+      "XVRCANMY"
      ]
     }
    },
-   "O5TAWDVB": {
+   "4UU4X4XZ": {
     "object": "sample",
     "type": "violin_g",
     "functions": {
@@ -181,12 +181,14 @@
       -0.3
      ],
      "name": [
-      "O5TAWDVB"
+      "4UU4X4XZ"
      ]
     }
    }
   },
-  "groups": {},
+  "groups": {
+   "all": []
+  },
   "print": [],
   "comments": []
  },
@@ -529,6 +531,6 @@
   ]
  },
  "errors": [
-  "Unkown instrument or setting name: kick"
+  "Unkown instrument or setting: kick"
  ]
 }

@@ -12,33 +12,134 @@
     18000,
     0
    ],
-   "silence": false,
-   "tempo": [
-    123
-   ]
+   "silence": false
   },
   "variables": {},
-  "objects": {},
-  "groups": {},
+  "objects": {
+   "V64VQYRN": {
+    "object": "sample",
+    "type": "kick",
+    "functions": {
+     "group": [],
+     "time": [
+      "1/1",
+      0
+     ],
+     "speed": [
+      1
+     ],
+     "env": [
+      -1
+     ],
+     "beat": [
+      [
+       1,
+       0,
+       1,
+       0,
+       1,
+       0,
+       1,
+       0
+      ]
+     ],
+     "amp": [
+      [
+       0.5184141151464882,
+       0.8456604721686379,
+       0.8650703801312254,
+       0.9794607287929904,
+       0.10555747388655705
+      ]
+     ],
+     "stretch": [
+      0,
+      1,
+      1
+     ],
+     "add_fx": [],
+     "name": [
+      "V64VQYRN"
+     ]
+    }
+   }
+  },
+  "groups": {
+   "all": []
+  },
   "print": [],
   "comments": [
-   "// this is a comment",
-   "// this is another comment",
-   "// print 'hello world'",
-   "// print [1 2 3]",
-   "// print random(10)",
-   "// print 'foo bar' 'hello world' [ 1 [ 2 3] 4] spread(4)"
+   "// new sample kick name(myKick) ",
+   "// set myKick shape(1/8 5/4)",
+   "// new sample kick name(myKick) time(1/16) play([1 0 1 1 0]) gain(0.3) ",
+   "// list myList join(coin(8) spread(5) random(5 20 100) choose(4 [100 200 300]))",
+   "// set volume join(randomFloat(1 0.1 1.5) random(1 50 5000))",
+   "// print join(coin(8) spread(5) random(5 20 100) choose(4 [100 200 300]))"
   ]
  },
  "syntaxTree": {
   "@main": [
    {
+    "@global": {
+     "@comment": "// new sample kick name(myKick) "
+    }
+   },
+   {
     "@object": {
-     "@set": {
-      "@name": "tempo",
+     "@new": {
+      "@inst": "sample",
+      "@type": {
+       "@identifier": "kick"
+      },
       "@functions": [
        {
-        "@number": 123
+        "@function": {
+         "@name": "amp",
+         "@args": [
+          {
+           "@function": {
+            "@name": "randomFloat",
+            "@args": [
+             {
+              "@number": 5
+             },
+             {
+              "@number": 0
+             },
+             {
+              "@number": 1
+             }
+            ]
+           }
+          }
+         ]
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "@object": {
+     "@set": {
+      "@name": "all",
+      "@functions": [
+       {
+        "@function": {
+         "@name": "beat",
+         "@args": [
+          {
+           "@function": {
+            "@name": "clave",
+            "@args": [
+             {
+              "@number": 8
+             }
+            ]
+           }
+          }
+         ]
+        }
        }
       ]
      }
@@ -46,32 +147,27 @@
    },
    {
     "@global": {
-     "@comment": "// this is a comment"
+     "@comment": "// set myKick shape(1/8 5/4)"
     }
    },
    {
     "@global": {
-     "@comment": "// this is another comment"
+     "@comment": "// new sample kick name(myKick) time(1/16) play([1 0 1 1 0]) gain(0.3) "
     }
    },
    {
     "@global": {
-     "@comment": "// print 'hello world'"
+     "@comment": "// list myList join(coin(8) spread(5) random(5 20 100) choose(4 [100 200 300]))"
     }
    },
    {
     "@global": {
-     "@comment": "// print [1 2 3]"
+     "@comment": "// set volume join(randomFloat(1 0.1 1.5) random(1 50 5000))"
     }
    },
    {
     "@global": {
-     "@comment": "// print random(10)"
-    }
-   },
-   {
-    "@global": {
-     "@comment": "// print 'foo bar' 'hello world' [ 1 [ 2 3] 4] spread(4)"
+     "@comment": "// print join(coin(8) spread(5) random(5 20 100) choose(4 [100 200 300]))"
     }
    }
   ]

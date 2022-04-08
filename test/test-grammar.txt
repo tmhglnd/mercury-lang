@@ -61,7 +61,7 @@ make synth saw note([0 3 7] 0) time(1/8) shape(1 50) name(bob)
 make sample kick time(0.25 0.5) play([1 0 1 1]) name(alice)
 
 // functions can have functions
-new synth square note(sine(8 5.512 0 12)) play(euclid(8 5))
+new synth square note(sine(8 5.512 0 12)) play(euclid(8 5)) time(1/16) 
 
 // set functions to named instruments
 set bob fx(double) fx(delay 3/16 0.7)

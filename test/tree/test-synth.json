@@ -88,7 +88,7 @@
    ]
   },
   "objects": {
-   "AS01NSXB": {
+   "JL5G6ALF": {
     "object": "synth",
     "type": [
      "sine",
@@ -143,11 +143,11 @@
       ]
      ],
      "name": [
-      "AS01NSXB"
+      "JL5G6ALF"
      ]
     }
    },
-   "1Z9KYO2Y": {
+   "1AQTXIS2": {
     "object": "sample",
     "type": [
      "kick_min",
@@ -189,7 +189,7 @@
       ]
      ],
      "name": [
-      "1Z9KYO2Y"
+      "1AQTXIS2"
      ]
     }
    },
@@ -1350,7 +1350,7 @@
   ]
  },
  "errors": [
-  "Unkown instrument or setting name: sn",
-  "Unkown instrument or setting name: bass"
+  "Unkown instrument or setting: sn",
+  "Unkown instrument or setting: bass"
  ]
 }

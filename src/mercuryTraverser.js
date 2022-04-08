@@ -36,7 +36,9 @@ let code = {
 	},
 	'variables' : {},
 	'objects' : {},
-	'groups' : {},
+	'groups' : {
+		'all' : []
+	},
 	'print' : [],
 	'comments' : [],
 	'errors' : []
@@ -52,42 +54,37 @@ function traverseTreeIR(tree){
 	// deepcopy the code template
 	let ccode = deepCopy(code);
 	tmp.map((t) => {
-		// console.log(t);
+		// console.log('@tree', t);
 		tmp = traverseTree(t, ccode);
 	})
 	return ccode;
 }
 
-function traverseTree(tree, code, level){
+function traverseTree(tree, code, level, obj){
 	// console.log(`traversing`, tree);
 	let map = {
-		'@global' : (ccode, el) => {
+		'@global' : (el, ccode) => {
 			// if global code (comments, numbers, functions)
-			// console.table({ '@global' : el });
-			// return traverseTree(ccode, el);
-			Object.keys(el).forEach((k) => {
-				// console.error("Unknown function:", JSON.stringify(el[k]));
-				ccode = map[k](ccode, el[k], '', '@setting');
-			});
-			return ccode;
+			// console.log({'global =>':el});
+			return traverseTree(el, ccode, '@setting');
 		},
-		'@comment' : (ccode, el) => {
+		'@comment' : (el, ccode) => {
 			// console.table({ '@comment' : el });
 			// if a comment, just return
 			ccode.comments.push(el);
 			return ccode;
 		},
-		'@print' : (ccode, el) => {
-			// console.log({ '@print' : el });
+		'@print' : (el, ccode) => {
+			// console.log({'print =>':el});
 			el.map((e) => {
 				Object.keys(e).forEach((k) => {
-					let p = map[k](ccode, e[k]);
+					let p = map[k](e[k], ccode);
 					ccode.print.push(p);
 				});
 			});
 			return ccode;
 		},
-		'@settings' : (ccode, el) => {
+		'@settings' : (el, ccode) => {
 			// console.log('@settings', traverseTree(el, ccode));
 			let name = keyBind(traverseTree(el, ccode));
 			if (globals.includes(name)){
@@ -97,71 +94,62 @@ function traverseTree(tree, code, level){
 			}
 			return ccode;
 		},
-		'@list' : (ccode, el) => {
+		'@list' : (el, ccode) => {
 			// if list/ring/array is instantiated store in variables
-
-			// console.log('@list', el);
+			// console.log({'list =>':el});
 			let r = traverseTree(el['@params'], ccode, '@list');
 			ccode.variables[el['@name']] = r;
 			return ccode;
 		},
-		'@object' : (ccode, el) => {
+		'@object' : (el, ccode) => {
 			// if object is instantiated or set (new/make, set/apply)
-
-			// console.log('@object', el);
-			Object.keys(el).forEach((k) => {
-				ccode = map[k](ccode, el[k]);
-			});
-			return ccode;
+			// console.log({'@object =>':el});
+			return traverseTree(el, ccode);
 		},
-		'@new' : (ccode, el) => {
+		'@new' : (el, ccode) => {
 			// when new instrument check for instrument 
-			// name and apply functions
-
-			// console.log('@new', el);
-			let inst = map['@inst'](ccode, el['@inst']);
+			// console.log({'@new =>':el});
+			let inst = map['@inst'](el['@inst'], ccode);
 			delete el['@inst'];
-
+			
 			Object.keys(el).forEach((k) => {
-				inst = map[k](ccode, el[k], inst, '@object');
+				inst = map[k](el[k], ccode, '@object', inst);
 			});
-			// generate unique ID name for instrument if no name()
+			// generate unique ID name for object if no name()
 			if (!inst.functions.name){
 				inst.functions.name = [ uniqueID(8) ];
 			}
+			// add object to complete code
 			ccode.objects[inst.functions.name] = inst;
-
 			return ccode;
 		},
-		'@set' : (ccode, el) => {
-			// when an instrument or global parameter is set
-			// check if part of instruments, otherwise check if part of
-			// environment settings, otherwise error log
-
-			// console.log('@set', el);
-			// let name = el['@name'];
+		'@set' : (el, ccode) => {
+			// set instrument, all or global parameters
+			// console.log({'set =>':el});
 			let name = keyBind(el['@name']);
 			delete el['@name'];
 
 			if (ccode.objects[name]){
+				// if part of current instrument objects
 				let inst = ccode.objects[name];
 				Object.keys(el).forEach((k) => {
-					inst = map[k](ccode, el[k], inst, '@object');
+					inst = map[k](el[k], ccode, '@object', inst);
 				});
 				ccode.objects[inst.functions.name] = inst;
 			} else if (name === 'all'){
+				// if set all, set all instrument objects
 				Object.keys(ccode.objects).forEach((o) => {
 					let inst = ccode.objects[o];
 					Object.keys(el).forEach((k) => {
-						inst = map[k](ccode, el[k], inst, '@object');
+						inst = map[k](el[k], ccode, '@object', inst);
 					});
 					ccode.objects[inst.functions.name] = inst;
 				});
-			// } else if (ccode.global[name]){
 			} else if (globals.includes(name)){
+				// if name is part of global settings
 				let args;
 				Object.keys(el).forEach((k) => {
-					args = map[k](ccode, el[k], args, '@setting');
+					args = map[k](el[k], ccode, '@setting', args);
 				});
 				// if name is a total-serialism function
 				if (tsIR[name]){
@@ -173,107 +161,93 @@ function traverseTree(tree, code, level){
 				}
 				ccode.global[name] = args;
 			} else {
-				// console.error(`Unkown instrument or setting name: ${name}`);
-				ccode.errors.push(`Unkown instrument or setting name: ${name}`);
+				ccode.errors.push(`Unkown instrument or setting: ${name}`);
 			}
 			return ccode;
 		},
-		'@inst' : (ccode, el) => {
+		'@inst' : (el, ccode) => {
 			// check instruments for name and then deepcopy to output
 			// if not a valid instrument return empty instrument
-
-			// console.log('@name', ccode, el, level);
-			let obj = el;
+			// console.log({'@inst =>': el});
 			let inst;
-			
-			if (!instruments[obj]){
+			if (!instruments[el]){
 				inst = deepCopy(instruments['empty']);
-				// console.error(`Unknown instrument type: ${obj}`);
-				ccode.errors.push(`Unknown instrument type: ${obj}`);
+				ccode.errors.push(`Unknown instrument type: ${el}`);
 			} else { 
-				inst = deepCopy(instruments[obj]);
+				inst = deepCopy(instruments[el]);
 			}
-			inst.object = obj;
-
+			inst.object = el;
 			return inst;
 		},
-		'@type' : (ccode, el, inst) => {
+		'@type' : (el, ccode, level, inst) => {
 			// return the value of the type, can be identifier, string, array
-
-			// console.log('@type', ccode, el);
-			Object.keys(el).forEach((e) => {
-				inst.type = map[e](ccode, el[e]);
-			});
+			// console.log({'@type':el, '@inst':inst});
+			inst.type = traverseTree(el, ccode);
 			return inst;
 		},
-		'@functions' : (ccode, el, inst, level) => {
+		'@functions' : (el, ccode, level, inst) => {
 			// add all functions to object or parse for settings
-			// console.log('@f', ccode, '@e', el, '@i', inst, '@l', level);
+			// console.log({'@functions =>':el, '@l':level, '@i':inst});
 			if (level === '@setting'){
 				// set arguments from global settings
 				let args = [];
-
 				el.map((e) => {
 					Object.keys(e).map((k) => {
-						args.push(map[k](ccode, e[k]));
+						args.push(map[k](e[k], ccode));
 					});
 				});
 				return args;
 			}
+
 			let funcs = inst.functions;
+			// for every function in functions list
 			el.map((e) => {
 				Object.keys(e).map((k) => {
-					funcs = map[k](ccode, e[k], funcs, level);
+					funcs = map[k](e[k], ccode, '@object', funcs);
 				});
 			});
 			inst.functions = funcs;
-
 			return inst;
 		},
-		'@function' : (ccode, el, funcs, level) => {
+		'@function' : (el, ccode, level, funcs) => {
 			// for every function check if the keyword maps to other
 			// function keyword from keyword bindings.
 			// if function is part of ts library execute and parse results
-
-			// console.log('@func', el);
+			// console.log({'@f':el, '@l':level, '@fs':funcs});
 			let args = [];
 			let func = keyBind(el['@name']);
 
 			if (el['@args'] !== null){
+				// fill arguments if not null
 				el['@args'].map((e) => {
 					Object.keys(e).map((k) => {
-						args.push(map[k](ccode, e[k], level));
+						args.push(map[k](e[k], ccode, '@list'));
 					});
 				});
 			}
-			// console.log('@func', el, '@args', args, '@level', level);
+
 			if (tsIR[func] && level !== '@object'){
+				// if function is part of TS and not in @object level
 				if (args){
 					return tsIR[func](...args);
 				}
 				return tsIR[func]();
-			} else if (level === '@list'){
-				// console.error(`Unknown list function: ${func}`);
+			}
+			else if (level === '@list'){
+				// if not part of TS and in @list level
 				ccode.errors.push(`Unknown list function: ${func}`);
 				return [0];
-			} else if (level === '@object'){
+			} 
+			else if (level === '@object'){
+				// if in @object level ignore TS functions
 				if (func === 'add_fx'){
 					funcs[func].push(args);
 				} else {
 					if (func === 'name'){
-						if (!ccode.groups.all){
-							ccode.groups.all = [];
-						}
 						ccode.groups.all.push(...args);
 					}
 					else if (func === 'group'){
-						// console.log('@group', args);
-						// args.forEach((g) => {
-						// 	if (!ccode.groups[g]){
-						// 		ccode.groups[g] = [];
-						// 	}
-						// });
-						// if (!ccode.groups)
+						// code for group functions
 					}
 					funcs[func] = args;
 				}
@@ -283,54 +257,55 @@ function traverseTree(tree, code, level){
 				return el;
 			}
 		},
-		'@array' : (ccode, el) => {
+		'@array' : (el, ccode) => {
+			// console.log({'@array':el});
 			let arr = [];
 			// if not an empty array parse all items
 			if (el){
 				el.map((e) => {
 					Object.keys(e).map((k) => {
-						arr.push(map[k](ccode, e[k]));
+						arr.push(map[k](e[k], ccode));
 					});
 				});
 			}
 			return arr;
 		},
-		'@identifier' : (ccode, el) => {
-			// console.log('@identifier', ccode, el);
-			if (code.variables[el]){
-				return code.variables[el];
+		'@identifier' : (el, ccode) => {
+			// if identifier is variable return the content
+			if (ccode.variables[el]){
+				return ccode.variables[el];
 			}
 			return el;
 		},
-		'@string' : (ccode, el) => {
+		'@string' : (el) => {
 			return el;
 		},
-		'@number' : (ccode, el) => {
+		'@number' : (el) => {
 			return el;
 		},
-		'@division' : (ccode, el) => {
+		'@division' : (el) => {
 			return el;
 		},
-		'@note' : (ccode, el) => {
+		'@note' : (el) => {
 			return el;
 		},
-		'@signal' : (ccode, el) => {
+		'@signal' : (el) => {
 			return el;
 		}
 	}
 
 	if (Array.isArray(tree)) {
-		console.log('array process of', tree);
+		// console.log('array process of', tree);
 		tree.map((el) => {
 			Object.keys(el).map((k) => {
-				code = map[k](code, el[k], level);
+				code = map[k](el[k], code, level, obj);
 			});
 		});
 	} else {
-		console.log('object process of', tree);
+		// console.log('object process of', tree);
 		if (tree){
 			Object.keys(tree).map((k) => {
-				code = map[k](code, tree[k], level);
+				code = map[k](tree[k], code, level, obj);
 			});
 		}
 	}

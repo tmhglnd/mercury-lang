@@ -2022,7 +2022,9 @@
    ]
   },
   "objects": {},
-  "groups": {},
+  "groups": {
+   "all": []
+  },
   "print": [
    [
     0,
