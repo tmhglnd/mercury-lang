@@ -71,6 +71,7 @@ set alice fx(drive)
 set all fx(reverb 0.5 5)
 
 // set global settings
+set randomSeed 9876
 set tempo 143 1000
 set scale major g#
 set hipass 500 3000

@@ -2,7 +2,7 @@
  "parseTree": {
   "global": {
    "randomSeed": [
-    0
+    9876
    ],
    "highPass": [
     500,
@@ -70,106 +70,10 @@
     ],
     10,
     11
-   ],
-   "beat": [
-    1,
-    0,
-    1,
-    0,
-    1,
-    0,
-    1,
-    0,
-    1,
-    1,
-    0,
-    1,
-    0,
-    1,
-    0,
-    1
-   ],
-   "grv": [
-    "kick",
-    "snare",
-    "kick",
-    "snare",
-    "kick",
-    "kick",
-    "kick",
-    "kick"
-   ],
-   "arpMel": [
-    0,
-    2,
-    4,
-    7,
-    9,
-    9,
-    7,
-    4,
-    2,
-    0,
-    0,
-    2,
-    4,
-    7,
-    9,
-    9,
-    7,
-    4,
-    2,
-    0,
-    7,
-    9,
-    11,
-    14,
-    16,
-    16,
-    14,
-    11,
-    9,
-    7,
-    3,
-    5,
-    7,
-    10,
-    12,
-    12,
-    10,
-    7,
-    5,
-    3
-   ],
-   "join": [
-    [
-     17,
-     19,
-     17,
-     15
-    ],
-    [
-     10,
-     4,
-     5,
-     1
-    ]
-   ],
-   "notes": [
-    "c4",
-    "e4",
-    "f4",
-    "d#4",
-    "gb5",
-    "gb5",
-    "d#4",
-    "f4",
-    "e4",
-    "c4"
    ]
   },
   "objects": {
-   "WYCW4A5S": {
+   "3SDWFQXS": {
     "object": "synth",
     "type": "saw",
     "functions": {
@@ -204,11 +108,11 @@
       ]
      ],
      "name": [
-      "WYCW4A5S"
+      "3SDWFQXS"
      ]
     }
    },
-   "9A4BT8MT": {
+   "MZNQC0B9": {
     "object": "sample",
     "type": "hat",
     "functions": {
@@ -242,11 +146,11 @@
       ]
      ],
      "name": [
-      "9A4BT8MT"
+      "MZNQC0B9"
      ]
     }
    },
-   "BD1H5486": {
+   "FBU7RBBE": {
     "object": "midi",
     "type": "default",
     "functions": {
@@ -275,11 +179,11 @@
       ]
      ],
      "name": [
-      "BD1H5486"
+      "FBU7RBBE"
      ]
     }
    },
-   "S3ATV9SJ": {
+   "BN7RQ95W": {
     "object": "loop",
     "type": "amen",
     "functions": {
@@ -313,11 +217,11 @@
       ]
      ],
      "name": [
-      "S3ATV9SJ"
+      "BN7RQ95W"
      ]
     }
    },
-   "0H7N3G6O": {
+   "XNRYQETS": {
     "object": "polySynth",
     "type": "sine",
     "functions": {
@@ -330,11 +234,11 @@
       ]
      ],
      "name": [
-      "0H7N3G6O"
+      "XNRYQETS"
      ]
     }
    },
-   "BBKQGW1S": {
+   "IQHJGHTE": {
     "object": "polySample",
     "type": "kick",
     "functions": {
@@ -347,11 +251,11 @@
       ]
      ],
      "name": [
-      "BBKQGW1S"
+      "IQHJGHTE"
      ]
     }
    },
-   "9R5YBZZN": {
+   "EC2CIJ43": {
     "object": "osc",
     "type": "address",
     "functions": {
@@ -364,11 +268,11 @@
       ]
      ],
      "name": [
-      "9R5YBZZN"
+      "EC2CIJ43"
      ]
     }
    },
-   "QD4N5JQC": {
+   "GR12MRPC": {
     "object": "sample",
     "type": [
      "hat",
@@ -406,11 +310,11 @@
       ]
      ],
      "name": [
-      "QD4N5JQC"
+      "GR12MRPC"
      ]
     }
    },
-   "NGRRV4WX": {
+   "6WKNM88H": {
     "object": "synth",
     "type": [
      "saw",
@@ -449,7 +353,7 @@
       ]
      ],
      "name": [
-      "NGRRV4WX"
+      "6WKNM88H"
      ]
     }
    },
@@ -549,7 +453,7 @@
      ]
     }
    },
-   "EQEDAQSA": {
+   "XF1NJU6U": {
     "object": "synth",
     "type": "square",
     "functions": {
@@ -600,7 +504,7 @@
       ]
      ],
      "name": [
-      "EQEDAQSA"
+      "XF1NJU6U"
      ]
     }
    }
@@ -708,6 +612,11 @@
    "// print [ /oscString/param /oscString/temp  /anotherOsc/param ]",
    "// lists can have single values, arrays, keywords and strings",
    "// lists can be generated with functions",
+   "// list beat euclid(16 9 0)",
+   "// list grv choose(8 [hat kick snare])",
+   "// list arpMel clone( palin( spread(5 0 12) ) 0 0 7 3 )",
+   "// list join [ random(4 10 20) urn(4) ]",
+   "// array notes palin([c4 e4 f4 d#4 gb5])",
    "// generate a synth, sample, loop or midi",
    "// an instrument can have an array",
    "// instruments can have functions",
@@ -1209,165 +1118,28 @@
     }
    },
    {
-    "@list": {
-     "@name": "beat",
-     "@params": {
-      "@function": {
-       "@name": "euclid",
-       "@args": [
-        {
-         "@number": 16
-        },
-        {
-         "@number": 9
-        },
-        {
-         "@number": 0
-        }
-       ]
-      }
-     }
+    "@global": {
+     "@comment": "// list beat euclid(16 9 0)"
     }
    },
    {
-    "@list": {
-     "@name": "grv",
-     "@params": {
-      "@function": {
-       "@name": "choose",
-       "@args": [
-        {
-         "@number": 8
-        },
-        {
-         "@array": [
-          {
-           "@identifier": "hat"
-          },
-          {
-           "@identifier": "kick"
-          },
-          {
-           "@identifier": "snare"
-          }
-         ]
-        }
-       ]
-      }
-     }
+    "@global": {
+     "@comment": "// list grv choose(8 [hat kick snare])"
     }
    },
    {
-    "@list": {
-     "@name": "arpMel",
-     "@params": {
-      "@function": {
-       "@name": "clone",
-       "@args": [
-        {
-         "@function": {
-          "@name": "palin",
-          "@args": [
-           {
-            "@function": {
-             "@name": "spread",
-             "@args": [
-              {
-               "@number": 5
-              },
-              {
-               "@number": 0
-              },
-              {
-               "@number": 12
-              }
-             ]
-            }
-           }
-          ]
-         }
-        },
-        {
-         "@number": 0
-        },
-        {
-         "@number": 0
-        },
-        {
-         "@number": 7
-        },
-        {
-         "@number": 3
-        }
-       ]
-      }
-     }
+    "@global": {
+     "@comment": "// list arpMel clone( palin( spread(5 0 12) ) 0 0 7 3 )"
     }
    },
    {
-    "@list": {
-     "@name": "join",
-     "@params": {
-      "@array": [
-       {
-        "@function": {
-         "@name": "random",
-         "@args": [
-          {
-           "@number": 4
-          },
-          {
-           "@number": 10
-          },
-          {
-           "@number": 20
-          }
-         ]
-        }
-       },
-       {
-        "@function": {
-         "@name": "urn",
-         "@args": [
-          {
-           "@number": 4
-          }
-         ]
-        }
-       }
-      ]
-     }
+    "@global": {
+     "@comment": "// list join [ random(4 10 20) urn(4) ]"
     }
    },
    {
-    "@list": {
-     "@name": "notes",
-     "@params": {
-      "@function": {
-       "@name": "palin",
-       "@args": [
-        {
-         "@array": [
-          {
-           "@note": "c4"
-          },
-          {
-           "@note": "e4"
-          },
-          {
-           "@note": "f4"
-          },
-          {
-           "@note": "d#4"
-          },
-          {
-           "@note": "gb5"
-          }
-         ]
-        }
-       ]
-      }
-     }
+    "@global": {
+     "@comment": "// array notes palin([c4 e4 f4 d#4 gb5])"
     }
    },
    {
@@ -1786,6 +1558,18 @@
    {
     "@global": {
      "@comment": "// set global settings"
+    }
+   },
+   {
+    "@object": {
+     "@set": {
+      "@name": "randomSeed",
+      "@functions": [
+       {
+        "@number": 9876
+       }
+      ]
+     }
     }
    },
    {
