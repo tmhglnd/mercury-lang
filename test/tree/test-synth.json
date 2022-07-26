@@ -88,7 +88,7 @@
    ]
   },
   "objects": {
-   "A3SKWFIC": {
+   "RETB7V6E": {
     "object": "synth",
     "type": [
      "sine",
@@ -143,11 +143,11 @@
       ]
      ],
      "name": [
-      "A3SKWFIC"
+      "RETB7V6E"
      ]
     }
    },
-   "FEP6LKN2": {
+   "KNAADKDC": {
     "object": "sample",
     "type": [
      "kick_min",
@@ -189,7 +189,7 @@
       ]
      ],
      "name": [
-      "FEP6LKN2"
+      "KNAADKDC"
      ]
     }
    },
@@ -417,6 +417,7 @@
    ]
   },
   "print": [],
+  "display": [],
   "comments": [
    "// ring scl scale()"
   ]
