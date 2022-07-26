@@ -47,7 +47,7 @@ const lexer = moo.compile({
 						newObject: ['new', 'make'],
 						setObject: ['set', 'apply', 'give'],
 						print: ['print', 'post', 'log'],
-						display: ['display']
+						display: ['display', 'view']
 						// global: ['silence']
 					})
 				},
