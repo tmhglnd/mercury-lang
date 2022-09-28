@@ -82,6 +82,16 @@ const objects = {
 			'sync' : 'off',
 			'add_fx' : []
 		}
+	},
+	'input' : {
+		'object' : '',
+		'type' : 'default',
+		'functions' : {
+			'group' : [],
+			'time' : [ '1/1', 0 ],
+			'env' : [ -1 ],
+			'add_fx' : []
+		}
 	}
 }
 module.exports = { objects };
