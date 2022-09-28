@@ -90,6 +90,7 @@ const objects = {
 			'group' : [],
 			'time' : [ '1/1', 0 ],
 			'env' : [ -1 ],
+			'amp' : [ 0.9 ],
 			'add_fx' : []
 		}
 	}
