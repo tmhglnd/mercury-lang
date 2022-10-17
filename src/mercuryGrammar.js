@@ -53,7 +53,7 @@ const lexer = moo.compile({
 				},
 
 	//signal:		/~(?:\\["\\]|[^\n"\\ \t])+/,
-	//osc:		/\/(?:\\["\\]|[^\n"\\ \t])*/,
+	osc:		/\/(?:\\["\\]|[^\n"\\ \t])*/,
 
 	ws:			/[ \t]+/
 });
@@ -137,6 +137,7 @@ var grammar = {
     {"name": "paramElement", "symbols": ["array"], "postprocess": (d) => d[0]},
     {"name": "paramElement", "symbols": ["function"], "postprocess": (d) => d[0]},
     {"name": "paramElement", "symbols": ["division"], "postprocess": (d) => d[0]},
+    {"name": "paramElement", "symbols": [(lexer.has("osc") ? {type: "osc"} : osc)], "postprocess": (d) => { return { "@address" : d[0].value }}},
     {"name": "division", "symbols": [(lexer.has("number") ? {type: "number"} : number), (lexer.has("divider") ? {type: "divider"} : divider), (lexer.has("number") ? {type: "number"} : number)], "postprocess": (d) => { return IR.division(d) }},
     {"name": "name", "symbols": [(lexer.has("identifier") ? {type: "identifier"} : identifier)], "postprocess": (d) => { return IR.identifier(d) }},
     {"name": "name", "symbols": [(lexer.has("string") ? {type: "string"} : string)], "postprocess": (d) => { return { "@string" : d[0].value }}}
