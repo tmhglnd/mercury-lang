@@ -26,7 +26,13 @@ function parseFile(f){
 	let result = Mercury(file);
 	// end time of parsing
 	time = Date.now() - time;
-	console.log(`\nParsed code succesful within: ${time} ms\n`);
+
+	if(result.errors.length == 0){
+		console.log(`\nParsed code succesful within: ${time} ms\n`);
+	}
+	else{
+		console.log(`\nParsed code UNsuccesful, having ${result.errors.length} errors, within: ${time} ms\n`);
+	}
 	
 	if (verbose){
 		console.log(util.inspect(result.parseTree, { showHidden: false, depth: null, colors: true }));
