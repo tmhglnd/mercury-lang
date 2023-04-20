@@ -13,12 +13,7 @@ const DEBUG = false;
 
 function mercuryParser(code){
 	// split multiple lines into array of strings
-	let lines;
-	if(code.includes("\r\n")){
-		lines = code.split('\r\n');
-	}else{
-		lines = code.split('\n');
-	}
+	let lines = code.includes("\r\n")? code.split('\r\n') : code.split('\n');
 	let syntaxTree = { '@main' : [] };
 	let errors = [];
 	let parseTree = {};
