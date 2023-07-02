@@ -15,10 +15,8 @@
    "silence": false
   },
   "variables": {
-   "divs": [
-    "1/4",
-    "1/4.32",
-    "3.14/2.18"
+   "adds": [
+    0
    ]
   },
   "objects": {},
@@ -28,6 +26,7 @@
   "print": [],
   "display": [],
   "comments": [
+   "// list divs [1/4 1/4.32 3.14/2.18]",
    "// list val chromaToRelative([0 2 4])",
    "// new input default time(1/8)",
    "// list prg chordsFigured(I IIm V7 VIsus2)",
@@ -61,21 +60,8 @@
  "syntaxTree": {
   "@main": [
    {
-    "@list": {
-     "@name": "divs",
-     "@params": {
-      "@array": [
-       {
-        "@division": "1/4"
-       },
-       {
-        "@division": "1/4.32"
-       },
-       {
-        "@division": "3.14/2.18"
-       }
-      ]
-     }
+    "@global": {
+     "@comment": "// list divs [1/4 1/4.32 3.14/2.18]"
     }
    },
    {
@@ -86,6 +72,44 @@
    {
     "@global": {
      "@comment": "// new input default time(1/8)"
+    }
+   },
+   {
+    "@list": {
+     "@name": "adds",
+     "@params": {
+      "@function": {
+       "@name": "+",
+       "@args": [
+        {
+         "@array": [
+          {
+           "@number": 1
+          },
+          {
+           "@number": 2
+          },
+          {
+           "@number": 3
+          }
+         ]
+        },
+        {
+         "@array": [
+          {
+           "@number": 10
+          },
+          {
+           "@number": 11
+          },
+          {
+           "@number": 12
+          }
+         ]
+        }
+       ]
+      }
+     }
     }
    },
    {
@@ -220,5 +244,7 @@
    }
   ]
  },
- "errors": []
+ "errors": [
+  "Unknown list function: +"
+ ]
 }

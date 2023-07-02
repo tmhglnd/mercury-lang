@@ -591,6 +591,9 @@ const functionMap = {
 	'multiply' : (...v) => {
 		return Util.multiply(...v);
 	},
+	'mult' : (...v) => {
+		return Util.multiply(...v);
+	},
 	'mul' : (...v) => {
 		return Util.multiply(...v);
 	},
