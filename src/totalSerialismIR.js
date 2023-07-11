@@ -180,7 +180,7 @@ const functionMap = {
 		return Rand.seed(v[0]);
 	},
 	// get the random number generator seed
-	'getSeed' : () => {
+	'getSeed' : (...v) => {
 		return Rand.getSeed();
 	},
 	// generate an array of random integers in range
