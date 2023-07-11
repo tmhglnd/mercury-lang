@@ -177,7 +177,11 @@ const functionMap = {
 	// 
 	// set the random number generator seed
 	'randomSeed' : (...v) => {
-		Rand.seed(v[0]);
+		return Rand.seed(v[0]);
+	},
+	// get the random number generator seed
+	'getSeed' : () => {
+		return Rand.getSeed();
 	},
 	// generate an array of random integers in range
 	'random' : (...v) => {
