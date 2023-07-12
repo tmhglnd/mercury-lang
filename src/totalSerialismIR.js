@@ -180,7 +180,7 @@ const functionMap = {
 		return Rand.seed(v[0]);
 	},
 	// get the random number generator seed
-	'getSeed' : (...v) => {
+	'getSeed' : () => {
 		return Rand.getSeed();
 	},
 	// generate an array of random integers in range
@@ -386,6 +386,10 @@ const functionMap = {
 	// cut a piece of the array and return
 	'cut' : (...v) => {
 		return Mod.slice(...v)[0];
+	},
+	// cut a piece of the array and return the last part
+	'cutLast' : (...v) => {
+		return Mod.slice(...v).pop();
 	},
 	// stretch an array to a specified length, interpolating values
 	'stretch' : (...v) => {

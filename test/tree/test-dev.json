@@ -2,7 +2,7 @@
  "parseTree": {
   "global": {
    "randomSeed": [
-    4839
+    3040
    ],
    "highPass": [
     5,
@@ -20,8 +20,21 @@
    "all": []
   },
   "print": [
+   [
+    0,
+    9,
+    6,
+    9
+   ],
    4839,
-   0
+   [
+    11,
+    3,
+    9,
+    8
+   ],
+   2940,
+   3040
   ],
   "display": [],
   "comments": [
@@ -76,8 +89,18 @@
      "@print": [
       {
        "@function": {
-        "@name": "getSeed",
-        "@args": null
+        "@name": "random",
+        "@args": [
+         {
+          "@number": 4
+         },
+         {
+          "@number": 0
+         },
+         {
+          "@number": 12
+         }
+        ]
        }
       }
      ]
@@ -88,7 +111,90 @@
      "@print": [
       {
        "@function": {
-        "@name": "randomSeed",
+        "@name": "getSeed",
+        "@args": null
+       }
+      }
+     ]
+    }
+   },
+   {
+    "@object": {
+     "@set": {
+      "@name": "randomSeed",
+      "@functions": [
+       {
+        "@number": 2940
+       }
+      ]
+     }
+    }
+   },
+   {
+    "@global": {
+     "@print": [
+      {
+       "@function": {
+        "@name": "random",
+        "@args": [
+         {
+          "@number": 4
+         },
+         {
+          "@number": 0
+         },
+         {
+          "@number": 12
+         }
+        ]
+       }
+      }
+     ]
+    }
+   },
+   {
+    "@global": {
+     "@print": [
+      {
+       "@function": {
+        "@name": "getSeed",
+        "@args": null
+       }
+      }
+     ]
+    }
+   },
+   {
+    "@object": {
+     "@set": {
+      "@name": "randomSeed",
+      "@functions": [
+       {
+        "@function": {
+         "@name": "add",
+         "@args": [
+          {
+           "@function": {
+            "@name": "getSeed",
+            "@args": null
+           }
+          },
+          {
+           "@number": 100
+          }
+         ]
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "@global": {
+     "@print": [
+      {
+       "@function": {
+        "@name": "getSeed",
         "@args": null
        }
       }
