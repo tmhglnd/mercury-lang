@@ -8,6 +8,8 @@ const objects = {
 		'type' : '',
 		'functions' : {
 			'group' : [],
+			'time' : [ '1/1', 0 ],
+			'beat' : [ 1 ],
 			'add_fx' : []
 		}
 	},
@@ -65,7 +67,7 @@ const objects = {
 			'env' : [ -1 ],
 			'beat' : [ 1 ],
 			'amp' : [ 0.9 ],
-			'stretch': [1, 1, 1],
+			'stretch': [ 1, 1, 1 ],
 			'add_fx' : [],
 		}
 	},

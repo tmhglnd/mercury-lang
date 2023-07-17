@@ -39,7 +39,7 @@ function parseFile(f){
 }
 
 // parseFile('./test/test-grammar.txt');
-parseFile('./test/test-dev.txt');
+// parseFile('./test/test-dev.txt');
 // parseFile('./test/test-errors.txt');
 // parseFile('./test/test-small.txt');
 // parseFile('./test/test-synth.txt');

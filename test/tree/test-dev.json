@@ -2,7 +2,7 @@
  "parseTree": {
   "global": {
    "randomSeed": [
-    3040
+    0
    ],
    "highPass": [
     5,
@@ -19,25 +19,17 @@
   "groups": {
    "all": []
   },
-  "print": [
-   [
-    0,
-    9,
-    6,
-    9
-   ],
-   4839,
-   [
-    11,
-    3,
-    9,
-    8
-   ],
-   2940,
-   3040
-  ],
+  "print": [],
   "display": [],
   "comments": [
+   "// set randomSeed 4839",
+   "// print random(4 0 12)",
+   "// print getSeed()",
+   "// set randomSeed 2940",
+   "// print random(4 0 12)",
+   "// print getSeed()",
+   "// set randomSeed add(getSeed() 100)",
+   "// print getSeed()",
    "// list divs [1/4 1/4.32 3.14/2.18]",
    "// list val chromaToRelative([0 2 4])",
    "// new input default time(1/8)",
@@ -73,132 +65,43 @@
  "syntaxTree": {
   "@main": [
    {
-    "@object": {
-     "@set": {
-      "@name": "randomSeed",
-      "@functions": [
-       {
-        "@number": 4839
-       }
-      ]
-     }
+    "@global": {
+     "@comment": "// set randomSeed 4839"
     }
    },
    {
     "@global": {
-     "@print": [
-      {
-       "@function": {
-        "@name": "random",
-        "@args": [
-         {
-          "@number": 4
-         },
-         {
-          "@number": 0
-         },
-         {
-          "@number": 12
-         }
-        ]
-       }
-      }
-     ]
+     "@comment": "// print random(4 0 12)"
     }
    },
    {
     "@global": {
-     "@print": [
-      {
-       "@function": {
-        "@name": "getSeed",
-        "@args": null
-       }
-      }
-     ]
-    }
-   },
-   {
-    "@object": {
-     "@set": {
-      "@name": "randomSeed",
-      "@functions": [
-       {
-        "@number": 2940
-       }
-      ]
-     }
+     "@comment": "// print getSeed()"
     }
    },
    {
     "@global": {
-     "@print": [
-      {
-       "@function": {
-        "@name": "random",
-        "@args": [
-         {
-          "@number": 4
-         },
-         {
-          "@number": 0
-         },
-         {
-          "@number": 12
-         }
-        ]
-       }
-      }
-     ]
+     "@comment": "// set randomSeed 2940"
     }
    },
    {
     "@global": {
-     "@print": [
-      {
-       "@function": {
-        "@name": "getSeed",
-        "@args": null
-       }
-      }
-     ]
-    }
-   },
-   {
-    "@object": {
-     "@set": {
-      "@name": "randomSeed",
-      "@functions": [
-       {
-        "@function": {
-         "@name": "add",
-         "@args": [
-          {
-           "@function": {
-            "@name": "getSeed",
-            "@args": null
-           }
-          },
-          {
-           "@number": 100
-          }
-         ]
-        }
-       }
-      ]
-     }
+     "@comment": "// print random(4 0 12)"
     }
    },
    {
     "@global": {
-     "@print": [
-      {
-       "@function": {
-        "@name": "getSeed",
-        "@args": null
-       }
-      }
-     ]
+     "@comment": "// print getSeed()"
+    }
+   },
+   {
+    "@global": {
+     "@comment": "// set randomSeed add(getSeed() 100)"
+    }
+   },
+   {
+    "@global": {
+     "@comment": "// print getSeed()"
     }
    },
    {

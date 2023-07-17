@@ -4,7 +4,8 @@
   "description": "Parser for the mercury live coding language",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon test/mercury.test.js",
+    "dev-test": "nodemon test/mercury.test.js",
+    "test": "jest test/**.test.js",
     "build": "npm run grammar && npm run graph && npm run clean && npm run bundle && npm run build-es5 && npm run build-min",
     "clean": "rm -rf build",
     "grammar": "nearleyc grammar/mercury.ne -o src/mercuryGrammar.js",
@@ -44,6 +45,7 @@
     "@babel/preset-env": "^7.16.11",
     "browserify": "^17.0.0",
     "fs-extra": "^9.1.0",
+    "jest": "^29.6.1",
     "nodemon": "^2.0.15",
     "terser": "^5.12.1",
     "uglify-js": "^3.15.3"
