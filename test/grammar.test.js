@@ -29,8 +29,8 @@ test('Empty Parse', () => {
 });
 
 test('Parse Numbers', () => {
-	let expected = [ 12,  34, -56, 7.89, 1011.121, 0.4321 ];
-	let code = 'print 012 34 -56 +7.89 1.011121E3 0.4321';
+	let expected = [ 12,  34, -56, 7.89, 1011.121, 0.4321, 12. ];
+	let code = 'print 012 34 -56 +7.89 1.011121E3 0.4321 12.';
 	expect(Mercury(code).parseTree.print).toStrictEqual(expected);
 });
 
@@ -48,8 +48,8 @@ test('Parse Divisions', () => {
 });
 
 test('Parse Strings', () => {
-	let expected = [ 'hello world', 'hello world2' ];
-	let code = `print "hello world" 'hello world2'`;
+	let expected = [ 'hello world', 'hello world2', "hello '3'" ];
+	let code = `print "hello world" 'hello world2' "hello '3'"`;
 	expect(Mercury(code).parseTree.print).toStrictEqual(expected);
 });
 
@@ -65,7 +65,7 @@ test('Parse Lists', () => {
 		l1: [ 1, 2, 3.1415 ],
 		l2: [ 1, 2, [1, 2, 3.1415], 56 ],
 		l3: [ 'a_bcd', 'abc_12', 'abc-12.xyz' ],
-		l4: [ 'hello world', 'foo bar' ],
+		l4: [ "hello 'world'!", 'foo "bar"' ],
 		l5: [ 1, 2, [3, 4], 5, [6, [7, 8], 9], 10, 11]
 	}
 
@@ -74,7 +74,7 @@ test('Parse Lists', () => {
 		list l1 [ 1 2 l0 ]
 		list l2 [ 1 2 l1 56 ]
 		list l3 [ a_bcd abc_12 abc-12.xyz ]
-		list l4 [ "hello world" 'foo bar' ]
+		list l4 [ "hello 'world'!" 'foo "bar"' ]
 		list l5 [ 1 2 [3 4] 5 [6 [7 8] 9] 10 11 ]`
 
 	expect(Mercury(code).parseTree.variables).toStrictEqual(expected);
@@ -118,7 +118,7 @@ test('Global Settings', () => {
 		set lopass 2000 500
 		set crossFade 100`
 	
-	expect(Mercury(code).parseTree.global).toStrictEqual(expected)
+	expect(Mercury(code).parseTree.global).toStrictEqual(expected);
 });
 
 test('Default Synth', () => {

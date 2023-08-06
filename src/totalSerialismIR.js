@@ -28,11 +28,17 @@ const functionMap = {
 	'spreadInclusive' : (...v) => {
 		return Gen.spreadInclusive(...v);
 	},
+	'spreadInc' : (...v) => {
+		return Gen.spreadInclusive(...v);
+	},
 	// generate an array of floats between range (inclusive)
 	'spreadInclusiveFloat' : (...v) => {
 		return Gen.spreadInclusiveFloat(...v);
 	},
 	'spreadInclusiveF' : (...v) => {
+		return Gen.spreadInclusiveFloat(...v);
+	},
+	'spreadIncF' : (...v) => {
 		return Gen.spreadInclusiveFloat(...v);
 	},
 	// generate an array between range (exponentially)

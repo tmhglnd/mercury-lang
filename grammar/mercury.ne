@@ -17,7 +17,8 @@ const lexer = moo.compile({
 	//newLine:	/[&;]/,
 	
 	//note:		/[a-gA-G](?:[0-9])?(?:#+|b+|x)?/,
-	number:		/[+-]?(?:[0-9]|[0-9]+)(?:\.[0-9]+)?(?:[eE][-+]?[0-9]+)?\b/,
+	//number:		/[+-]?(?:[0-9]|[0-9]+)(?:\.[0-9]+)?(?:[eE][-+]?[0-9]+)?\b/,
+	number:		/[+-]?(?:[0-9]+)(?:\.[0-9]*)?(?:[eE][-+]?[0-9]+)?/,
 	//hex:		/0x[0-9a-f]+/,
 	
 	divider:	/[/:]/,
@@ -31,7 +32,8 @@ const lexer = moo.compile({
 	//rFunc:		'}'
 	
 	string:		{ 
-					match: /["'`](?:\\["\\]|[^\n"'``])*["'`]/, 
+					match: /"[^"\n]*"|'[^'\n]*'|`[^\n]*`/, 
+					// match: /["'`](?:\\["\\]|[^\n"'``])*["'`]/, 
 					value: x => x.slice(1, x.length-1)
 				},
 	
@@ -220,6 +222,13 @@ paramElement ->
 division ->
 	%number %divider %number
 		{% (d) => { return IR.division(d) } %}
+
+# osc ->
+# 	%divider (%identifier | %number)
+# 		{% id %}
+# 	|
+# 	%divider (%identifier | %number) osc
+# 		{% id %}
 
 # a timevalue syntax in the form of \d+[nm](dt.)? (eg. 8n, 16nt, 4nd)
 # timing ->
