@@ -66,7 +66,8 @@ test('Parse Lists', () => {
 		l2: [ 1, 2, [1, 2, 3.1415], 56 ],
 		l3: [ 'a_bcd', 'abc_12', 'abc-12.xyz' ],
 		l4: [ "hello 'world'!", 'foo "bar"' ],
-		l5: [ 1, 2, [3, 4], 5, [6, [7, 8], 9], 10, 11]
+		l5: [ 1, 2, [3, 4], 5, [6, [7, 8], 9], 10, 11],
+		l6: []
 	}
 
 	let code = `
@@ -75,7 +76,8 @@ test('Parse Lists', () => {
 		list l2 [ 1 2 l1 56 ]
 		list l3 [ a_bcd abc_12 abc-12.xyz ]
 		list l4 [ "hello 'world'!" 'foo "bar"' ]
-		list l5 [ 1 2 [3 4] 5 [6 [7 8] 9] 10 11 ]`
+		list l5 [ 1 2 [3 4] 5 [6 [7 8] 9] 10 11 ]
+		list l6 []`
 
 	expect(Mercury(code).parseTree.variables).toStrictEqual(expected);
 });

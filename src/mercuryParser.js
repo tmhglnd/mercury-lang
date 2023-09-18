@@ -11,7 +11,7 @@ const worker = require('./mercuryTraverser.js');
 
 const DEBUG = false;
 
-function mercuryParser(code){
+function mercuryParser(code=''){
 	// split multiple lines into array of strings
 	let lines = code.split('\n');
 	let syntaxTree = { '@main' : [] };
