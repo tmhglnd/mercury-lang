@@ -85,7 +85,7 @@ test('Stochastic List Methods', () => {
 	print random(5 12)
 	print random(5 -12 12)`
 	
-	expect(Mercury(code).parseTree.print).toStrictEqual([[1, 0, 1, 0, 1], [10, 6, 5, 7, 2], [-7, 3, 8, 3, -5]]);
+	expect(Mercury(code).parseTree.print).toStrictEqual([[9, 4, 8, 3, 9], [10, 6, 5, 7, 2], [-7, 3, 8, 3, -5]]);
 	
 	code = `
 	set randomSeed 31415
@@ -153,7 +153,7 @@ test('Transform List Methods', () => {
 	print filter([1 2 3 4] 3)
 	`
 
-	expect(Mercury(code).parseTree.print).toStrictEqual([[1, 2, 3, 4, 5, 6],[12, 9, 5, 0],[10, 7, 3, -2],[13, 10, 6, 1],[0, 12, 3, 19, 7],[10, 11, 11, 12, 10],['g', 'e', 'c', undefined],[0, 3, 7, 12, 12, 7, 3, 0],[0, 3, 7, 12, 7, 3],[0, 0, 0, 0, 3, 3, 3, 3, 7, 7, 7, 7],[0, 0, 3, 3, 3, 7, 7],['c', 'c', 'e', 'e', 'e', 'g', 'g'],[4, 3, 2, 1],[3, 4, 1, 2],[2, 3, 4, 1],[1, 2, 4]]);
+	expect(Mercury(code).parseTree.print).toStrictEqual([[1, 2, 3, 4, 5, 6],[12, 9, 5, 0],[10, 7, 3, -2],[13, 10, 6, 1],[0, 12, 3, 19, 7],[10, 11, 11, 12, 10],['g', 'e', 'c', 'c'],[0, 3, 7, 12, 12, 7, 3, 0],[0, 3, 7, 12, 7, 3],[0, 0, 0, 0, 3, 3, 3, 3, 7, 7, 7, 7],[0, 0, 3, 3, 3, 7, 7],['c', 'c', 'e', 'e', 'e', 'g', 'g'],[4, 3, 2, 1],[3, 4, 1, 2],[2, 3, 4, 1],[1, 2, 4]]);
 	
 	code = `
 	print sort(shuffle(spread(5)))
@@ -192,10 +192,19 @@ test('Utility List Methods', () => {
 
 	code = `
 	print sum([1 2 3 4 5])
-	print reduce([1 2 3 4 5])`
-	// print size(spread(5))
-	// print length(coin(8))`
+	print reduce([1 2 3 4 5])
+	print size(spread(5))
+	print euclid(8 size([1 2 3]))`
 	
-	expect(Mercury(code).parseTree.print).toStrictEqual([ 15, 15 ]);
+	expect(Mercury(code).parseTree.print).toStrictEqual([ 15, 15, 5, [1, 0, 0, 1, 0, 0, 1, 0] ]);
+
+	code = `
+	print wrap(spread(7) 2 5)
+	print clip(spread(7) 2 5)
+	print fold(spread(7) 3 5)
+	`
+	
+	expect(Mercury(code).parseTree.print).toStrictEqual([[3, 4, 2, 3, 4, 2, 3], [2, 2, 2, 3, 4, 5, 5], [4, 5, 4, 3, 4, 5, 4]]);
+	
 	// expect(Mercury(code).parseTree.print).toStrictEqual([]);
 });

@@ -601,9 +601,10 @@ const functionMap = {
 	'size' : (v) => {
 		return Util.size(v);
 	},
-	'length' : (v) => {
-		return Util.size(v);
-	},
+	// length unsupported because overwritten by function map to env
+	// 'length' : (v) => {
+	// 	return Util.size(v);
+	// },
 	// add 1 or more values to an array
 	'add' : (...v) => {
 		return Util.add(...v);
