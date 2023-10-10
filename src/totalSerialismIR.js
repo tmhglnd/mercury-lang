@@ -286,10 +286,6 @@ const functionMap = {
 	'copy' : (...v) => {
 		return Mod.duplicate(...v);
 	},
-	// repeat the individual values of an array by a certain amount
-	'repeat' : (...v) => {
-		return Mod.repeat(...v);
-	},
 	// Pad an array with zeroes (or any other value) up to the length specified.
 	'pad' : (...v) => {
 		return Mod.pad(...v);
@@ -352,6 +348,10 @@ const functionMap = {
 	},
 	'mirror' : (...v) => {
 		return Mod.palindrome(...v);
+	},
+	// repeat the individual values of an array by a certain amount
+	'repeat' : (...v) => {
+		return Mod.repeat(...v);
 	},
 	// reverse an array
 	'reverse' : (...v) => {
@@ -589,6 +589,20 @@ const functionMap = {
 	// scale values from an input range to an output range
 	'map' : (...v) => {
 		return Util.map(...v);
+	},
+	// sum the values from an array into one number
+	'sum' : (...v) => {
+		return Util.sum(...v);
+	},
+	'reduce' : (...v) => {
+		return Util.sum(...v);
+	},
+	// return the size of an array
+	'size' : (v) => {
+		return Util.size(v);
+	},
+	'length' : (v) => {
+		return Util.size(v);
 	},
 	// add 1 or more values to an array
 	'add' : (...v) => {

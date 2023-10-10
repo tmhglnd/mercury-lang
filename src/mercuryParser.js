@@ -13,9 +13,10 @@ const DEBUG = false;
 
 function mercuryParser(code=''){
 	// split multiple lines into array of strings
-	let lines = code.includes("\r\n")? code.split('\r\n') : code.split('\n');
+	let lines = code.includes('\r\n')? code.split('\r\n') : code.split('\n');
 	let syntaxTree = { '@main' : [] };
 	let errors = [];
+	let warnings = [];
 	let parseTree = {};
 	let parser;
 
@@ -69,11 +70,15 @@ function mercuryParser(code=''){
 
 	errors = parseTree.errors.concat(errors);
 	delete parseTree.errors;
+	
+	warnings = parseTree.warnings;
+	delete parseTree.warnings;
 	// return both the parseTree and syntaxTree in one object
 	return { 
 		'parseTree': parseTree, 
 		'syntaxTree': syntaxTree,
-		'errors': errors 
+		'errors': errors,
+		'warnings' : warnings
 	};
 }
 exports.mercuryParser = mercuryParser;

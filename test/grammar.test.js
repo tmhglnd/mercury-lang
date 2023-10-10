@@ -23,7 +23,8 @@ test('Empty Parse', () => {
 			'comments' : [],
 		},
 		'syntaxTree' : { '@main' : [] },
-		'errors' : []
+		'errors' : [],
+		'warnings' : []
 	}
 	expect(Mercury('')).toStrictEqual(expected);
 });
@@ -105,11 +106,13 @@ test('Global Settings', () => {
 	let expected = {
 		'tempo' : [ 143, 1000 ],
 		'scale' : ['major', 'g#'],
+		'nonSetting' : [ 999 ],
 		'randomSeed' : [ 9876 ],
 		'highPass' : [ 500, 3000 ],
 		'lowPass' : [ 2000, 500 ],
 		'crossFade' : [ 100 ],
-		'silence' : false,
+		'foobar' : [ [0, 1] ],
+		'silence' : false
 	}
 
 	let code = `
@@ -118,8 +121,11 @@ test('Global Settings', () => {
 		set scale major g#
 		set hipass 500 3000
 		set lopass 2000 500
-		set crossFade 100`
+		set crossFade 100
+		set nonSetting 999
+		set foobar spread(2)`
 	
+	// console.log(Mercury(code).warnings);
 	expect(Mercury(code).parseTree.global).toStrictEqual(expected);
 });
 
@@ -132,10 +138,11 @@ test('Default Synth', () => {
 				'name' : ['s0'],
 				'group' : [],
 				'time' : [ '1/1', 0 ],
+				'beat' : [ 1, -1 ],
 				'note' : [ 0, 0 ],
 				'env' : [ 1, 250 ],
-				'beat' : [ 1 ],
 				'amp' : [ 0.7 ],
+				'pan' : [ 0 ],
 				'wave2' : [ 'saw', 0 ],
 				'add_fx' : [],
 			}
@@ -155,10 +162,14 @@ test('Default Sample', () => {
 				'name' : ['s0'],
 				'group' : [],
 				'time' : [ '1/1', 0 ],
+				'beat' : [ 1, -1 ],
 				'speed' : [ 1 ],
 				'env' : [ -1 ],
-				'beat' : [ 1 ],
+				'beat' : [ 1, -1 ],
 				'amp' : [ 0.9 ],
+				'pan' : [ 0 ],
+				'note' : [ 0, 2 ],
+				'tune' : [ 60 ],
 				'stretch': [0, 1, 1],
 				'add_fx' : [],
 			}
@@ -178,7 +189,11 @@ test('Default Midi', () => {
 				'name' : [ 'm0' ],
 				'group' : [],
 				'time' : [ '1/1', 0 ],
-				'env' : [ 100 ],
+				'beat' : [ 1, -1 ],
+				'amp' : [ 1 ],
+				'note' : [ 0, 0 ],
+				'pan' : [ 0 ],
+				'env' : [ 250 ],
 				'out' : [ 1 ],
 				'chord' : 'off',
 				'sync' : 'off',
@@ -200,6 +215,9 @@ test('Default Input', () => {
 				'name' : [ 'i0' ],
 				'group' : [],
 				'time' : [ '1/1', 0 ],
+				'beat' : [ 1, -1 ],
+				'note' : null,
+				'pan' : [ 0 ],
 				'env' : [ -1 ],
 				'amp' : [ 0.9 ],
 				'add_fx' : []
@@ -221,10 +239,12 @@ test('Default Loop', () => {
 				'group' : [],
 				'time' : [ '1/1', 0 ],
 				'speed' : [ 1 ],
-				// 'note' : [ 0, 0 ],
+				'note' : [ 0, 2 ],
+				'tune' : [ 60 ],
 				'env' : [ -1 ],
-				'beat' : [ 1 ],
+				'beat' : [ 1, -1 ],
 				'amp' : [ 0.9 ],
+				'pan' : [ 0 ],
 				'stretch': [ 1, 1, 1 ],
 				'add_fx' : [],
 			}
@@ -246,8 +266,9 @@ test('Default PolySynth', () => {
 				'time' : [ '1/1', 0 ],
 				'note' : [ 0, 0 ],
 				'env' : [ 1, 250 ],
-				'beat' : [ 1 ],
+				'beat' : [ 1, -1 ],
 				'amp' : [ 0.7 ],
+				'pan' : [ 0 ],
 				'wave2' : [ 'saw', 0 ],
 				'add_fx' : [],
 			}
@@ -264,11 +285,15 @@ test('Default OSC', () => {
 			'object' : 'osc',
 			'type' : 'default',
 			'functions' : {
-				'name' : ['o0'],
+				'name' : [ 'o0' ],
+				'time' : [ '1/1', 0 ],
+				'beat' : [ 1, -1 ],
+				'amp' : [ 1 ],
+				'note' : [ 0, 0 ],
+				'pan' : [ 0 ],
+				'env' : [ 1, 250 ],
 				'group' : [],
 				'add_fx' : [],
-				'time' : [ '1/1', 0 ],
-				'beat' : [ 1 ]
 			}
 		}
 	};
@@ -288,7 +313,8 @@ test('Instruments With Functions', () => {
 				'time' : [ '1/8' ],
 				'note' : [ [0, 3, 7], 0 ],
 				'env' : [ 1, 50 ],
-				'beat' : [ 1 ],
+				'beat' : [ 1, -1 ],
+				'pan' : [ 0 ],
 				'amp' : [ 0.7 ],
 				'wave2' : [ 'saw', 0 ],
 				'add_fx' : [],
@@ -302,8 +328,10 @@ test('Instruments With Functions', () => {
 				'group' : [],
 				'time' : [ 0.25, 0.5 ],
 				'speed' : [ 1 ],
-				// 'note' : [ 0, 0 ],
+				'note' : [ 0, 2 ],
+				'tune' : [ 60 ],
 				'env' : [ -1 ],
+				'pan' : [ 0 ],
 				'beat' : [[ 1, 0, 1, 1 ]],
 				'amp' : [ 0.9 ],
 				'stretch': [0, 1, 1],
@@ -321,6 +349,7 @@ test('Instruments With Functions', () => {
 				'env' : [ 1, 250 ],
 				'beat' : [[ 1, 0, 0, 1, 0 ]],
 				'amp' : [ 0.7 ],
+				'pan' : [ 0 ],
 				'wave2' : [ 'saw', 0 ],
 				'add_fx' : [],
 			}
@@ -334,8 +363,32 @@ test('Instruments With Functions', () => {
 	expect(Mercury(code).parseTree.objects).toStrictEqual(expected);
 });
 
+test('Unkown instrument, not part of defaults', () => {
+	let expected = {
+		s0 : {
+			'object' : 'sound',
+			'type' : 'unique',
+			'functions' : {
+				'name' : ['s0'],
+				'group' : [],
+				'time' : [ '1/1', 0 ],
+				'beat' : [ 1, -1 ],
+				'amp' : [ 1 ],
+				'env' : [ 1, 250 ],
+				'note' : [ 0, 0 ],
+				'pan' : [ 0 ],
+				'add_fx' : []
+			}
+		},
+	}
+
+	let code = `new sound unique name(s0)`;
+	// console.log(Mercury(code).parseTree.objects);
+	expect(Mercury(code).parseTree.objects).toStrictEqual(expected);
+});
+
 test('Chain FX', () => {
-	expected = {
+	let expected = {
 		s0: {
 			object: 'synth',
 			type: 'saw',
@@ -344,8 +397,9 @@ test('Chain FX', () => {
 			  time: [ '1/1', 0 ],
 			  note: [ 0, 0 ],
 			  env: [ 1, 250 ],
-			  beat: [ 1 ],
+			  beat: [ 1, -1 ],
 			  amp: [ 0.7 ],
+			  pan: [ 0 ],
 			  wave2: [ 'saw', 0 ],
 			  add_fx: [ 
 				[ 'drive', 4 ], 
@@ -361,7 +415,7 @@ test('Chain FX', () => {
 });
 
 test('Set FX to named Synths', () => {
-	expected = {
+	let expected = {
 		s0: {
 			object: 'synth',
 			type: [ 'saw', 'triangle', 'sine' ],
@@ -370,8 +424,9 @@ test('Set FX to named Synths', () => {
 			  time: [ '1/1', 0 ],
 			  note: [ 0, 0 ],
 			  env: [ 1, 250 ],
-			  beat: [ 1 ],
+			  beat: [ 1, -1 ],
 			  amp: [ 0.7 ],
+			  pan: [ 0 ],
 			  wave2: [ 'saw', 0 ],
 			  add_fx: [ 
 				[ 'drive', 4 ], 
@@ -384,7 +439,7 @@ test('Set FX to named Synths', () => {
 
 	let code = `
 		new synth [saw triangle sine] name(s0) 
-		set all fx(drive 4) fx(reverb 0.5 5) fx(shift 7)`;
+		set s0 fx(drive 4) fx(reverb 0.5 5) fx(shift 7)`;
 
 	expect(Mercury(code).parseTree.objects).toStrictEqual(expected);
 });

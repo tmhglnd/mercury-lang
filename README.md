@@ -68,6 +68,7 @@ A small code file of Mercury below
 ```java
 // A small example for the Mercury parser
 set tempo 140
+set nonSetting 10
 
 list myBeat euclidean(8 5 1)
 
@@ -212,12 +213,20 @@ console.log(result.syntaxTree);
 }
 ```
 
-...and an `errors` array with encountered syntax errors
+an `errors` array with encountered syntax errors
 
 ```js
 "errors": [
     "Syntax error at line 9 col 19: Unexpected number: 16 at list notes random 16<-"
   ]
+```
+
+...and a `warnings` array with warnings that may cause issues
+
+```js
+"warnings" : [
+	"Warning: Unkown setting name: nonSetting"
+]
 ```
 
 ## NPM dependencies

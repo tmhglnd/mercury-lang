@@ -14,14 +14,14 @@ const tsIR = require('./totalSerialismIR.js').functionMap;
 // mercury IR
 const keyBind = require('./mercuryIR.js').keyBind;
 // included instrument/object defaults
-const instruments = require('../data/objects.js').objects;
+const instruments = require('../data/instrument-defaults.js').instrumentDefaults;
 // mini language, use single characters for keywords and functions
 // const miniLang = require('../data/mini-functions.json');
 
 // code accepted global parameters
 const globals = 'tempo signature amp scale root randomSeed highPass lowPass silence sound crossFade'.split(' ');
 
-// code defaults
+// code defaults and parsetree
 let code = {
 	'global' : {
 		// 'tempo' : [ 90 ],
@@ -42,7 +42,8 @@ let code = {
 	'print' : [],
 	'display' : [],
 	'comments' : [],
-	'errors' : []
+	'errors' : [],
+	'warnings' : []
 }
 
 function deepCopy(o){
@@ -95,7 +96,7 @@ function traverseTree(tree, code, level, obj){
 			if (globals.includes(name)){
 				ccode.global[name] = true;
 			} else {
-				ccode.errors.push(`Unkown setting name: ${name}`);
+				ccode.warnings.push(`Warning: Unkown setting name: ${name}`);
 			}
 			return ccode;
 		},
@@ -150,7 +151,7 @@ function traverseTree(tree, code, level, obj){
 					});
 					ccode.objects[inst.functions.name] = inst;
 				});
-			} else if (globals.includes(name)){
+			} else {
 				// if name is part of global settings
 				let args;
 				Object.keys(el).forEach((k) => {
@@ -164,10 +165,13 @@ function traverseTree(tree, code, level, obj){
 						tsIR[name]();
 					}
 				}
+				if (!globals.includes(name)){
+					ccode.warnings.push(`Warning: Unkown instrument or setting: ${name}`);
+				}
 				ccode.global[name] = args;
-			} else {
-				ccode.errors.push(`Unkown instrument or setting: ${name}`);
-			}
+			} 
+			// else {
+			// }
 			return ccode;
 		},
 		'@inst' : (el, ccode) => {
@@ -177,7 +181,8 @@ function traverseTree(tree, code, level, obj){
 			let inst;
 			if (!instruments[el]){
 				inst = deepCopy(instruments['empty']);
-				ccode.errors.push(`Unknown instrument type: ${el}`);
+				inst.type = el;
+				ccode.warnings.push(`Warning: Unknown instrument type: ${el}`);
 			} else { 
 				inst = deepCopy(instruments[el]);
 			}

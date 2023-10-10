@@ -14,7 +14,7 @@
 // included instrument/object defaults
 // const instruments = require('../data/objects.js').objects;
 // keyword bindings, use custom keywords for functions
-const keywords = require('../data/bind-functions.json');
+const keywords = require('../data/function-aliases.json');
 // mini language, use single characters for keywords and functions
 // const miniLang = require('../data/mini-functions.json');
 

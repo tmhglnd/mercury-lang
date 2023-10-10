@@ -5,8 +5,7 @@
 
 	"ring" : [
 		"list",
-		"array",
-		"items"
+		"array"
 	],
 
 	"set" : [
@@ -15,25 +14,20 @@
 	],
 
 	"amp" : [
-		"g",
-		"gain",
-		"a",
 		"amplitude",
-		"v",
+		"gain",
 		"vol",
 		"volume",
-		"velocity",
-		"vel"
+		"vel",
+		"velocity"
 	],
 
 	"beat" : [
-		"b",
 		"rhythm",
 		"play"
 	],
 
 	"env" : [
-		"e",
 		"envelope",
 		"shape",
 		"transient",
@@ -43,17 +37,15 @@
 	],
 
 	"note" : [
-		"n",
 		"pitch"
 	],
 
 	"time" : [
-		"t",
-		"timing"
+		"timing",
+		"interval"
 	],
 
 	"offset" : [
-		"onset",
 		"position",
 		"start",
 		"startAt",
@@ -61,20 +53,18 @@
 	],
 
 	"pan" : [
-		"p",
 		"panning",
 		"spat",
 		"location"
 	],
 
 	"slide" : [
-		"glide",
 		"portamento",
+		"glide",
 		"porta"
 	],
 
 	"speed" : [
-		"s",
 		"rate",
 		"playback"
 	],
@@ -85,10 +75,10 @@
 	],
 
 	"add_fx" : [
+		"fx",
 		"withFX",
 		"addFX",
 		"effect",
-		"fx",
 		"cc",
 		"change"
 	],
@@ -104,7 +94,6 @@
 	],
 
 	"wave2" : [
-		"w",
 		"osc2",
 		"add_osc"
 	],
@@ -147,7 +136,6 @@
 	], 
 
 	"tempo" : [
-		"pace",
 		"bpm"
 	],
 
@@ -179,6 +167,7 @@
 
 	"silence" : [
 		"mute",
-		"killAll"
+		"killAll",
+		"hush"
 	]
 }

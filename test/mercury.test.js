@@ -27,11 +27,11 @@ function parseFile(f){
 	// end time of parsing
 	time = Date.now() - time;
 
-	if(result.errors.length == 0){
+	if (result.errors.length == 0){
 		console.log(`\nParsed code succesful within: ${time} ms\n`);
 	}
 	else{
-		console.log(`\nParsed code UNsuccesful, having ${result.errors.length} errors, within: ${time} ms\n`);
+		console.log(`\nParsed code unsuccesful, having ${result.errors.length} errors, within: ${time} ms\n`);
 	}
 	
 	if (verbose){

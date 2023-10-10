@@ -10,26 +10,19 @@ const Mercury = require('../index.js');
 test('Generative List Methods', () => {
 	expect(Mercury(`print spread(5 0 12)`).parseTree.print[0]).toStrictEqual([0, 2, 4, 7, 9]);
 
-	// expect(Mercury(`print spreadFloat(5 -1 1)`).parseTree.print[0]).toStrictEqual([-1, -0.6, expect.closeTo(-0.2), 0.2, 0.6]);
-
-	// expect(Mercury(`print spreadF(5 0 2)`).parseTree.print[0]).toEqual([0, 0.4, 0.8, expect.closeTo(1.2), 1.6]);
+	expect(Mercury(`print spreadF(4)`).parseTree.print[0]).toStrictEqual([0, 0.25, 0.5, 0.75]);
 
 	expect(Mercury(`print spread(5 12 0)`).parseTree.print[0]).toStrictEqual([9, 7, 4, 2, 0]);
 
 	expect(Mercury(`print spreadInclusive(5 0 12)`).parseTree.print[0]).toStrictEqual([0, 3, 6, 9, 12]);
 
-	// expect(Mercury(`print spreadInclusiveFloat(5 -1 1)`).parseTree.print[0]).toStrictEqual([-1, -0.5, 0, 0.5, 1]);
-
-	// expect(Mercury(`print spreadInclusiveF(5 0 2)`).parseTree.print[0]).toStrictEqual([0, 0.5, 1, 1.5, 2]);
-
-	// expect(Mercury(`print spreadInclusive(5 12 0)`).parseTree.print[0]).toStrictEqual([12, 9, 6, 3, 0]);
+	expect(Mercury(`print spreadIncF(3)`).parseTree.print[0]).toStrictEqual([0, 0.5, 1]);
 
 	expect(Mercury(`print fill(10 2 15 3 20 4)`).parseTree.print[0]).toStrictEqual([10, 10, 15, 15, 15, 20, 20, 20, 20]);
-
+	
 	expect(Mercury(`print fill(abc 2 xyz 3)`).parseTree.print[0]).toStrictEqual(['abc', 'abc', 'xyz', 'xyz', 'xyz']);
-
-	// list fll3 fill([10 20 2 15 3 20 4])
-	// not supported yet!
+	
+	expect(Mercury(`print fill([10 2 15 3 20 4])`).parseTree.print[0]).toStrictEqual([10, 10, 15, 15, 15, 20, 20, 20, 20]);
 
 	expect(Mercury(`print fill([10 20] 2 [30 40] 3 50 4)`).parseTree.print[0]).toStrictEqual([[10, 20], [10, 20], [30, 40], [30, 40], [30, 40], 50, 50, 50, 50]);
 
@@ -39,9 +32,9 @@ test('Generative List Methods', () => {
 
 	expect(Mercury(`print sine(10 2 0 5)`).parseTree.print[0]).toStrictEqual([2, 4, 3, 1, 0, 2, 4, 3, 1, 0]);
 
-	// expect(Mercury(`print sineFloat(8)`).parseTree.print[0]).toStrictEqual([0, 0.707, 1, 0.707, 0, -0.707, -1, -0.707]);
+	expect(Mercury(`print sineFloat()`).parseTree.print[0]).toStrictEqual([0]);
 
-	// expect(Mercury(`print sineF(12 3 -1 1)`).parseTree.print[0]).toStrictEqual([0, 1, 0, -1, 0, 1, 0, -1, 0, 1, 0, -1]);
+	expect(Mercury(`print sineF()`).parseTree.print[0]).toStrictEqual([0]);
 
 	expect(Mercury(`print cosine(10)`).parseTree.print[0]).toStrictEqual([12, 10, 7, 4, 1, 0, 1, 4, 7, 10]);
 
@@ -49,8 +42,160 @@ test('Generative List Methods', () => {
 
 	expect(Mercury(`print cosine(10 2 0 5)`).parseTree.print[0]).toStrictEqual([5, 3, 0, 0, 3, 5, 3, 0, 0, 3]);
 
-	// expect(Mercury(`print cosineFloat(8)`).parseTree.print[0]).toStrictEqual([1, 0.707, 0, -0.707, -1, -0.707, 0, 0.707]);
+	expect(Mercury(`print cosineFloat()`).parseTree.print[0]).toStrictEqual([1]);
 
-	// expect(Mercury(`print cosineF(12 3 -1 1)`).parseTree.print[0]).toStrictEqual([1, 0, -1, 0, 1, 0, -1, 0, 1, 0, -1, 0]);
+	expect(Mercury(`print cosF()`).parseTree.print[0]).toStrictEqual([1]);
 });
 
+test('Algorithmic List Methods', () => {
+	expect(Mercury(`print euclid(8 3)`).parseTree.print[0]).toStrictEqual([1,0,0,1,0,0,1,0]);
+
+	expect(Mercury(`print hex(8892)`).parseTree.print[0]).toStrictEqual([1,0,0,0,1,0,0,0,1,0,0,1,0,0,1,0]);
+
+	expect(Mercury(`print hex("fb")`).parseTree.print[0]).toStrictEqual([1,1,1,1,1,0,1,1]);
+
+	expect(Mercury(`print fibonacci(8)`).parseTree.print[0]).toStrictEqual([0, 1, 1, 2, 3, 5, 8, 13]);
+
+	expect(Mercury(`print fibonacci(5 7)`).parseTree.print[0]).toStrictEqual([13, 21, 34, 55, 89]);
+
+	expect(Mercury(`print pisano(8)`).parseTree.print[0]).toStrictEqual([0, 1, 1, 2, 3, 5, 0, 5, 5, 2, 7, 1]);
+	
+	expect(Mercury(`print pisano(5 10)`).parseTree.print[0]).toStrictEqual([0, 1, 1, 2, 3, 0, 3, 3, 1, 4]);
+
+	expect(Mercury(`print pell(8)`).parseTree.print[0]).toStrictEqual([0, 1, 2, 5, 12, 29, 70, 169]);
+	
+	expect(Mercury(`print lucas(8)`).parseTree.print[0]).toStrictEqual([2, 1, 3, 4, 7, 11, 18, 29]);
+
+	expect(Mercury(`print threeFibonacci(8)`).parseTree.print[0]).toStrictEqual([0, 1, 3, 10, 33, 109, 360, 1189]);
+
+	expect(Mercury(`print collatz()`).parseTree.print[0]).toStrictEqual([1, 2, 4, 8, 16, 5, 10, 3, 6]);
+	
+	expect(Mercury(`print collatzMod()`).parseTree.print[0]).toStrictEqual([1, 0, 0, 0, 0, 1, 0, 1, 0]);
+});
+
+test('Stochastic List Methods', () => {
+	
+	expect(Mercury(`set randomSeed 1234`).parseTree.global.randomSeed).toStrictEqual([ 1234 ]);
+
+	expect(Mercury(`print getSeed()`).parseTree.print[0]).toStrictEqual(1234);
+	
+	let code = `
+	set randomSeed 31415
+	print random(5)
+	print random(5 12)
+	print random(5 -12 12)`
+	
+	expect(Mercury(code).parseTree.print).toStrictEqual([[1, 0, 1, 0, 1], [10, 6, 5, 7, 2], [-7, 3, 8, 3, -5]]);
+	
+	code = `
+	set randomSeed 31415
+	print drunk(10 5 0 24)
+	print drunk(10 4 0 12 6 false)
+	`
+	
+	expect(Mercury(code).parseTree.print).toStrictEqual([[13, 15, 19, 21, 22, 19, 22, 20, 23, 22], [5, 9, 11, 9, 6, 3, 4, 2, 1, 0]]);
+	
+	code = `
+	set randomSeed 31415
+	print urn(5)
+	print urn(8 4)
+	print urn(8 10 14)`
+	
+	expect(Mercury(code).parseTree.print).toStrictEqual([[9, 3, 6, 2, 11],[2, 3, 1, 0, 1, 3, 2, 0],[12, 13, 10, 11, 10, 11, 13, 12]]);
+	
+	code = `
+	set randomSeed 31415
+	print coin(5)
+	print dice(5)
+	print clave(5)
+	print twelveTone()`
+	
+	expect(Mercury(code).parseTree.print).toStrictEqual([[1, 0, 1, 0, 1], [6, 4, 3, 4, 2], [1, 0, 1, 0, 0], [2, 9, 0, 6, 1, 11, 5, 8, 4, 3, 7, 10]]);
+	
+	code = `
+	set randomSeed 31415
+	print choose(4 spread(10))
+	print pick(4 spread(10))
+	print shuffle(spread(4))
+	print expand([0 3 2 5] 8)
+	`
+
+	expect(Mercury(code).parseTree.print).toStrictEqual([[7, 3, 6, 3], [7, 9, 4, 3], [1, 3, 0, 2], [0, 3, 2, 5, 4, 7, 10, 13]]);
+});
+
+test('Transform List Methods', () => {
+	let code = `
+	print clone([0 3 7] 3 7)
+	print join([1 2 3] [10 11 12])
+	print copy([0 3 7] 3)
+	print pad([3 7 9] 8)
+	print pad([c e g] 8 - 4)
+	`
+
+	expect(Mercury(code).parseTree.print).toStrictEqual([[3, 6, 10, 7, 10, 14],[1, 2, 3, 10, 11, 12],[0, 3, 7, 0, 3, 7, 0, 3, 7],[3, 7, 9, 0, 0, 0, 0, 0], ['-', '-', '-', '-', 'c', 'e', 'g', '-']]);
+
+	code = `
+	print flat([1 [2 3 [ 4 ] 5] 6])
+	print invert([0 3 7 12])
+	print flip([0 3 7 12] 5)
+	print invert([0 3 7 12] 3 10)
+	print lace([0 3 7] [12 19])
+	print lookup([0 1 1 2 0] [10 11 12])
+	print get([8 -5 144 3.14] [c e g])
+	print palin([0 3 7 12])
+	print mirror([0 3 7 12] 1)
+	print repeat([0 3 7] 4)
+	print repeat([0 3 7] [2 3])
+	print repeat([c e g] [2 3])
+	print reverse([1 2 3 4])
+	print rotate([1 2 3 4] 2)
+	print rot([1 2 3 4] -1)
+	print filter([1 2 3 4] 3)
+	`
+
+	expect(Mercury(code).parseTree.print).toStrictEqual([[1, 2, 3, 4, 5, 6],[12, 9, 5, 0],[10, 7, 3, -2],[13, 10, 6, 1],[0, 12, 3, 19, 7],[10, 11, 11, 12, 10],['g', 'e', 'c', undefined],[0, 3, 7, 12, 12, 7, 3, 0],[0, 3, 7, 12, 7, 3],[0, 0, 0, 0, 3, 3, 3, 3, 7, 7, 7, 7],[0, 0, 3, 3, 3, 7, 7],['c', 'c', 'e', 'e', 'e', 'g', 'g'],[4, 3, 2, 1],[3, 4, 1, 2],[2, 3, 4, 1],[1, 2, 4]]);
+	
+	code = `
+	print sort(shuffle(spread(5)))
+	print slice(spread(8) 3)
+	print slice(spread(8) [3 2] 0)
+	print split(spread(8) 3)
+	print split(spread(8) [3 2])
+	print cut(spread(8) 3)
+	print cutLast(spread(8) 3)
+	print spray(spread(5 10 20) euclid(8 5))
+	print stretch([1 10 5] 9)
+	print thin([1 1 2 2 3 3])
+	print unique([10 10 20 20 30 30])`
+
+	expect(Mercury(code).parseTree.print).toStrictEqual([[0, 1, 2, 3, 4], [[0, 1, 2], [3, 4, 5, 6, 7]], [[0, 1, 2], [3, 4]], [[0, 1, 2], [3, 4, 5], [6, 7]], [[0, 1, 2], [3, 4], [5, 6, 7]], [0, 1, 2], [3, 4, 5, 6, 7], [10, 0, 12, 0, 14, 16, 0, 18], [1, 3, 5, 7, 10, 8, 7, 6, 5], [1, 2, 3], [10, 20, 30]]);
+
+});
+
+test('Utility List Methods', () => {
+	let code = `
+	print add([1 2 3 4] [1 2 3])
+	print add([1 [2 3]] [10 [20 30 40]])
+	print subtract([1 2 3 4] [1 2 3])
+	print sub([1 [2 3]] [10 [20 30 40]])
+	print multiply([1 2 3 4] [1 2 3])
+	print mul([1 [2 3]] [10 [20 30 40]])
+	print divide([1 2 3 4] [1 2 3])
+	print div([1 [2 3]] [10 [20 30 40]])
+	print normalize([0 1 2 3 4])
+	print norm([5 [12 [4 17]] 3 1])
+	print snorm([5 [12 [4 17]] 3 1])
+	print mod([-2 [4 [3 7]]] 5)
+	`
+	
+	expect(Mercury(code).parseTree.print).toStrictEqual([[2, 4, 6, 5], [11, [22, 33, 42]], [0, 0, 0, 3], [-9, [-18, -27, -38]], [1, 4, 9, 4], [10, [40, 90, 80]], [1, 1, 1, 4], [0.1, [0.1, 0.1, 0.05]], [0, 0.25, 0.5, 0.75, 1], [0.25, [0.6875, [0.1875, 1]], 0.125, 0], [-0.5, [0.375, [-0.625, 1]], -0.75, -1], [3, [4, [3, 2]]]]);
+
+	code = `
+	print sum([1 2 3 4 5])
+	print reduce([1 2 3 4 5])`
+	// print size(spread(5))
+	// print length(coin(8))`
+	
+	expect(Mercury(code).parseTree.print).toStrictEqual([ 15, 15 ]);
+	// expect(Mercury(code).parseTree.print).toStrictEqual([]);
+});
