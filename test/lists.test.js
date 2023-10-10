@@ -186,9 +186,13 @@ test('Utility List Methods', () => {
 	print norm([5 [12 [4 17]] 3 1])
 	print snorm([5 [12 [4 17]] 3 1])
 	print mod([-2 [4 [3 7]]] 5)
+	print int(spreadF(5 2 4))
+	print floor(spreadF(5 2 4))
+	print ceil(spreadF(5 2 4))
+	print round(spreadF(5 2 4))
 	`
 	
-	expect(Mercury(code).parseTree.print).toStrictEqual([[2, 4, 6, 5], [11, [22, 33, 42]], [0, 0, 0, 3], [-9, [-18, -27, -38]], [1, 4, 9, 4], [10, [40, 90, 80]], [1, 1, 1, 4], [0.1, [0.1, 0.1, 0.05]], [0, 0.25, 0.5, 0.75, 1], [0.25, [0.6875, [0.1875, 1]], 0.125, 0], [-0.5, [0.375, [-0.625, 1]], -0.75, -1], [3, [4, [3, 2]]]]);
+	expect(Mercury(code).parseTree.print).toStrictEqual([[2, 4, 6, 5], [11, [22, 33, 42]], [0, 0, 0, 3], [-9, [-18, -27, -38]], [1, 4, 9, 4], [10, [40, 90, 80]], [1, 1, 1, 4], [0.1, [0.1, 0.1, 0.05]], [0, 0.25, 0.5, 0.75, 1], [0.25, [0.6875, [0.1875, 1]], 0.125, 0], [-0.5, [0.375, [-0.625, 1]], -0.75, -1], [3, [4, [3, 2]]], [2, 2, 2, 3, 3], [2, 2, 2, 3, 3], [2, 3, 3, 4, 4], [2, 2, 3, 3, 4]]);
 
 	code = `
 	print sum([1 2 3 4 5])
@@ -202,9 +206,58 @@ test('Utility List Methods', () => {
 	print wrap(spread(7) 2 5)
 	print clip(spread(7) 2 5)
 	print fold(spread(7) 3 5)
+	print map(spread(4) 0 5 10 20)
 	`
 	
-	expect(Mercury(code).parseTree.print).toStrictEqual([[3, 4, 2, 3, 4, 2, 3], [2, 2, 2, 3, 4, 5, 5], [4, 5, 4, 3, 4, 5, 4]]);
+	expect(Mercury(code).parseTree.print).toStrictEqual([[3, 4, 2, 3, 4, 2, 3], [2, 2, 2, 3, 4, 5, 5], [4, 5, 4, 3, 4, 5, 4], [10, 12, 14, 16]]);
 	
-	// expect(Mercury(code).parseTree.print).toStrictEqual([]);
+});
+
+test('Translate List Methods', () => {
+	code = `
+	print midiToNote([60 63 67 69])
+	print noteToMidi([c4 eb4 g4 a4])
+	print freqToMidi([ 261 311 391 440 ])
+	print freqToNote([ 261 311 391 440 ])
+	print relativeToMidi([-12 -5 0 4 2 9] c4)`
+		
+	expect(Mercury(code).parseTree.print).toStrictEqual([['c4', 'eb4', 'g4', 'a4'], [60, 63, 67, 69], [60, 63, 67, 69], ['c4', 'eb4', 'g4', 'a4'], [48, 55, 60, 64, 62, 69]]);
+
+	code = `
+	print int(midiToFreq([60 63 67 69]))
+	print int(noteToFreq([c4 eb4 g4 a4]))
+	print int(freqToMidi([ 261 311 391 440 ] true))
+	print int(relativeToFreq([-12 -5 0 4 2 9] c4))
+	print int(ratioToCent([2/1 3/2 4/3 5/4 9/8]))
+	`
+	
+	expect(Mercury(code).parseTree.print).toStrictEqual([[261, 311, 391, 440],[261, 311, 391, 440],[59, 62, 66, 69],[130, 195, 261, 329, 293, 440], [ 1200, 701, 498, 386, 203 ]]);
+	
+	code = `
+	print chromaToRelative([c eb G Ab a+ f-]) 
+	print chordsFromNumerals([I IIm IVsus2 V7 VIm9])
+	print chordsFromNames([C Dm Fsus2 G7 Am9])`
+
+	expect(Mercury(code).parseTree.print).toStrictEqual([[0, 3, 7, 8, 21, -7], [[0, 4, 7], [2, 5, 9], [5, 7, 0], [7, 11, 2, 5], [9, 0, 4, 7, 11]], [[0, 4, 7], [2, 5, 9], [5, 7, 0], [7, 11, 2, 5], [9, 0, 4, 7, 11]]]);
+
+	expect(Mercury(`set scale minor d`).parseTree.global.scale).toStrictEqual(['minor', 'd']);
+
+	code = `
+	set scale minor a
+	set root c
+	print toScale([0 1 2 3 4 5 6 7 8 9 10 11])
+	print toScale([8 13 -1 20 -6 21 -4 12])
+	print int(toScale([0 4.1 6.5 7.1 9.25]))
+	`
+
+	expect(Mercury(code).parseTree.print).toStrictEqual([[0, 0, 2, 3, 3, 5, 5, 7, 8, 8, 10, 10], [8, 12, -2, 20, -7, 20, -4, 12], [0, 3, 5, 7, 8]]);
+	
+	code = `
+	set tempo 120
+	print divisionToRatio([1/4 1/8 3/16 1/4 2])
+	print ratioToMs([0.25 [0.125 [0.1875 0.25]] 2])
+	print ratioToMs([0.25 [0.125 [0.1875 0.25]] 2] 100)`
+	
+	expect(Mercury(code).parseTree.print).toStrictEqual([[0.25, 0.125, 0.1875, 0.25, 2], [500, [250, [375, 500]], 4000], [600, [300, [450, 600]], 4800]]);
+	
 });

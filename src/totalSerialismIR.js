@@ -653,6 +653,21 @@ const functionMap = {
 	},
 	'mod' : (...v) => {
 		return Util.mod(...v);
+	},
+	// convert floats to integers by truncating
+	'int' : (v) => {
+		return Util.arrayCalc(v, 0, (a) => Math.trunc(a));
+	},
+	// round down floats
+	'floor' : (v) => {
+		return Util.arrayCalc(v, 0, (a) => Math.floor(a));
+	},
+	// round floats to nearest integer
+	'round' : (v) => {
+		return Util.arrayCalc(v, 0, (a) => Math.round(a));
+	},
+	'ceil' : (v) => {
+		return Util.arrayCalc(v, 0, (a) => Math.ceil(a));
 	}
 }
 exports.functionMap = functionMap;
