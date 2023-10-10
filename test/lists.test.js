@@ -242,6 +242,8 @@ test('Translate List Methods', () => {
 
 	expect(Mercury(`set scale minor d`).parseTree.global.scale).toStrictEqual(['minor', 'd']);
 
+	expect(Mercury(`print scaleNames()`).parseTree.print[0]).toHaveLength(93);
+
 	code = `
 	set scale minor a
 	set root c
@@ -259,5 +261,4 @@ test('Translate List Methods', () => {
 	print ratioToMs([0.25 [0.125 [0.1875 0.25]] 2] 100)`
 	
 	expect(Mercury(code).parseTree.print).toStrictEqual([[0.25, 0.125, 0.1875, 0.25, 2], [500, [250, [375, 500]], 4000], [600, [300, [450, 600]], 4800]]);
-	
 });
