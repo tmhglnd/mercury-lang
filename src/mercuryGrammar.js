@@ -25,6 +25,7 @@ const lexer = moo.compile({
 	//hex:		/0x[0-9a-f]+/,
 	
 	divider:	/[/:]/,
+	//is:			'=',
 	//timevalue:	/[nm]/,
 
 	lParam:		'(',

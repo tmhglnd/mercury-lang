@@ -22,6 +22,7 @@ const lexer = moo.compile({
 	//hex:		/0x[0-9a-f]+/,
 	
 	divider:	/[/:]/,
+	//is:			'=',
 	//timevalue:	/[nm]/,
 
 	lParam:		'(',
@@ -212,23 +213,30 @@ paramElement ->
 	division
 		{% (d) => d[0] %}
 	# |
-	# timing
+	# targetParam
 	# 	{% (d) => d[0] %}
 	# |	
-	# %osc
-	# 	{% (d) => { return { "@address" : d[0].value }} %}
+	# osc
+	# 	{% (d) => d[0] %}
+	# |
+	# timing
+	# 	{% (d) => d[0] %}
 
 # any division value in the form of xx/xx or xx:xx
 division ->
 	%number %divider %number
 		{% (d) => { return IR.division(d) } %}
 
+# targetParam ->
+# 	%identifier %is %paramElement
+# 		{% (d) => { return IR.targetParam(d) } %}
+
 # osc ->
-# 	%divider (%identifier | %number)
-# 		{% id %}
+# 	%divider %identifier
+# 		{% (d) => d[0]) %}
 # 	|
-# 	%divider (%identifier | %number) osc
-# 		{% id %}
+# 	%divider %identifier osc
+# 		{% (d) => d[0]) %}
 
 # a timevalue syntax in the form of \d+[nm](dt.)? (eg. 8n, 16nt, 4nd)
 # timing ->

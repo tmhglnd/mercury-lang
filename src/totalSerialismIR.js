@@ -424,8 +424,20 @@ const functionMap = {
 		TL.setTempo(v[0]);
 		return TL.getTempo();
 	},
+	'getTempo' : () => {
+		return TL.getTempo();
+	},
 	'scale' : (...v) => {
 		TL.setScale(...v);
+		return TL.getSettings().map;
+	},
+	'getScale' : () => {
+		return TL.getSettings().scale;
+	},
+	'getRoot' : () => {
+		return TL.getSettings().root;
+	},
+	'getScaleMap' : () => {
 		return TL.getSettings().map;
 	},
 	'scaleNames' : (...v) => {

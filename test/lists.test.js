@@ -128,11 +128,12 @@ test('Transform List Methods', () => {
 	print clone([0 3 7] 3 7)
 	print join([1 2 3] [10 11 12])
 	print copy([0 3 7] 3)
+	print every(euclid(8 5) 2 8 0 1)
 	print pad([3 7 9] 8)
 	print pad([c e g] 8 - 4)
 	`
 
-	expect(Mercury(code).parseTree.print).toStrictEqual([[3, 6, 10, 7, 10, 14],[1, 2, 3, 10, 11, 12],[0, 3, 7, 0, 3, 7, 0, 3, 7],[3, 7, 9, 0, 0, 0, 0, 0], ['-', '-', '-', '-', 'c', 'e', 'g', '-']]);
+	expect(Mercury(code).parseTree.print).toStrictEqual([[3, 6, 10, 7, 10, 14],[1, 2, 3, 10, 11, 12],[0, 3, 7, 0, 3, 7, 0, 3, 7], [ 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1], [3, 7, 9, 0, 0, 0, 0, 0], ['-', '-', '-', '-', 'c', 'e', 'g', '-']]);
 
 	code = `
 	print flat([1 [2 3 [ 4 ] 5] 6])
@@ -247,18 +248,22 @@ test('Translate List Methods', () => {
 	code = `
 	set scale minor a
 	set root c
+	print getScale()
+	print getRoot()
+	print getScaleMap()
 	print toScale([0 1 2 3 4 5 6 7 8 9 10 11])
 	print toScale([8 13 -1 20 -6 21 -4 12])
 	print int(toScale([0 4.1 6.5 7.1 9.25]))
 	`
 
-	expect(Mercury(code).parseTree.print).toStrictEqual([[0, 0, 2, 3, 3, 5, 5, 7, 8, 8, 10, 10], [8, 12, -2, 20, -7, 20, -4, 12], [0, 3, 5, 7, 8]]);
+	expect(Mercury(code).parseTree.print).toStrictEqual([ 'minor', 'c', [0, 0, 2, 3, 3, 5, 5, 7, 8, 8, 10, 10], [0, 0, 2, 3, 3, 5, 5, 7, 8, 8, 10, 10], [8, 12, -2, 20, -7, 20, -4, 12], [0, 3, 5, 7, 8]]);
 	
 	code = `
 	set tempo 120
+	print getTempo()
 	print divisionToRatio([1/4 1/8 3/16 1/4 2])
 	print ratioToMs([0.25 [0.125 [0.1875 0.25]] 2])
 	print ratioToMs([0.25 [0.125 [0.1875 0.25]] 2] 100)`
 	
-	expect(Mercury(code).parseTree.print).toStrictEqual([[0.25, 0.125, 0.1875, 0.25, 2], [500, [250, [375, 500]], 4000], [600, [300, [450, 600]], 4800]]);
+	expect(Mercury(code).parseTree.print).toStrictEqual([120, [0.25, 0.125, 0.1875, 0.25, 2], [500, [250, [375, 500]], 4000], [600, [300, [450, 600]], 4800]]);
 });
