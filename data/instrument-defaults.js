@@ -41,7 +41,7 @@ const instrumentDefaults = {
 			'amp' : 	[ 0.9 ],
 			'stretch' : [ 0, 1, 1 ],
 			'speed' :	[ 1 ],
-			'note' :	[ 0, 2 ],
+			'note' :	'off',
 			'tune' :	[ 60 ]
 		}
 	},
@@ -52,7 +52,7 @@ const instrumentDefaults = {
 			'amp' : 	[ 0.9 ],
 			'stretch' : [ 1, 1, 1 ],
 			'speed' :	[ 1 ],
-			'note' :	[ 0, 2 ],
+			'note' :	'off',
 			'tune' :	[ 60 ]
 		}
 	},
@@ -70,7 +70,7 @@ const instrumentDefaults = {
 		'functions' : {
 			'env' : 	[ -1 ],
 			'amp' : 	[ 0.9 ],
-			'note' :	null
+			'note' :	'off'
 		}
 	}
 }
