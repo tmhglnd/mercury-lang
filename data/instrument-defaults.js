@@ -12,7 +12,6 @@ const emptyDefault = {
 			'beat' : 	[ 1, -1 ],
 			'amp' :		[ 1 ],
 			'env' :		[ 1, 250 ],
-			'pan' : 	[ 0 ],
 			'note' :	[ 0, 0 ],
 			'add_fx' : 	[]
 		}
@@ -24,14 +23,16 @@ const instrumentDefaults = {
 		'type' : 'saw',
 		'functions' : {
 			'amp' :		[ 0.7 ],
-			'wave2' : 	[ 'saw', 0 ]
+			'wave2' : 	[ 'saw', 0 ],
+			'pan' : 	[ 0 ]
 		}
 	},
 	'polySynth' : {
 		'type' : 'saw',
 		'functions' : {
 			'amp' : 	[ 0.7 ],
-			'wave2' : 	[ 'saw', 0 ]
+			'wave2' : 	[ 'saw', 0 ],
+			'pan' : 	[ 0 ]
 		}
 	},
 	'sample' : {
@@ -42,7 +43,8 @@ const instrumentDefaults = {
 			'stretch' : [ 0, 1, 1 ],
 			'speed' :	[ 1 ],
 			'note' :	[ 'off' ],
-			'tune' :	[ 60 ]
+			'tune' :	[ 60 ],
+			'pan' : 	[ 0 ]
 		}
 	},
 	'loop' : {
@@ -53,7 +55,8 @@ const instrumentDefaults = {
 			'stretch' : [ 1, 1, 1 ],
 			'speed' :	[ 1 ],
 			'note' :	[ 'off' ],
-			'tune' :	[ 60 ]
+			'tune' :	[ 60 ],
+			'pan' : 	[ 0 ]
 		}
 	},
 	'midi' : {
@@ -70,7 +73,8 @@ const instrumentDefaults = {
 		'functions' : {
 			'env' : 	[ -1 ],
 			'amp' : 	[ 0.9 ],
-			'note' :	[ 'off' ]
+			'note' :	[ 'off' ],
+			'pan' : 	[ 0 ]
 		}
 	}
 }

@@ -74,6 +74,11 @@
 		"low"
 	],
 
+	"super" : [
+		"fat",
+		"unison"
+	],
+
 	"add_fx" : [
 		"fx",
 		"withFX",
