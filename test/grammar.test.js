@@ -164,11 +164,12 @@ test('Default Sample', () => {
 				'time' : [ '1/1', 0 ],
 				'beat' : [ 1, -1 ],
 				'speed' : [ 1 ],
+				'note' : [ 'off' ],
 				'env' : [ -1 ],
 				'beat' : [ 1, -1 ],
 				'amp' : [ 0.9 ],
 				'pan' : [ 0 ],
-				'note' : [ 0, 2 ],
+				'note' : [ "off" ],
 				'tune' : [ 60 ],
 				'stretch': [0, 1, 1],
 				'add_fx' : [],
@@ -192,7 +193,6 @@ test('Default Midi', () => {
 				'beat' : [ 1, -1 ],
 				'amp' : [ 1 ],
 				'note' : [ 0, 0 ],
-				'pan' : [ 0 ],
 				'env' : [ 250 ],
 				'out' : [ 1 ],
 				'chord' : 'off',
@@ -216,7 +216,7 @@ test('Default Input', () => {
 				'group' : [],
 				'time' : [ '1/1', 0 ],
 				'beat' : [ 1, -1 ],
-				'note' : null,
+				'note' : [ 'off' ],
 				'pan' : [ 0 ],
 				'env' : [ -1 ],
 				'amp' : [ 0.9 ],
@@ -239,7 +239,7 @@ test('Default Loop', () => {
 				'group' : [],
 				'time' : [ '1/1', 0 ],
 				'speed' : [ 1 ],
-				'note' : [ 0, 2 ],
+				'note' : [ 'off' ],
 				'tune' : [ 60 ],
 				'env' : [ -1 ],
 				'beat' : [ 1, -1 ],
@@ -290,7 +290,6 @@ test('Default OSC', () => {
 				'beat' : [ 1, -1 ],
 				'amp' : [ 1 ],
 				'note' : [ 0, 0 ],
-				'pan' : [ 0 ],
 				'env' : [ 1, 250 ],
 				'group' : [],
 				'add_fx' : [],
@@ -328,7 +327,7 @@ test('Instruments With Functions', () => {
 				'group' : [],
 				'time' : [ 0.25, 0.5 ],
 				'speed' : [ 1 ],
-				'note' : [ 0, 2 ],
+				'note' : [ "off" ],
 				'tune' : [ 60 ],
 				'env' : [ -1 ],
 				'pan' : [ 0 ],
@@ -374,9 +373,8 @@ test('Unkown instrument, not part of defaults', () => {
 				'time' : [ '1/1', 0 ],
 				'beat' : [ 1, -1 ],
 				'amp' : [ 1 ],
-				'env' : [ 1, 250 ],
 				'note' : [ 0, 0 ],
-				'pan' : [ 0 ],
+				'env' : [ 1, 250 ],
 				'add_fx' : []
 			}
 		},
@@ -443,6 +441,51 @@ test('Set FX to named Synths', () => {
 
 	expect(Mercury(code).parseTree.objects).toStrictEqual(expected);
 });
+
+// test('Instruments with Array Synth/Sample names', () => {
+// 	let expected = {
+// 		'bob' : {
+// 			'object' : 'synth',
+// 			'type' : [ 'square', 'saw', 'saw', 'square', 'sine' ],
+// 			'functions' : {
+// 				'name' : ['bob'],
+// 				'group' : [],
+// 				'time' : [ '1/1', 0 ],
+// 				'note' : [ 0, 0 ],
+// 				'env' : [ 1, 250 ],
+// 				'beat' : [ 1, -1 ],
+// 				'pan' : [ 0 ],
+// 				'amp' : [ 0.7 ],
+// 				'wave2' : [ 'saw', 0 ],
+// 				'add_fx' : [],
+// 			}
+// 		},
+// 		'alice' : {
+// 			'object' : 'sample',
+// 			'type' : [ ['s', 'h' ], ['s', 'h' ], 'k', ['s', 'h' ], 'k' ],
+// 			'functions' : {
+// 				'name' : ['alice'],
+// 				'group' : [],
+// 				'time' : [ '1/1', 0 ],
+// 				'speed' : [ 1 ],
+// 				'note' : [ "off" ],
+// 				'tune' : [ 60 ],
+// 				'env' : [ -1 ],
+// 				'pan' : [ 0 ],
+// 				'beat' : [ 1, -1 ],
+// 				'amp' : [ 0.9 ],
+// 				'stretch': [ 0, 1, 1 ],
+// 				'add_fx' : [],
+// 			}
+// 		}
+// 	}
+
+// 	let code = `
+// 	set randomSeed 4832
+// 	new synth choose(5 [saw sine square]) name(bob)
+// 	new sample choose(5 [k [s h]]) name(alice)`;
+// 	expect(Mercury(code).parseTree.objects).toStrictEqual(expected);
+// });
 
 test('Silence code', () => {
 	expect(Mercury(`silence`).parseTree.global.silence).toStrictEqual(true);
