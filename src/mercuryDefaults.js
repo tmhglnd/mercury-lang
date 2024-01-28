@@ -1,7 +1,9 @@
 //
-// Mercury Defaults
+// mercuryDefaults.js
 //
-// Generate default values functions if present in this file.
+// Generate default values for functions if present in this file.
+// Using a # places the default value in a larger list of arguments
+// Using a ? generates a random value for that argument based on min/max/type
 //
 // Every function defaults work as follows:
 // name : {
@@ -20,96 +22,333 @@
 // 	arg-2 : { etc... }
 // }
 // 
+// The defaults can be check with checkDefaults()
+// The defaults can be get with getDefaults()
+// The defaults dictionary can be extended with extendDefaults()
+// The defaults can be tested for missing keys with testDefaults()
+// 
 
 const functionDefaults = {
 	// overall instrument functions
-	'time' : {
-		'arguments' : [ 'interval', 'offset' ],
-		'interval' : {
-			'default' : 1/1,
-			'min' : 0.125,
-			'max' : 1
+	time : {
+		arguments : [ 'interval', 'offset' ],
+		interval : {
+			default : 1/1,
+			min : 0.125,
+			max : 1
 		},
-		'offset' : {
-			'default' : 0,
-			'min' : 0,
-			'max' : 1
+		offset : {
+			default : 0,
+			min : 0,
+			max : 1
 		}
 	},
-	'beat' : {
-		'arguments' : [ 'probability', 'reset' ],
-		'probability' : {
-			'default' : 1,
-			'min' : 0,
-			'max' : 1
+	beat : {
+		arguments : [ 'probability', 'reset' ],
+		probability : {
+			default : 1,
+			min : 0,
+			max : 1
 		},
-		'reset' : {
-			'default' : 0,
-			'min': 0,
-			'max': 4
+		reset : {
+			default : 0,
+			min : 0,
+			max : 4,
+			type : 'int'
 		}
 	},
-	'env' : {
-		'arguments' : [ 'attack', 'sustain', 'release' ],
-		'order' : {
+	ratchet : {
+		arguments : [ 'probability', 'multiplication' ],
+		probability : {
+			default : 0.1,
+			min : 0,
+			max : 1
+		},
+		multiplication: {
+			default : 2,
+			min : 2,
+			max : 8,
+			type : 'int'
+		}
+	},
+	warp : {
+		arguments : [ 'warps' ],
+		warps : {
+			default : 1,
+			min : 1,
+			max : 8,
+			type : 'int'
+		}
+	},
+	human : {
+		arguments : [ 'delaytime' ],
+		delaytime : {
+			default : 10,
+			min : 1,
+			max : 100,
+		}
+	},
+	env : {
+		arguments : [ 'attack', 'sustain', 'release' ],
+		order : {
 			1 : [ 2 ],
 			2 : [ 0, 2 ],
 			3 : [ 0, 1, 2 ],
 		},
-		'attack' : {
-			'default' : 1,
-			'min' : 0,
-			'max' : 250,
-			'type' : 'int'
+		attack : {
+			default : 1,
+			min : 0,
+			max : 250
 		},
-		'sustain' : {
-			'default' : 0,
-			'min' : 0,
-			'max' : 500,
-			'type' : 'int'
+		sustain : {
+			default : 0,
+			min : 0,
+			max : 500
 		},
-		'release' : {
-			'default' : 250,
-			'min' : 0,
-			'max' : 1000,
-			'type' : 'int'
+		release : {
+			default : 250,
+			min : 0,
+			max : 1000
 		}
 	},
-	'amp' : {},
-	'pan' : {},
-	'add_fx' : {},
-	'note' : {
-		'arguments' : [ 'semitone', 'octave' ],
-		'semitone' : {
-			'default' : 0,
-			'min' : -12,
-			'max' : 12,
-			'type' : 'int'
+	amp : {
+		arguments : [ 'amplitude', 'ramptime' ],
+		amplitude : {
+			default : 0.9,
+			min : 0,
+			max : 1
 		},
-		'octave' : {
-			'default' : 0,
-			'min' : -1,
-			'max' : 3,
-			'type' : 'int'
+		ramptime : {
+			default : 0,
+			min : 0,
+			max : 5000
 		}
 	},
-	'group' : {},
-	'name' : {},
-	// sample specific
-	'speed' : {},
-	'tune' : {},
-	'offset' : {},
-	'stretch' : {},
+	pan : {
+		arguments : [ 'position' ],
+		position : {
+			default : 0,
+			min : -1,
+			max : 1
+		}
+	},
+	add_fx : {
+		arguments : [ 'effectname' ],
+		effectname : {
+			default : 0,
+			min : 0,
+			max : 0
+		}
+	},
+	note : {
+		arguments : [ 'semitone', 'octave' ],
+		semitone : {
+			default : 0,
+			min : -12,
+			max : 12,
+			type : 'int'
+		},
+		octave : {
+			default : 0,
+			min : 0,
+			max : 3,
+			type : 'int'
+		}
+	},
 	// synth specific
-	'slide' : {},
-	'super' : {},
-	'sub' : {},
+	super : {
+		arguments : [ 'voices' , 'detuning' ],
+		voices : {
+			default : 3,
+			min: 2,
+			max: 7,
+			type: 'int'
+		},
+		detuning : {
+			default : 0.11,
+			min: 0.05,
+			max: 0.5
+		}
+	},
+	slide : {
+		arguments : [ 'slidetime' ],
+		slidetime : {
+			default : 50,
+			min : 5,
+			max : 200
+		}
+	},
+	sub : {
+		arguments : [ 'amplitude' ],
+		amplitude : {
+			default : 0.5,
+			min : 0,
+			max : 1
+		}
+	},
+	noise : {
+		arguments : [ 'amplitude', 'color', 'modulation' ],
+		amplitude : {
+			default : 0.5,
+			min : 0,
+			max : 1
+		},
+		color : {
+			default : 0.8,
+			min : 0,
+			max : 1
+		},
+		modulation : {
+			default : 0,
+			min : 0,
+			max : 2,
+			type : 'int'
+		}
+	},
+	// group : {},
+	// name : {},
+	// sample specific
+	speed : {
+		arguments : [ 'speed' ],
+		speed : {
+			default : 1,
+			min : 0.125,
+			max : 2
+		}
+	},
+	offset : {
+		arguments : [ 'position' ],
+		position : {
+			default : 0,
+			min : 0,
+			max : 1
+		}
+	},
+	tune : {
+		arguments : [ 'pitch' ],
+		pitch : {
+			default : 60,
+			min : 36,
+			max : 72,
+		}
+	},
+	stretch : {
+		arguments : [ 'enable', 'timestretch', 'stretchmode' ],
+		enable : {
+			default : 1,
+			min : 0, 
+			max : 2,
+			type : 'int'
+		},
+		timestretch : {
+			default : 0,
+			min : 0, 
+			max : 2,
+			type: 'int'
+		},
+		stretchmode : {
+			default : 'efficient',
+			min : 0,
+			max : 0,
+			type : 'int'
+		}
+	},
+	// polyphonic specific
+	steal : {
+		arguments : [ 'enable' ],
+		enable : {
+			default : 1,
+			min : 0,
+			max : 2,
+			type : 'int'
+		}
+	},
+	spread : {
+		arguments : [ 'delaytime', 'randomoffset' ],
+		delaytime : {
+			default : 25,
+			min : 0,
+			max : 250,
+		}, 
+		randomoffset : {
+			default : 0,
+			min : 0,
+			max : 250
+		}
+	},
+	voices : {
+		arguments : [ 'amount' ],
+		amount : {
+			default : 8,
+			min : 2,
+			max : 32,
+			type : 'int'
+		}
+	},
 	// midi specific
-	'poly' : {},
-	'out' : {},
-	'clock' : {},
-	// osc specific
-	'address' : {},
+	out : {
+		arguments : [ 'output' ],
+		output : {
+			default : 0,
+			min : 0,
+			max : 16,
+			type : 'int'
+		}
+	},
+	chord : {
+		arguments : [ 'enable' ],
+		enable : {
+			default : 1,
+			min : 0,
+			max : 2,
+			type : 'int'
+		}
+	},
+	clock : {
+		arguments : [ 'enable' ],
+		enable : {
+			default : 1,
+			min : 0,
+			max : 2,
+			type : 'int'
+		}
+	},
+	change : { // currently not working want is add_fx for MIDI
+		arguments : [ 'control', 'value' ],
+		control : {
+			default : 0,
+			min : 0,
+			max : 128,
+			type : 'int'
+		},
+		value : {
+			default : 63,
+			min : 0,
+			max : 128,
+			type : 'int'
+		}
+	},
+	// modulator specific
+	range : {
+		arguments : [ 'low', 'high', 'exponent' ],
+		low : {
+			default : 0,
+			min : 0,
+			max : 1
+		},
+		high : {
+			default : 1,
+			min : 0,
+			max : 1
+		},
+		exponent : {
+			default : 1,
+			min : 0,
+			max : 4
+		}
+	}
+	// osc specific TO DO
+	// address : {},
 }
 
 // Extend the defaults dictionary with custom defaults
@@ -117,6 +356,10 @@ const functionDefaults = {
 // 
 function extendDefaults(extend){
 	return;	
+}
+
+function getDefaults(func){
+	return functionDefaults[func];
 }
 
 function checkDefaults(func, args){
@@ -162,4 +405,30 @@ function checkDefaults(func, args){
 	return args;
 }
 
-module.exports = { checkDefaults, extendDefaults }
+function testDefaults(){
+	// test all the defaults to check they have correct keys
+	Object.keys(functionDefaults).forEach((f) => {
+		if (!functionDefaults[f].hasOwnProperty('arguments')){
+			console.log(`${f} misses property arguments`);
+		}
+		if (!Array.isArray(functionDefaults[f].arguments)){
+			console.log(`${f} arguments is not an array`);
+		}
+		Object.keys(functionDefaults[f]).forEach((k) => {
+			if (k !== 'arguments' && k !== 'order'){
+				if (!functionDefaults[f][k].hasOwnProperty('default')){
+					console.log(`${f}.${k} misses property default`);
+				}
+				if (!functionDefaults[f][k].hasOwnProperty('min')){
+					console.log(`${f}.${k} misses property min`);
+				}
+				if (!functionDefaults[f][k].hasOwnProperty('max')){
+					console.log(`${f}.${k} misses property max`);
+				}
+			}
+		})
+	});
+}
+testDefaults();
+
+module.exports = { checkDefaults, extendDefaults, getDefaults }

@@ -60,8 +60,7 @@
 
 	"slide" : [
 		"portamento",
-		"glide",
-		"porta"
+		"glide"
 	],
 
 	"speed" : [
@@ -135,9 +134,8 @@
 		"midiSync"
 	],
 
-	"poly" : [
-		"chords",
-		"polyphonic"
+	"chord" : [
+		"poly"
 	], 
 
 	"tempo" : [
