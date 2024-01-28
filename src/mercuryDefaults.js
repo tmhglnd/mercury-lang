@@ -33,7 +33,7 @@ const functionDefaults = {
 	time : {
 		arguments : [ 'interval', 'offset' ],
 		interval : {
-			default : 1/1,
+			default : '1/1',
 			min : 0.125,
 			max : 1
 		},
@@ -51,7 +51,7 @@ const functionDefaults = {
 			max : 1
 		},
 		reset : {
-			default : 0,
+			default : -1,
 			min : 0,
 			max : 4,
 			type : 'int'
@@ -165,7 +165,7 @@ const functionDefaults = {
 			type: 'int'
 		},
 		detuning : {
-			default : 0.11,
+			default : 0.1,
 			min: 0.05,
 			max: 0.5
 		}
@@ -205,8 +205,8 @@ const functionDefaults = {
 			type : 'int'
 		}
 	},
-	// group : {},
-	// name : {},
+	// group : {}, // not necessary to default these I think
+	// name : {}, // not necessary to default these I think
 	// sample specific
 	speed : {
 		arguments : [ 'speed' ],
@@ -230,6 +230,7 @@ const functionDefaults = {
 			default : 60,
 			min : 36,
 			max : 72,
+			type : 'int'
 		}
 	},
 	stretch : {
@@ -373,7 +374,10 @@ function checkDefaults(func, args){
 		args = args.slice(0, defaults.length);
 
 		// does the function allow for a different order of parameters?
-		let order = functionDefaults[func].order[args.length];
+		let order;
+		if (functionDefaults[func].order){
+			order = functionDefaults[func].order[args.length];
+		}
 		// console.log('ordermap', order);
 
 		// for all the arguments check for # (default) or ? (random)
@@ -399,7 +403,8 @@ function checkDefaults(func, args){
 				defaults[idx] = args[i]
 			}
 		}
-		console.log('mapped', defaults);
+		args = defaults;
+		// console.log('mapped', func, 'to', defaults);
 	}
 	// return (adjusted) arguments
 	return args;
@@ -429,6 +434,6 @@ function testDefaults(){
 		})
 	});
 }
-testDefaults();
+// testDefaults();
 
 module.exports = { checkDefaults, extendDefaults, getDefaults }

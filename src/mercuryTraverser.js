@@ -270,9 +270,9 @@ function traverseTree(tree, code, level, obj){
 					}
 					// something here to check the arguments and maybe
 					// fill in the default values?
-					checkDefaults(func, args);
-
-					funcs[func] = args;
+					// checkDefaults(func, args);
+					// funcs[func] = args;
+					funcs[func] = checkDefaults(func, args);
 				}
 				return funcs;
 			} else {

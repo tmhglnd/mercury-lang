@@ -309,9 +309,9 @@ test('Instruments With Functions', () => {
 			'functions' : {
 				'name' : ['bob'],
 				'group' : [],
-				'time' : [ '1/8' ],
+				'time' : [ '1/8', 0 ],
 				'note' : [ [0, 3, 7], 0 ],
-				'env' : [ 1, 50 ],
+				'env' : [ 1, 0, 50 ],
 				'beat' : [ 1, -1 ],
 				'pan' : [ 0 ],
 				'amp' : [ 0.7 ],
@@ -331,7 +331,7 @@ test('Instruments With Functions', () => {
 				'tune' : [ 60 ],
 				'env' : [ -1 ],
 				'pan' : [ 0 ],
-				'beat' : [[ 1, 0, 1, 1 ]],
+				'beat' : [[ 1, 0, 1, 1 ], -1],
 				'amp' : [ 0.9 ],
 				'stretch': [0, 1, 1],
 				'add_fx' : [],
@@ -344,9 +344,9 @@ test('Instruments With Functions', () => {
 				'name' : ['simon'],
 				'group' : [],
 				'time' : [ '1/1', 0 ],
-				'note' : [[ 6, 10, 0, 10 ]],
+				'note' : [[ 6, 10, 0, 10 ], 0],
 				'env' : [ 1, 250 ],
-				'beat' : [[ 1, 0, 0, 1, 0 ]],
+				'beat' : [[ 1, 0, 0, 1, 0 ], -1],
 				'amp' : [ 0.7 ],
 				'pan' : [ 0 ],
 				'wave2' : [ 'saw', 0 ],
@@ -441,6 +441,59 @@ test('Set FX to named Synths', () => {
 
 	expect(Mercury(code).parseTree.objects).toStrictEqual(expected);
 });
+
+test('Default function arguments with #', () => {
+	let expected = {
+		s0 : {
+			object: 'synth',
+			type: 'saw',
+			functions: {
+				group: [],
+				time: [ '1/1', 0 ],
+				beat: [ 1, -1 ],
+				ratchet: [ 0.1, 2 ],
+				warp: [ 1 ],
+				human: [ 10 ],
+				env: [ 1, 0, 250 ],
+				amp: [ 0.9, 0 ],
+				pan: [ 0 ],
+				note: [ 0, 0 ],
+				super: [ 3, 0.1 ],
+				wave2: [ 'saw' , 0 ],
+				slide: [ 50 ],
+				sub: [ 0.5 ],
+				noise: [ 0.5, 0.8, 0 ],
+				speed: [ 1 ],
+				tune: [ 60 ],
+				offset: [ 0 ],
+				stretch: [ 1, 0, 'efficient' ],
+				steal: [ 1 ],
+				spread: [ 25, 0 ],
+				voices: [ 8 ],
+				out: [ 0 ],
+				chord: [ 1 ],
+				clock: [ 1 ],
+				range: [ 0, 1, 1 ],
+				// change:
+				add_fx: [ [] ],
+				name: [ 's0' ]
+			}
+		}
+	}
+
+	let code =`
+		new synth saw name(s0)
+		set s0 time() play() ratchet() warp() human()
+		set s0 shape() gain() pan()
+		set s0 note() super() slide() sub() noise()
+		set s0 speed() tune() start() stretch() 
+		set s0 steal() spread() voices()
+		set s0 chord() out() sync() cc()
+		set s0 range()
+	`
+
+	expect(Mercury(code).parseTree.objects).toStrictEqual(expected);
+})
 
 // test('Instruments with Array Synth/Sample names', () => {
 // 	let expected = {
