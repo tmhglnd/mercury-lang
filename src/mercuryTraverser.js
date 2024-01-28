@@ -11,10 +11,13 @@
 
 // total-serialism library functions
 const tsIR = require('./totalSerialismIR.js').functionMap;
+// default argument parser
+const { checkDefaults } = require('./mercuryDefaults.js');
 // mercury IR
-const keyBind = require('./mercuryIR.js').keyBind;
+const { keyBind } = require('./mercuryIR.js');
 // included instrument/object defaults
 const instruments = require('../data/instrument-defaults.js').instrumentDefaults;
+
 // mini language, use single characters for keywords and functions
 // const miniLang = require('../data/mini-functions.json');
 
@@ -265,6 +268,10 @@ function traverseTree(tree, code, level, obj){
 						// TO-DO:
 						// code for group functions
 					}
+					// something here to check the arguments and maybe
+					// fill in the default values?
+					checkDefaults(func, args);
+
 					funcs[func] = args;
 				}
 				return funcs;

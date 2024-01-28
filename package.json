@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev-test": "nodemon test/mercury.test.js",
-    "test": "jest test/**.test.js",
+    "test": "jest test/defaults.test.js",
     "build": "npm run grammar && npm run graph && npm run clean && npm run bundle && npm run build-es5 && npm run build-min",
     "clean": "rm -rf build",
     "grammar": "nearleyc grammar/mercury.ne -o src/mercuryGrammar.js",

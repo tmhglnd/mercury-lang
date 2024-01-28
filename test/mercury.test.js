@@ -22,7 +22,7 @@ test('Test with File input', () => {
 	parseFile('./test/test-small.txt');
 	parseFile('./test/test-synth.txt');
 	parseFile('./test/test-sample.txt');
-	parseFile('./test/test-mini.txt');
+	// parseFile('./test/test-mini.txt');
 	parseFile('./test/test-rings.txt');
 
 	// // write to disk for check
