@@ -172,5 +172,53 @@
 		"mute",
 		"killAll",
 		"hush"
+	],
+
+	"reverb" : [
+		"verb",
+		"room",
+		"hall"
+	],
+
+	"triggerFilter" : [
+		"envFilter",
+		"trigFilter",
+		"tFilter"
+	],
+
+	"degrade" : [
+		"chip",
+		"downsample"
+	],
+
+	"distort" : [
+		"drive",
+		"overdrive"
+	],
+
+	"squash" : [
+		"smash"
+	],
+
+	"compress" : [
+		"compressor",
+		"comp"
+	],
+
+	"tremolo" : [
+		"lfo",
+		"flutter"
+	],
+
+	"shift" : [
+		"pitchshift"
+	],
+
+	"delay" : [
+		"echo"
+	],
+
+	"vibrato" : [
+		"whammy"
 	]
 }

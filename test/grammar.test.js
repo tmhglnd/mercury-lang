@@ -400,7 +400,7 @@ test('Chain FX', () => {
 			  pan: [ 0 ],
 			  wave2: [ 'saw', 0 ],
 			  add_fx: [ 
-				[ 'drive', 4 ], 
+				[ 'distort', 4 ], 
 				[ 'reverb', 0.5, 5 ], 
 				[ 'shift', 7 ] ],
 			  name: [ 's0' ]
@@ -408,7 +408,7 @@ test('Chain FX', () => {
 		}
 	}
 
-	let code = `new synth saw name(s0) fx(drive 4) fx(reverb 0.5 5) fx(shift 7)`;
+	let code = `new synth saw name(s0) fx(drive 4) fx(room 0.5 5) fx(pitchshift 7)`;
 	expect(Mercury(code).parseTree.objects).toStrictEqual(expected);
 });
 
@@ -427,9 +427,9 @@ test('Set FX to named Synths', () => {
 			  pan: [ 0 ],
 			  wave2: [ 'saw', 0 ],
 			  add_fx: [ 
-				[ 'drive', 4 ], 
+				[ 'distort', 4 ], 
 				[ 'reverb', 0.5, 5 ], 
-				[ 'shift', 7 ] ],
+				[ 'degrade', 0.4 ] ],
 			  name: [ 's0' ]
 			}
 		}
@@ -437,7 +437,7 @@ test('Set FX to named Synths', () => {
 
 	let code = `
 		new synth [saw triangle sine] name(s0) 
-		set s0 fx(drive 4) fx(reverb 0.5 5) fx(shift 7)`;
+		set s0 fx(drive 4) fx(verb 0.5 5) fx(chip 0.4)`;
 
 	expect(Mercury(code).parseTree.objects).toStrictEqual(expected);
 });

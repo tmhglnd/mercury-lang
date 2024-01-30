@@ -350,6 +350,23 @@ const functionDefaults = {
 	}
 	// osc specific TO DO
 	// address : {},
+	// effects
+	// comb : {},
+	// chorus : {},
+	// double : {},
+	// degrade : {},
+	// delay : {},
+	// distort : {},
+	// filter : {},
+	// freeze : {},
+	// kink : {},
+	// triggerFilter : {},
+	// reverb : {},
+	// shift : {},
+	// squash : {},
+	// tremolo : {},
+	// vibrato : {},
+	// vocoder : {},
 }
 
 // Extend the defaults dictionary with custom defaults

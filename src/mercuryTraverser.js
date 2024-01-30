@@ -259,6 +259,10 @@ function traverseTree(tree, code, level, obj){
 			else if (level === '@object'){
 				// if in @object level ignore TS functions
 				if (func === 'add_fx'){
+					// map the FX names also based on the first argument
+					if (args.length > 0){
+						args[0] = keyBind(args[0]);
+					}
 					funcs[func].push(args);
 				} else {
 					if (func === 'name'){
