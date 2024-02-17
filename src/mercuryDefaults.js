@@ -112,8 +112,8 @@ const functionDefaults = {
 		}
 	},
 	amp : {
-		arguments : [ 'amplitude', 'ramptime' ],
-		amplitude : {
+		arguments : [ 'amount', 'ramptime' ],
+		amount : {
 			default : 0.9,
 			min : 0,
 			max : 1
@@ -179,16 +179,16 @@ const functionDefaults = {
 		}
 	},
 	sub : {
-		arguments : [ 'amplitude' ],
-		amplitude : {
+		arguments : [ 'gain' ],
+		gain : {
 			default : 0.5,
 			min : 0,
 			max : 1
 		}
 	},
 	noise : {
-		arguments : [ 'amplitude', 'color', 'modulation' ],
-		amplitude : {
+		arguments : [ 'gain', 'color', 'modulation' ],
+		gain : {
 			default : 0.5,
 			min : 0,
 			max : 1
@@ -347,21 +347,232 @@ const functionDefaults = {
 			min : 0,
 			max : 4
 		}
-	}
+	},
 	// osc specific TO DO
 	// address : {},
 	// effects
-	// comb : {},
-	// chorus : {},
-	// double : {},
-	// degrade : {},
-	// delay : {},
-	// distort : {},
-	// filter : {},
+	comb : {
+		arguments : [ 'pitch', 'feedback', 'wet' ],
+		pitch : {
+			default : 0,
+			min : -12,
+			max : 12,
+			type : 'int'
+		},
+		feedback : {
+			default : 0.8,
+			min : 0,
+			max : 0.99
+		},
+		wet : {
+			default : 0.5,
+			min : 0,
+			max : 1
+		}
+	},
+	chorus : {
+		arguments : [ 'modulation', 'depth', 'wet' ],
+		modulation : {
+			default : '8/1',
+			min : 0.0625,
+			max : 8
+		},
+		depth : {
+			default : 45,
+			min : 1,
+			max : 100
+		},
+		wet : {
+			default : 0.5,
+			min : 0,
+			max : 1
+		}
+	},
+	double : {
+		arguments : [ 'modulation', 'depth', 'wet' ],
+		modulation : {
+			default : '8/1',
+			min : 0.0625,
+			max : 8
+		},
+		depth : {
+			default : 8,
+			min : 1,
+			max : 100
+		},
+		wet : {
+			default : 1,
+			min : 0,
+			max : 1
+		}
+	},
+	degrade : {
+		arguments : [ 'amount', 'wet' ],
+		amount : {
+			default : 0.5,
+			min : 0,
+			max : 1
+		},
+		wet : {
+			default : 1,
+			min : 0,
+			max : 1
+		}
+	},
+	delay : {
+		arguments : [ 'delayL', 'delayR', 'feedback', 'damping', 'wet' ],
+		order : {
+			// 1 : [ [1, 2] ],
+			// 2 : [ [1, 2], 3 ]
+		},
+		delayL : {
+			default : '2/16',
+			min : 0.0625,
+			max : 0.5
+		}, 
+		delayR : {
+			default : '3/16',
+			min : 0.0625,
+			max : 0.5
+		},
+		feedback : {
+			default : 0.8,
+			min : 0.1,
+			max : 0.99
+		},
+		damping : {
+			default : 0.6,
+			min : 0.1,
+			max : 1
+		},
+		wet : {
+			default : 0.5,
+			min : 0.1,
+			max : 1
+		}
+	},
+	distort : {
+		arguments : [ 'amount', 'wet' ],
+		amount : {
+			default : 3,
+			min : 1, 
+			max : 20
+		},
+		wet : {
+			default : 1,
+			min : 0,
+			max : 1
+		}
+	},
+	filter : {
+		arguments : [ 'filterType', 'modulation', 'lowFrequency', 'highFrequency', 'resonance', 'direction', 'exponent' ],
+		// shorts : [ 'tp', 'mod', 'lo', 'hi', 'q', 'dir', 'exp' ],
+		order : {
+			// 1 : [ [2, 3] ],
+			// 2 : [ [2, 3], 4 ],
+			// 3 : [ 1, [2, 3], 4 ]
+		},
+		filterType : {
+			default : 'low',
+			options: [ 'low', 'high', 'band' ],
+			min : 0,
+			max : 3
+		},
+		modulation : {
+			default : '1/1',
+			min : 0.0625,
+			max : 8
+		},
+		lowFrequency : {
+			default : 200,
+			min : 10,
+			max : 18000
+		},
+		highFrequency : {
+			default : 3000,
+			min : 10,
+			max : 18000
+		},
+		resonance : {
+			default : 0.45,
+			min : 0,
+			max : 0.99
+		},
+		direction : {
+			default : 0.5,
+			min : 0,
+			max : 1
+		},
+		exponent : {
+			default : 2,
+			min : 0.05,
+			max : 4,
+		},
+	},
+	triggerFilter : {
+		arguments : [ 'filterType', 'attack', 'release', 'highFrequency', 'lowFrequency', 'exponent' ],
+		order : {
+			1 : [ 2 ],
+			2 : [ 2, 3 ],
+			3 : [ 2, 3, 5 ],
+		},
+		filterType : {
+			default : 'low',
+			choices : [ 'low', 'high', 'band' ],
+			min : 0,
+			max : 3
+		},
+		attack : {
+			default : 1,
+			min : 0,
+			max : 250
+		},
+		release : {
+			default : '1/16',
+			min : 0,
+			max : 1000
+		},
+		highFrequency : {
+			default : 4000,
+			min : 10,
+			max : 18000
+		},
+		lowFrequency : {
+			default : 100,
+			min : 10,
+			max : 18000
+		},
+		exponent : {
+			default : 1,
+			min : 0.05,
+			max : 4
+		},
+	},
 	// freeze : {},
 	// kink : {},
-	// triggerFilter : {},
-	// reverb : {},
+	reverb : {
+		arguments : [ 'gain', 'size', 'slide', 'wet' ],
+		gain : {
+			default : 0.5,
+			min : 0,
+			max : 2
+		},
+		size : {
+			default : 10,
+			min : 0,
+			max : 20
+		},
+		slide : {
+			default : 10,
+			min : 1,
+			max : 100
+		},
+		wet : {
+			default : 0.5,
+			min : 0,
+			max : 1
+		}
+	},
 	// shift : {},
 	// squash : {},
 	// tremolo : {},

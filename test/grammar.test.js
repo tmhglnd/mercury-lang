@@ -400,8 +400,8 @@ test('Chain FX', () => {
 			  pan: [ 0 ],
 			  wave2: [ 'saw', 0 ],
 			  add_fx: [ 
-				[ 'distort', 4 ], 
-				[ 'reverb', 0.5, 5 ], 
+				[ 'distort', 4, 1 ], 
+				[ 'reverb', 0.5, 5, 10, 0.5 ], 
 				[ 'shift', 7 ] ],
 			  name: [ 's0' ]
 			}
@@ -427,9 +427,9 @@ test('Set FX to named Synths', () => {
 			  pan: [ 0 ],
 			  wave2: [ 'saw', 0 ],
 			  add_fx: [ 
-				[ 'distort', 4 ], 
-				[ 'reverb', 0.5, 5 ], 
-				[ 'degrade', 0.4 ] ],
+				[ 'distort', 4, 1 ], 
+				[ 'reverb', 0.5, 5, 10, 0.5 ], 
+				[ 'degrade', 0.4, 1 ] ],
 			  name: [ 's0' ]
 			}
 		}
@@ -475,7 +475,7 @@ test('Default function arguments with #', () => {
 				clock: [ 1 ],
 				range: [ 0, 1, 1 ],
 				// change:
-				add_fx: [ [] ],
+				add_fx: [ ],
 				name: [ 's0' ]
 			}
 		}

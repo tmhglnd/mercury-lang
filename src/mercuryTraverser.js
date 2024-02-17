@@ -262,8 +262,10 @@ function traverseTree(tree, code, level, obj){
 					// map the FX names also based on the first argument
 					if (args.length > 0){
 						args[0] = keyBind(args[0]);
+						// check for the arguments and fill in default/random
+						funcs[func].push([args[0], ...checkDefaults(args[0], args.slice(1))]);
+						// funcs[func].push(args);
 					}
-					funcs[func].push(args);
 				} else {
 					if (func === 'name'){
 						ccode.groups.all.push(...args);
@@ -272,11 +274,10 @@ function traverseTree(tree, code, level, obj){
 						// TO-DO:
 						// code for group functions
 					}
-					// something here to check the arguments and maybe
-					// fill in the default values?
-					// checkDefaults(func, args);
-					// funcs[func] = args;
+					// something here to check the arguments and
+					// fill in the default values
 					funcs[func] = checkDefaults(func, args);
+					// funcs[func] = args;
 				}
 				return funcs;
 			} else {

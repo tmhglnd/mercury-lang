@@ -186,6 +186,11 @@
 		"tFilter"
 	],
 
+	"filter" : [
+		"modFilter",
+		"autoFilter"
+	],
+
 	"degrade" : [
 		"chip",
 		"downsample"
@@ -220,5 +225,9 @@
 
 	"vibrato" : [
 		"whammy"
+	],
+
+	"double" : [
+		"adt"
 	]
 }
