@@ -219,6 +219,23 @@ test('Utility List Methods', () => {
 	
 	expect(Mercury(code).parseTree.print).toStrictEqual([[3, 4, 2, 3, 4, 2, 3], [2, 2, 2, 3, 4, 5, 5], [4, 5, 4, 3, 4, 5, 4], [10, 12, 14, 16]]);
 	
+	code = `
+	print equals([0 2 3 4])
+	print equals([1 2 3 4] [1 20 30 4])
+	print eq([hat kick snare] [hatt kick snare])
+	print notEquals([1 2 3 4] [1 20 30 4])
+	print neq([hat kick snare] [hatt kick snare])
+	print greater([1 2 3 5] [1 20 30 4])
+	print gt([1 2 3 5] [1 20 30 4])
+	print greaterEquals([1 2 3 5] [1 20 30 4])
+	print gte([1 2 3 5] [1 20 30 4])
+	print less([1 2 3 5] [1 20 30 4])
+	print lt([1 2 3 5] [1 20 30 4])
+	print lessEquals([1 2 3 5] [1 20 30 4])
+	print lte([1 2 3 5] [1 20 30 4])
+	`
+
+	expect(Mercury(code).parseTree.print).toStrictEqual([[1, 0, 0, 0], [1, 0, 0, 1], [0, 1, 1], [0, 1, 1, 0], [1, 0, 0], [0, 0, 0, 1], [0, 0, 0, 1], [1, 0, 0, 1], [1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 0], [1, 1, 1, 0], [1, 1, 1, 0]]);
 });
 
 test('Translate List Methods', () => {
