@@ -292,4 +292,11 @@ test('Translate List Methods', () => {
 	print ratioToMs([0.25 [0.125 [0.1875 0.25]] 2] 100)`
 	
 	expect(Mercury(code).parseTree.print).toStrictEqual([120, [0.25, 0.125, 0.1875, 0.25, 2], [500, [250, [375, 500]], 4000], [600, [300, [450, 600]], 4800]]);
+
+	code = `
+	print textCode(bach)
+	print textCode('bach cage')
+	print textCode([bach cage])`
+
+	expect(Mercury(code).parseTree.print).toStrictEqual([ [ 98, 97, 99, 104 ], [ 98, 97, 99, 104, 32, 99, 97, 103, 101 ], [[ 98, 97, 99, 104], [99, 97, 103, 101]] ]);
 });

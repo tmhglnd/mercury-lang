@@ -582,6 +582,10 @@ const functionMap = {
 	'chordsNamed' : (...v) => {
 		return functionMap.chordsFromNames(v);
 	},
+	// translate text to ASCII
+	'textCode' : (...v) => {
+		return TL.textCode(...v);
+	},
 	// 
 	// Statistic Methods
 	// 
