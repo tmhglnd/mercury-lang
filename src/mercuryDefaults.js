@@ -8,6 +8,13 @@
 // Every function defaults work as follows:
 // name : {
 // 	arguments : [ arg-1, arg-2, ..., arg-n ],
+//  aliases : {
+// 		// specify aliases for the argument names to work with the 
+// 		// '=' sign to apply an argument to a specific name
+// 		a1 : arg-1,
+// 		a2 : arg-2, 
+// 		etc...
+// 	}
 // 	order : { 
 // 		// specify an order if the arguments should be mapped
 // 		// differently when less arguments are provided
@@ -32,6 +39,12 @@ const functionDefaults = {
 	// overall instrument functions
 	time : {
 		arguments : [ 'interval', 'offset' ],
+		aliases: {
+			i : 'interval',
+			intv : 'interval',
+			o : 'offset',
+			offs : 'offset'
+		},
 		interval : {
 			default : '1/1',
 			min : 0.125,
@@ -44,13 +57,19 @@ const functionDefaults = {
 		}
 	},
 	beat : {
-		arguments : [ 'probability', 'reset' ],
+		arguments : [ 'probability', 'resync' ],
+		aliases : {
+			p : 'probability',
+			prob : 'probability',
+			s : 'resync',
+			sync : 'resync'
+		},
 		probability : {
 			default : 1,
 			min : 0,
 			max : 1
 		},
-		reset : {
+		resync : {
 			default : -1,
 			min : 0,
 			max : 4,
@@ -59,6 +78,12 @@ const functionDefaults = {
 	},
 	ratchet : {
 		arguments : [ 'probability', 'multiplication' ],
+		aliases : {
+			p : 'probability',
+			prob : 'probability',
+			m : 'multiplication',
+			mult : 'multiplication',
+		},
 		probability : {
 			default : 0.1,
 			min : 0,
@@ -472,6 +497,22 @@ const functionDefaults = {
 			// 2 : [ [2, 3], 4 ],
 			// 3 : [ 1, [2, 3], 4 ]
 		},
+		aliases : {
+			t : 'filterType',
+			type : 'filterType',
+			m : 'modulation',
+			mod : 'modulation',
+			l : 'lowFrequency',
+			lo : 'lowFrequency',
+			h : 'highFrequency',
+			hi : 'highFrequency',
+			r : 'resonance',
+			res : 'resonance',
+			d : 'direction',
+			dir : 'direction',
+			e : 'exponent',
+			exp : 'exponent',
+		},
 		filterType : {
 			default : 'low',
 			options: [ 'low', 'high', 'band' ],
@@ -552,6 +593,11 @@ const functionDefaults = {
 	// kink : {},
 	reverb : {
 		arguments : [ 'gain', 'size', 'slide', 'wet' ],
+		aliases : {
+			g : 'gain',
+			s : 'size',
+			w : 'wet'
+		},
 		gain : {
 			default : 0.5,
 			min : 0,
@@ -591,7 +637,9 @@ function getDefaults(func){
 	return functionDefaults[func];
 }
 
-function checkDefaults(func, args){
+function checkDefaults(func, args, vars){
+	// console.log('check', func, 'args', args);
+
 	// get the default settings from the dictionary if they are in there
 	if (functionDefaults[func]){
 		// get all the default arguments
@@ -599,6 +647,7 @@ function checkDefaults(func, args){
 			return functionDefaults[func][a].default;
 		});
 		// remove the arguments that are too many
+		// maybe not if we can also use the '=' sign
 		args = args.slice(0, defaults.length);
 
 		// does the function allow for a different order of parameters?
@@ -609,16 +658,36 @@ function checkDefaults(func, args){
 		// console.log('ordermap', order);
 
 		// for all the arguments check for # (default) or ? (random)
+		// also check fo = (setting via key=value pair)
 		// and perform these tasks if necessary
 		for (let i=0; i<args.length; i++){
 			// use the order index if there is one for this args amount
 			let idx = (order)? order[i] : i;
 
 			// console.log('mapping', i, args[i], defaults[i]);
-			// if (args[i] === '#'){
-			// 	args[i] = defaults[i];
-			// } else 
-			if (args[i] === '?'){
+			if (String(args[i]).match(/[^=]+\=[^=]+/g)){
+				let set = args[i].split('=');
+
+				if (functionDefaults[func].hasOwnProperty('aliases')){
+					set[0] = functionDefaults[func].aliases[set[0]];
+					// if (functionDefaults[func].aliases[set[0]]){
+						// console.log('found alias', set[0]);
+					// }
+				}
+				let idS = functionDefaults[func].arguments.indexOf(set[0]);
+
+				// only apply set if part of the function description
+				if (idS >= 0){
+					// console.log('set', set, 'idx', idx);
+					let v = set[1];
+					// convert to Number if not NaN
+					defaults[idS] = isNaN(v) ? v : Number(v);
+					// replace by the array content if an array
+					if (vars.hasOwnProperty(v)){
+						defaults[idS] = vars[v];
+					}
+				}
+			} else if (args[i] === '?'){
 				let param = functionDefaults[func].arguments[i];
 				let min = functionDefaults[func][param].min;
 				let max = functionDefaults[func][param].max;

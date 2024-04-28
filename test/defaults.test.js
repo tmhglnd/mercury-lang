@@ -44,5 +44,12 @@ test('Default Arguments', () => {
 	}
 	let code = 'new synth saw name(s0) fx(drive) fx(chip) fx(comb) fx(room) fx(echo) fx(modFilter) fx(trigFilter) fx(chorus) fx(double)';
 	expect(Mercury(code).parseTree.objects).toStrictEqual(expected);
+});
 
+test.only('Default Arguments with Name Setting', () => {
+	// Mercury('new sample kick_min fx(filter cf=1000)')
+	Mercury(`
+		list verbSizes [ 5 10 20 ]
+		new sample kick_min time(o=offsetval) play(s=syncval) fx(reverb w=0.8 s=verbSizes) fx(filter res=0.7 mod=1/16 hi=4000)
+	`);
 });

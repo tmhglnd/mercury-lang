@@ -215,6 +215,9 @@ paramElement ->
 	division
 		{% (d) => d[0] %}
 	# |
+	# name %is ( name | array | function | division )
+	# 	{% (d) => { return { "@property" : [d[0], d[2]].flat(Infinity) }} %}
+	# |
 	# targetParam
 	# 	{% (d) => d[0] %}
 	# |	

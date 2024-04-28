@@ -263,7 +263,7 @@ function traverseTree(tree, code, level, obj){
 					if (args.length > 0){
 						args[0] = keyBind(args[0]);
 						// check for the arguments and fill in default/random
-						funcs[func].push([args[0], ...checkDefaults(args[0], args.slice(1))]);
+						funcs[func].push([args[0], ...checkDefaults(args[0], args.slice(1), ccode.variables)]);
 						// funcs[func].push(args);
 					}
 				} else {
@@ -276,7 +276,7 @@ function traverseTree(tree, code, level, obj){
 					}
 					// something here to check the arguments and
 					// fill in the default values
-					funcs[func] = checkDefaults(func, args);
+					funcs[func] = checkDefaults(func, args, ccode.variables);
 					// funcs[func] = args;
 				}
 				return funcs;
