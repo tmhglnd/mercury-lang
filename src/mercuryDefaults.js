@@ -557,6 +557,20 @@ const functionDefaults = {
 			2 : [ 2, 3 ],
 			3 : [ 2, 3, 5 ],
 		},
+		aliases : {
+			t : 'filterType',
+			type : 'filterType',
+			a : 'attack',
+			atk : 'attack',
+			r : 'release',
+			rel : 'release', 
+			h : 'highFrequency',
+			hi : 'highFrequency',
+			l : 'lowFrequency',
+			lo : 'lowFrequency',
+			e : 'exponent',
+			exp : 'exponent'
+		},
 		filterType : {
 			default : 'low',
 			choices : [ 'low', 'high', 'band' ],
@@ -668,17 +682,15 @@ function checkDefaults(func, args, vars){
 			if (String(args[i]).match(/[^=]+\=[^=]+/g)){
 				let set = args[i].split('=');
 
+				// check if the value has an alias, then use it
 				if (functionDefaults[func].hasOwnProperty('aliases')){
 					set[0] = functionDefaults[func].aliases[set[0]];
-					// if (functionDefaults[func].aliases[set[0]]){
-						// console.log('found alias', set[0]);
-					// }
 				}
+				// what is the index of the key as argument in the list
 				let idS = functionDefaults[func].arguments.indexOf(set[0]);
 
 				// only apply set if part of the function description
 				if (idS >= 0){
-					// console.log('set', set, 'idx', idx);
 					let v = set[1];
 					// convert to Number if not NaN
 					defaults[idS] = isNaN(v) ? v : Number(v);
