@@ -106,6 +106,7 @@ var grammar = {
         }},
     {"name": "objectIdentifier", "symbols": ["name"], "postprocess": id},
     {"name": "objectIdentifier", "symbols": ["array"], "postprocess": id},
+    {"name": "objectIdentifier", "symbols": ["function"], "postprocess": (d) => d[0]},
     {"name": "listStatement", "symbols": [(lexer.has("list") ? {type: "list"} : list), (lexer.has("identifier") ? {type: "identifier"} : identifier), "paramElement"], "postprocess":  (d) => {
         	return {
         		"@name" : d[1].value,

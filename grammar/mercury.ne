@@ -118,8 +118,9 @@ objectIdentifier ->
 	|
 	array
 		{% id %}
-	# paramElement
-	# 	{% id %}
+	|
+	function
+		{% (d) => d[0] %}
 
 # lists in the form of: list identifier [ params ]
 listStatement ->

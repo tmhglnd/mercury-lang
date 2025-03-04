@@ -509,6 +509,55 @@ test('Using groups to apply functions', () => {
 	expect(Mercury(code).parseTree.objects).toStrictEqual(expected);
 });
 
+test('Using functions to generate instrument types', () => {
+	let expected = {
+		's0' : {
+			'object' : 'sample',
+			'type' : [ 'kick_909', 'snare_909', 'hat_909' ],
+			'functions' : {
+				'name' : ['s0'],
+				'group' : [],
+				'time' : [ '1/1', 0 ],
+				'beat' : [ 1, -1 ],
+				'speed' : [ 1 ],
+				'note' : [ 'off' ],
+				'env' : [ -1 ],
+				'beat' : [ 1, -1 ],
+				'amp' : [ 0.9 ],
+				'pan' : [ 0 ],
+				'note' : [ "off" ],
+				'tune' : [ 60 ],
+				'stretch': [0, 1, 1],
+				'add_fx' : [],
+			}
+		}, 
+		's1' : {
+			'object' : 'synth',
+			'type' : [ 'square', 'square', 'saw' , 'saw' ],
+			'functions' : {
+				'name' : ['s1'],
+				'group' : [],
+				'time' : [ '1/1', 0 ],
+				'beat' : [ 1, -1 ],
+				'note' : [ 0, 0 ],
+				'env' : [ 1, 250 ],
+				'amp' : [ 0.7 ],
+				'pan' : [ 0 ],
+				'wave2' : [ 'saw', 0 ],
+				'add_fx' : [],
+			}
+		}
+	}
+
+	let code = `
+		set randomSeed 1111
+		new sample add([kick snare hat] _909) name(s0)
+		new synth choose(4 [saw square]) name(s1)
+	`
+
+	expect(Mercury(code).parseTree.objects).toStrictEqual(expected);
+})
+
 // test('Instruments with Array Synth/Sample names', () => {
 // 	let expected = {
 // 		'bob' : {
