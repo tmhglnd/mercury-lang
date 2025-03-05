@@ -546,6 +546,21 @@ test('Using functions to generate instrument types', () => {
 				'wave2' : [ 'saw', 0 ],
 				'add_fx' : [],
 			}
+		},
+		'i0' : {
+			'object' : 'input',
+			'type' : [ 'in0', 'in1', 'in2', 'in3' ],
+			'functions' : {
+				'name' : [ 'i0' ],
+				'group' : [],
+				'time' : [ '1/1', 0 ],
+				'beat' : [ 1, -1 ],
+				'note' : [ 'off' ],
+				'pan' : [ 0 ],
+				'env' : [ -1 ],
+				'amp' : [ 0.9 ],
+				'add_fx' : []
+			}
 		}
 	}
 
@@ -553,6 +568,7 @@ test('Using functions to generate instrument types', () => {
 		set randomSeed 1111
 		new sample add([kick snare hat] _909) name(s0)
 		new synth choose(4 [saw square]) name(s1)
+		new input add(in spread(4)) name(i0)
 	`
 
 	expect(Mercury(code).parseTree.objects).toStrictEqual(expected);
