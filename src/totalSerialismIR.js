@@ -392,6 +392,18 @@ const functionMap = {
 	'palin' : (...v) => {
 		return Mod.palindrome(...v);
 	},
+	'pinky' : (...v) => {
+		return Mod.pinkyUp(...v);
+	},
+	'pinkyUp' : (...v) => {
+		return Mod.pinkyUp(...v);
+	},
+	'pinkyDown' : (...v) => {
+		return Mod.pinkyDown(...v);
+	},
+	'pinkyUpDown' : (...v) => {
+		return Mod.pinkyUpDown(...v);
+	},
 	'mirror' : (...v) => {
 		return Mod.palindrome(...v);
 	},
@@ -434,6 +446,18 @@ const functionMap = {
 	// split an array recursively till the end
 	'split' : (...v) => {
 		return Mod.split(...v);
+	},
+	'thumb' : (...v) => {
+		return Mod.thumbUp(...v);
+	},
+	'thumbUp' : (...v) => {
+		return Mod.thumbUp(...v);
+	},
+	'thumbDown' : (...v) => {
+		return Mod.thumbDown(...v);
+	},
+	'thumbUpDown' : (...v) => {
+		return Mod.thumbUpDown(...v);
 	},
 	// cut a piece of the array and return
 	'cut' : (...v) => {
