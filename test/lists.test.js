@@ -196,6 +196,21 @@ test('Transform List Methods', () => {
 
 	expect(Mercury(code).parseTree.print).toStrictEqual([[0, 1, 2, 3, 4], [[0, 1, 2], [3, 4, 5, 6, 7]], [[0, 1, 2], [3, 4]], [[0, 1, 2], [3, 4, 5], [6, 7]], [[0, 1, 2], [3, 4], [5, 6, 7]], [0, 1, 2], [3, 4, 5, 6, 7], [10, 0, 12, 0, 14, 16, 0, 18], [1, 3, 5, 7, 10, 8, 7, 6, 5], [1, 2, 3], [10, 20, 30]]);
 
+	code = `
+	print pinky([0 3 7 12 19])
+	print pinkyUp([0 3 7 12 19])
+	print pinkyDown([0 3 7 12 19])
+	print pinkyUpDown([0 3 7 12 19])`
+	
+	expect(Mercury(code).parseTree.print).toStrictEqual([[0, 19, 3, 19, 7, 19, 12, 19], [0, 19, 3, 19, 7, 19, 12, 19], [12, 19, 7, 19, 3, 19, 0, 19], [0, 19, 3, 19, 7, 19, 12, 19, 7, 19, 3, 19]]);
+
+	code = `
+	print thumb([0 3 7 12 19])
+	print thumbUp([0 3 7 12 19])
+	print thumbDown([0 3 7 12 19])
+	print thumbUpDown([0 3 7 12 19])`
+	
+	expect(Mercury(code).parseTree.print).toStrictEqual([[0, 3, 0, 7, 0, 12, 0, 19], [0, 3, 0, 7, 0, 12, 0, 19], [0, 19, 0, 12, 0, 7, 0, 3], [0, 3, 0, 7, 0, 12, 0, 19, 0, 12, 0, 7]]);
 });
 
 test('Utility List Methods', () => {
