@@ -2,18 +2,28 @@
 // The default instrument objects for Mercury
 // 
 
-const emptyDefault = {
+const sequencerDefault = {
 	'empty' : {
 		'object' : '',
 		'type' : '',
 		'functions' : {
+			// 'name' : 	'',
+			// 'solo' : 	[ 0 ],
 			'group' :	[],
 			'time' : 	[ '1/1', 0 ],
+			// 'once' :	[ 'off' ],
 			'beat' : 	[ 1, -1 ],
-			'amp' :		[ 1 ],
 			'env' :		[ 1, 250 ],
+			'amp' :		[ 1 ],
+			// 'pan' :		[ 0 ],
+			'add_fx' : 	[],
+			// 'out' :		[ 1, 2 ],
+			// 'ratchet' : [ 0, 2 ],
+			// 'timediv' : [ ],
+			// 'human' :	[ 0 ],
+			// 'warp' :	[ 1 ],
+			// 'wait' :	[ 0 ],
 			'note' :	[ 0, 0 ],
-			'add_fx' : 	[]
 		}
 	},
 }
@@ -81,11 +91,11 @@ const instrumentDefaults = {
 
 // merge the default empty object and the additional defaults
 Object.keys(instrumentDefaults).forEach((o) => {
-	let empty = JSON.parse(JSON.stringify(emptyDefault.empty));
+	let empty = JSON.parse(JSON.stringify(sequencerDefault.empty));
 	instrumentDefaults[o] = deepMerge(empty, instrumentDefaults[o]);
 });
 // add the empty default
-Object.assign(instrumentDefaults, emptyDefault);
+Object.assign(instrumentDefaults, sequencerDefault);
 // instrumentDefaults = { ...instrumentDefaults, ...emptyDefault };
 
 // Return true if input is object
