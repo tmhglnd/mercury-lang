@@ -15,7 +15,7 @@ const functionMap = {
 	// 
 	// generate an array of ints between specified range
 	'spread' : (...v) => {
-		return Gen.spread(...v);
+		return Util.multiEval(Gen.spread, ...v);
 	},
 	// generate an array of floats between range
 	'spreadFloat' : (...v) => {
@@ -65,6 +65,8 @@ const functionMap = {
 	},
 	// fill an array with duplicates of a value
 	'fill' : (...v) => {
+		// return Util.multiEval(Gen.fill, ...v);
+		// breaking change with multiEval
 		return Gen.fill(...v);
 	},
 	// generate an array from a sinewave function
@@ -138,19 +140,23 @@ const functionMap = {
 	// switched to fastEuclid method
 	'euclid' : (...v) => {
 		// return Algo.euclid(...v);
-		return Algo.fastEuclid(...v);
+		// return Algo.fastEuclid(...v);
+		return Util.multiEval(Algo.fastEuclid, ...v);
 	},
 	'euclidean' : (...v) => {
 		// return Algo.euclid(...v);
-		return Algo.fastEuclid(...v);
+		// return Algo.fastEuclid(...v);
+		return functionMap['euclid'](...v);
 	},
 	// generate a rhythm based on a hexadecimal string (0-f)
 	'hexBeat' : (...v) => {
 		// console.log("@hexBeat", v);
-		return Algo.hexBeat(v[0]);
+		// return Algo.hexBeat(v[0]);
+		return functionMap['hex'](...v);
 	},
 	'hex' : (...v) => {
-		return Algo.hexBeat(v[0]);
+		// return Algo.hexBeat(v[0]);
+		return Util.multiEval(Algo.hexBeat, v[0]);
 	},
 	// generate a sequence of numbers from the collatz conjecture
 	// thread lightly, can grow large with large input numbers
@@ -423,7 +429,8 @@ const functionMap = {
 	},
 	// rotate an array in positive or negative direction
 	'rotate' : (...v) => {
-		return Mod.rotate(...v);
+		// more intricate because first argument has to be a list
+		return Util.multiEval(Mod.rotate, [v[0]], ...v.slice(1));
 	},
 	'rot' : (...v) => {
 		return Mod.rotate(...v);

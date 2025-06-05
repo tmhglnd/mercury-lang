@@ -334,3 +334,23 @@ test('Translate List Methods', () => {
 
 	expect(Mercury(code).parseTree.print).toStrictEqual([ [ 98, 97, 99, 104 ], [ 98, 97, 99, 104, 32, 99, 97, 103, 101 ], [[ 98, 97, 99, 104], [99, 97, 103, 101]] ]);
 });
+
+test('Multi Eval List Methods', () => {
+	let code = `
+	print spread([3 5 7])
+	// print fill([0 7] 4)
+	print euclid(8 [3 5])
+	print euclid([5 3] [2 1])
+	print hex(['80' '92'])
+	print rotate([10 20 30 40] [1 -2])
+	`;
+
+	expect(Mercury(code).parseTree.print).toStrictEqual([
+		[ 0, 1, 2, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 5, 6 ],
+		// [ 0, 0, 0, 0, 7, 7, 7, 7 ]
+		[ 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1 ],
+		[ 1, 0, 0, 1, 0, 1, 0, 0 ],
+		[ 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0],
+		[ 40, 10, 20, 30, 30, 40, 10, 20 ]
+	]);
+});
