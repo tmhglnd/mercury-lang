@@ -3,6 +3,7 @@
 //
 
 const Mercury = require('../index.js');
+// const Mercury = require('../build/mercury.es5.min.js');
 
 // Float arrays not included because results can not StrictEqual 
 // (rounding errors with Floats)
