@@ -3,6 +3,7 @@
 //
 
 const Mercury = require('../index.js');
+// const Mercury = require('./../build/mercury.es5.min.js');
 
 test('Empty Parse', () => {
 	let expected = {
@@ -145,7 +146,8 @@ test('Default Synth', () => {
 				'pan' : [ 0 ],
 				'wave2' : [ 'saw', 0 ],
 				'add_fx' : [],
-			}
+			},
+			'line' : 1
 		}
 	};
 
@@ -173,7 +175,8 @@ test('Default Sample', () => {
 				'tune' : [ 60 ],
 				'stretch': [0, 1, 1],
 				'add_fx' : [],
-			}
+			},
+			'line' : 1
 		}
 	};
 
@@ -198,7 +201,8 @@ test('Default Midi', () => {
 				'chord' : 'off',
 				'sync' : 'off',
 				'add_fx' : []
-			}
+			},
+			'line' : 1
 		}
 	};
 
@@ -221,7 +225,8 @@ test('Default Input', () => {
 				'env' : [ -1 ],
 				'amp' : [ 0.9 ],
 				'add_fx' : []
-			}
+			},
+			'line' : 1
 		}
 	};
 
@@ -247,7 +252,8 @@ test('Default Loop', () => {
 				'pan' : [ 0 ],
 				'stretch': [ 1, 1, 1 ],
 				'add_fx' : [],
-			}
+			},
+			'line' : 1
 		}
 	};
 
@@ -271,7 +277,8 @@ test('Default PolySynth', () => {
 				'pan' : [ 0 ],
 				'wave2' : [ 'saw', 0 ],
 				'add_fx' : [],
-			}
+			},
+			'line' : 1
 		}
 	};
 
@@ -293,7 +300,8 @@ test('Default OSC', () => {
 				'env' : [ 1, 250 ],
 				'group' : [],
 				'add_fx' : [],
-			}
+			},
+			'line' : 1
 		}
 	};
 
@@ -317,7 +325,8 @@ test('Instruments With Functions', () => {
 				'amp' : [ 0.7 ],
 				'wave2' : [ 'saw', 0 ],
 				'add_fx' : [],
-			}
+			},
+			'line' : 2
 		},
 		'alice' : {
 			'object' : 'sample',
@@ -335,7 +344,8 @@ test('Instruments With Functions', () => {
 				'amp' : [ 0.9 ],
 				'stretch': [0, 1, 1],
 				'add_fx' : [],
-			}
+			},
+			'line' : 3
 		},
 		'simon' : {
 			'object' : 'synth',
@@ -351,7 +361,8 @@ test('Instruments With Functions', () => {
 				'pan' : [ 0 ],
 				'wave2' : [ 'saw', 0 ],
 				'add_fx' : [],
-			}
+			},
+			'line' : 4
 		}
 	}
 
@@ -376,7 +387,8 @@ test('Unkown instrument, not part of defaults', () => {
 				'note' : [ 0, 0 ],
 				'env' : [ 1, 250 ],
 				'add_fx' : []
-			}
+			},
+			'line' : 1
 		},
 	}
 
@@ -391,20 +403,21 @@ test('Chain FX', () => {
 			object: 'synth',
 			type: 'saw',
 			functions: {
-			  group: [],
-			  time: [ '1/1', 0 ],
-			  note: [ 0, 0 ],
-			  env: [ 1, 250 ],
-			  beat: [ 1, -1 ],
-			  amp: [ 0.7 ],
-			  pan: [ 0 ],
-			  wave2: [ 'saw', 0 ],
-			  add_fx: [ 
-				[ 'drive', 4 ], 
-				[ 'reverb', 0.5, 5 ], 
-				[ 'shift', 7 ] ],
-			  name: [ 's0' ]
-			}
+				group: [],
+				time: [ '1/1', 0 ],
+				note: [ 0, 0 ],
+				env: [ 1, 250 ],
+				beat: [ 1, -1 ],
+				amp: [ 0.7 ],
+				pan: [ 0 ],
+				wave2: [ 'saw', 0 ],
+				add_fx: [ 
+					[ 'drive', 4 ], 
+					[ 'reverb', 0.5, 5 ], 
+					[ 'shift', 7 ] ],
+				name: [ 's0' ]
+			},
+			'line' : 1
 		}
 	}
 
@@ -418,20 +431,21 @@ test('Set FX to named Synths', () => {
 			object: 'synth',
 			type: [ 'saw', 'triangle', 'sine' ],
 			functions: {
-			  group: [],
-			  time: [ '1/1', 0 ],
-			  note: [ 0, 0 ],
-			  env: [ 1, 250 ],
-			  beat: [ 1, -1 ],
-			  amp: [ 0.7 ],
-			  pan: [ 0 ],
-			  wave2: [ 'saw', 0 ],
-			  add_fx: [ 
-				[ 'drive', 4 ], 
-				[ 'reverb', 0.5, 5 ], 
-				[ 'shift', 7 ] ],
-			  name: [ 's0' ]
-			}
+				group: [],
+				time: [ '1/1', 0 ],
+				note: [ 0, 0 ],
+				env: [ 1, 250 ],
+				beat: [ 1, -1 ],
+				amp: [ 0.7 ],
+				pan: [ 0 ],
+				wave2: [ 'saw', 0 ],
+				add_fx: [ 
+					[ 'drive', 4 ], 
+					[ 'reverb', 0.5, 5 ], 
+					[ 'shift', 7 ] ],
+				name: [ 's0' ]
+			},
+			'line' : 2
 		}
 	}
 
@@ -458,7 +472,8 @@ test('Using groups to apply functions', () => {
 				'amp' : [ 0.7 ],
 				'wave2' : [ 'saw', 0 ],
 				'add_fx' : [],
-			}
+			},
+			'line' : 2
 		},
 		'alice' : {
 			'object' : 'sample',
@@ -476,7 +491,8 @@ test('Using groups to apply functions', () => {
 				'amp' : [ 0.3 ],
 				'stretch': [0, 1, 1],
 				'add_fx' : [],
-			}
+			},
+			'line' : 3
 		},
 		'simon' : {
 			'object' : 'synth',
@@ -492,7 +508,8 @@ test('Using groups to apply functions', () => {
 				'pan' : [ 0 ],
 				'wave2' : [ 'saw', 0 ],
 				'add_fx' : [],
-			}
+			},
+			'line' : 4
 		}
 	}
 
@@ -529,7 +546,8 @@ test('Using functions to generate instrument types', () => {
 				'tune' : [ 60 ],
 				'stretch': [0, 1, 1],
 				'add_fx' : [],
-			}
+			},
+			'line' : 3
 		}, 
 		's1' : {
 			'object' : 'synth',
@@ -545,7 +563,8 @@ test('Using functions to generate instrument types', () => {
 				'pan' : [ 0 ],
 				'wave2' : [ 'saw', 0 ],
 				'add_fx' : [],
-			}
+			},
+			'line' : 4
 		},
 		'i0' : {
 			'object' : 'input',
@@ -560,7 +579,8 @@ test('Using functions to generate instrument types', () => {
 				'env' : [ -1 ],
 				'amp' : [ 0.9 ],
 				'add_fx' : []
-			}
+			},
+			'line' : 5
 		}
 	}
 

@@ -45,8 +45,14 @@ function mercuryParser(code=''){
 				}
 				// only if not undefined
 				if (parser.results[0] !== undefined){
+					// add line number and code to new object if it is one
+					if (parser.results[0]?.['@object']?.['@new']){
+							parser.results[0]['@object']['@new']['@line'] = l+1;
+							// parser.results[0]['@object']['@new']['@code'] = lines[l];
+					}
 					// build the tokenized syntax tree
 					syntaxTree['@main'].push(parser.results[0]);
+
 				} else {
 					throw new Error();
 				}

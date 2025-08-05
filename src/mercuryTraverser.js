@@ -118,10 +118,17 @@ function traverseTree(tree, code, level, obj){
 			let inst = map['@inst'](el['@inst'], ccode);
 			delete el['@inst'];
 			
+			// add the line number and code to the object for later use
+			inst.line = map['@line'](el['@line']);
+			delete el['@line'];
+
+			// inst.code = map['@code'](el['@code']);
+			// delete el['@code'];
+
 			// generate unique ID name for object before checking the name()
 			// this ID is used for groups if there are any
 			inst.functions.name = [ uniqueID(8) ];
-			
+
 			Object.keys(el).forEach((k) => {
 				inst = map[k](el[k], ccode, '@object', inst);
 			});
@@ -317,21 +324,13 @@ function traverseTree(tree, code, level, obj){
 			}
 			return el;
 		},
-		'@string' : (el) => {
-			return el;
-		},
-		'@number' : (el) => {
-			return el;
-		},
-		'@division' : (el) => {
-			return el;
-		},
-		'@note' : (el) => {
-			return el;
-		},
-		'@signal' : (el) => {
-			return el;
-		}
+		'@string' : (el) => { return el; },
+		'@number' : (el) => { return el; },
+		'@division' : (el) => { return el; },
+		'@note' : (el) => { return el; },
+		'@signal' : (el) => { return el; },
+		'@line' : (el) => { return el; },
+		'@code' : (el) => { return el; }
 	}
 
 	if (Array.isArray(tree)) {

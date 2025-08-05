@@ -130,6 +130,7 @@ console.log(result.parseTree);
 			add_fx: [ [ 'reverb', 0.9, 7 ] ],
 			name: [ 's1' ]
 		}
+		line: 7
 		}
 	},
 	groups: { all: [ 's1' ] },
@@ -188,7 +189,8 @@ console.log(result.syntaxTree);
 				}
 				}
 			]
-			}
+			},
+			'@line': 7
 		}
 		},
 		{
