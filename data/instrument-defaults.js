@@ -57,6 +57,12 @@ const instrumentDefaults = {
 			'pan' : 	[ 0 ]
 		}
 	},
+	'polySample' : {
+		'type' : 'kick_909',
+		'functions' : {
+			'note' :	[ 0, 2 ]
+		}
+	},
 	'loop' : {
 		'type' : 'amen',
 		'functions' : {
