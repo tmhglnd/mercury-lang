@@ -168,6 +168,10 @@ const functionMap = {
 	'pisano' : (...v) => {
 		return Algo.pisano(...v);
 	},
+	// // generate a normalized pisano period. returns in range 0 - 1
+	// 'nPisano' : (...v) => {
+	// 	return Util.normalize(Algo.pisano(...v));
+	// },
 	'fibonacciMod' : (...v) => {
 		return functionMap.pisano(v);
 	},
@@ -392,6 +396,9 @@ const functionMap = {
 	'palin' : (...v) => {
 		return Mod.palindrome(...v);
 	},
+	'mirror' : (...v) => {
+		return Mod.palindrome(...v);
+	},
 	'pinky' : (...v) => {
 		return Mod.pinkyUp(...v);
 	},
@@ -403,9 +410,6 @@ const functionMap = {
 	},
 	'pinkyUpDown' : (...v) => {
 		return Mod.pinkyUpDown(...v);
-	},
-	'mirror' : (...v) => {
-		return Mod.palindrome(...v);
 	},
 	// repeat the individual values of an array by a certain amount
 	'repeat' : (...v) => {
