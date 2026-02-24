@@ -13,7 +13,7 @@ test('Generative List Methods', () => {
 
 	expect(Mercury(`print spreadF(4)`).parseTree.print[0]).toStrictEqual([0, 0.25, 0.5, 0.75]);
 
-	expect(Mercury(`print spread(5 12 0)`).parseTree.print[0]).toStrictEqual([9, 7, 4, 2, 0]);
+	expect(Mercury(`print spread(5 12 0)`).parseTree.print[0]).toStrictEqual([12, 9, 7, 4, 2]);
 
 	expect(Mercury(`print spreadInclusive(5 0 12)`).parseTree.print[0]).toStrictEqual([0, 3, 6, 9, 12]);
 
