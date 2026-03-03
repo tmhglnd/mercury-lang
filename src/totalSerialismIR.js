@@ -297,8 +297,6 @@ const functionMap = {
 		// train from a markov table and generate a chain
 		let markov = new Rand.DeepMarkovChain();
 		markov.parse(v[1]);
-		// set the seed based on the global seed
-		markov.seed(Rand.getSeed());
 		let gen = markov.chain(v[0]);
 		// clear the data and remove markov
 		markov.clear();
