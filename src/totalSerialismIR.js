@@ -7,6 +7,8 @@ const Stat = require('total-serialism').Statistic;
 const TL   = require('total-serialism').Translate;
 const Util = require('total-serialism').Utility;
 
+const cowsay = require('cowsay');
+
 const functionMap = {
 	// All the Array transformation/generation methods
 	// From the total-serialism Node package
@@ -805,6 +807,11 @@ const functionMap = {
 	},
 	'draw' : (...v) => {
 		return Util.draw(v[0], { log: false });
+	},
+	'cowsay' : (...v) => {
+		let txt = v[0] ?? 'hello!';
+		let cow = v[1] ?? 'default';
+		return cowsay.say({ text: txt, f : cow })
 	}
 }
 exports.functionMap = functionMap;
