@@ -799,5 +799,12 @@ const functionMap = {
 	'lte' : (...v) => {
 		return functionMap.lessEquals(...v);
 	},
+	// some plotting utilities
+	'plot' : (...v) => {
+		return Util.plot(v[0], { log: false });
+	},
+	'draw' : (...v) => {
+		return Util.draw(v[0], { log: false });
+	}
 }
 exports.functionMap = functionMap;
