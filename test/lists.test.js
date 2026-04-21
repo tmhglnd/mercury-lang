@@ -270,6 +270,16 @@ test('Utility List Methods', () => {
 	`
 
 	expect(Mercury(code).parseTree.print).toStrictEqual([[1, 0, 0, 0], [1, 0, 0, 1], [0, 1, 1], [0, 1, 1, 0], [1, 0, 0], [0, 0, 0, 1], [0, 0, 0, 1], [1, 0, 0, 1], [1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 0], [1, 1, 1, 0], [1, 1, 1, 0]]);
+
+	code = `
+	print cowsay()
+	print cowthink()
+	print cowsay('hi there!' 'random')
+	print cowthink('what to do next?')
+	print cowthink([1 2 3 4])
+	`
+
+	Mercury(code).parseTree.print.forEach(p => console.log(p));
 });
 
 test('Translate List Methods', () => {

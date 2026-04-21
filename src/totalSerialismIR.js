@@ -7,7 +7,8 @@ const Stat = require('total-serialism').Statistic;
 const TL   = require('total-serialism').Translate;
 const Util = require('total-serialism').Utility;
 
-const cowsay = require('cowsay');
+const { cowsay, cowthink } = require('cowsayjs');
+const cows = [ 'apt', 'bud-frogs', 'bunny', 'cower', 'dragon', 'duck', 'eyes', 'flaming-sheep', 'hello-kitty', 'koala', 'luke-koala', 'moose', 'pony-smaller', 'sheep', 'skeleton', 'small', 'tux', 'udder', 'unipony-smaller', 'vader-koala', 'vader' ];
 
 const functionMap = {
 	// All the Array transformation/generation methods
@@ -808,10 +809,20 @@ const functionMap = {
 	'draw' : (...v) => {
 		return Util.draw(v[0], { log: false });
 	},
+	// just for fun, mostly during performances
 	'cowsay' : (...v) => {
 		let txt = v[0] ?? 'hello!';
+		txt = (typeof txt !== 'string') ? JSON.stringify(txt) : txt;
 		let cow = v[1] ?? 'default';
-		return cowsay.say({ text: txt, f : cow })
+		if (cow === 'random') cow = cows[Math.floor(Math.random()*cows.length)];
+		return cowsay(txt, { cow: cow });
+	},
+	'cowthink' : (...v) => {
+		let txt = v[0] ?? 'hmm';
+		txt = (typeof txt !== 'string') ? JSON.stringify(txt) : txt;
+		let cow = v[1] ?? 'default';
+		if (cow === 'random') cow = cows[Math.floor(Math.random()*cows.length)];
+		return cowthink(txt, { cow: cow });
 	}
 }
 exports.functionMap = functionMap;
