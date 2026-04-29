@@ -311,7 +311,7 @@ test('Translate List Methods', () => {
 
 	expect(Mercury(`set scale minor d`).parseTree.global.scale).toStrictEqual(['minor', 'd']);
 
-	expect(Mercury(`print scaleNames()`).parseTree.print[0]).toHaveLength(93);
+	expect(Mercury(`print scaleNames()`).parseTree.print[0]).toHaveLength(101);
 
 	code = `
 	set scale minor a
